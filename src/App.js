@@ -1,24 +1,9 @@
-import logo from './logo.svg';
-import './App.css';
+import SignUp from "./routers/SignUp";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    // impot 후 여기에 써주기
+    <SignUp /> // = <SignUp></SignUp> => 얘는 signup 사이에 다른거 들어올 수 있음(ex.icon)
   );
 }
 
