@@ -1,0 +1,40 @@
+#cover {
+    border: 3px solid #c2ffc2;
+    border-radius: 10px;
+}
+
+input[type=text] {
+    border-style: none;
+    border: 2px solid #c2ffc2;
+    border-radius: 10px;
+}
+
+input[type=password] {
+    border-style: none;
+    border: 2px solid #c2ffc2;
+    border-radius: 10px;
+}
+
+input[type=email] {
+    border-style: none;
+    border: 2px solid #c2ffc2;
+    border-radius: 10px;
+}
+
+/*
+select {
+    border-style: none;
+    border: 2px solid #c2ffc2;
+    border-radius: 10px;
+}
+
+textarea {
+    border-style: none;
+    border: 2px solid #c2ffc2;
+    border-radius: 10px;
+}
+
+button {
+    color: black;
+}
+*/
