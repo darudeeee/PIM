@@ -1,27 +1,25 @@
 #cover {
-    border: 3px solid #c2ffc2;
+    border: 3px solid #008B8B;
     border-radius: 10px;
 }
 
-input[type=text] {
-    border-style: none;
-    border: 2px solid #c2ffc2;
+input[type=text], input[type=password], input[type=number], input[type=email] {
+    border-style: none; /* mui의 border를 none처리 하는 방법 찾기 */
+    border: 2px solid #008B8B;
     border-radius: 10px;
 }
 
-input[type=password] {
-    border-style: none;
-    border: 2px solid #c2ffc2;
-    border-radius: 10px;
+/* mui에서 지정된 number icon 제거 */
+input[type='number']::-webkit-inner-spin-button, 
+input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
-input[type=email] {
-    border-style: none;
-    border: 2px solid #c2ffc2;
-    border-radius: 10px;
-}
 
-/*
+
+/* 공용 말고는 굳이 따로 만들 필요가 있나?
+
 select {
     border-style: none;
     border: 2px solid #c2ffc2;
