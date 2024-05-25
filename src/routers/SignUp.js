@@ -4,16 +4,14 @@ import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { IconButton } from "@mui/material";
 import Button from "@mui/material/Button";
 import Checkbox from "@mui/material/Checkbox";
-import FormControl from "@mui/material/FormControl";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import MenuItem from "@mui/material/MenuItem";
-import Radio from "@mui/material/Radio";
-import RadioGroup from "@mui/material/RadioGroup";
 import Select from "@mui/material/Select";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import * as React from "react";
-import Input from "../component/Input";
+import InputControl from "../component/InputControl";
+import RadioControl from "../component/RadioControl";
 import "./SignUp.css";
 
 // 수정할 것
@@ -35,309 +33,296 @@ import "./SignUp.css";
 // [textField] address => mui에서 textArea를 가져오던지, component의 input들어가서 참고하고 생각해보던지
 
 function SignUp() {
-  // const [id, setId] = React.useState(""); 등을 한번에 압축해 정리할 수 있음
-  // 여기서 id : 선언, setId : 값 설정, useState : 초기값 설정
-  const [user, setUser] = React.useState({
-    id: "",
-    pw: "",
-    showPw: false,
-    name: "",
-    age: "",
-    gender: "female",
-    local: "",
-    address: "",
-    email: "",
-  });
+	// const [id, setId] = React.useState(""); 등을 한번에 압축해 정리할 수 있음
+	// 여기서 id : 선언, setId : 값 설정, useState : 초기값 설정
+	const [user, setUser] = React.useState({
+		id: "",
+		pw: "",
+		showPw: false,
+		name: "",
+		age: "",
+		gender: "female",
+		local: "",
+		address: "",
+		email: "",
+	});
 
-  // 지역 배열 선언
-  const localArray = [
-    {
-      value: "seoul",
-      name: "서울",
-    },
-    {
-      value: "incheon",
-      name: "인천",
-    },
-    {
-      value: "gyeonggi",
-      name: "경기도",
-    },
-    {
-      value: "gangwon",
-      name: "강원도",
-    },
-    {
-      value: "gyeongbuk",
-      name: "경상북도",
-    },
-    {
-      value: "gyeongnam",
-      name: "경상남도",
-    },
-    {
-      value: "jeollabuk",
-      name: "전라북도",
-    },
-    {
-      value: "jeollanam",
-      name: "전라남도",
-    },
-    {
-      value: "chungbuk",
-      name: "충청북도",
-    },
-    {
-      value: "chungnam",
-      name: "충청남도",
-    },
-    {
-      value: "jeju",
-      name: "제주도",
-    },
-  ];
+	// 지역 배열 선언
+	const localArray = [
+		{
+			value: "seoul",
+			name: "서울",
+		},
+		{
+			value: "incheon",
+			name: "인천",
+		},
+		{
+			value: "gyeonggi",
+			name: "경기도",
+		},
+		{
+			value: "gangwon",
+			name: "강원도",
+		},
+		{
+			value: "gyeongbuk",
+			name: "경상북도",
+		},
+		{
+			value: "gyeongnam",
+			name: "경상남도",
+		},
+		{
+			value: "jeollabuk",
+			name: "전라북도",
+		},
+		{
+			value: "jeollanam",
+			name: "전라남도",
+		},
+		{
+			value: "chungbuk",
+			name: "충청북도",
+		},
+		{
+			value: "chungnam",
+			name: "충청남도",
+		},
+		{
+			value: "jeju",
+			name: "제주도",
+		},
+	];
 
-  const InputChange = (name, value) => {
-    // name은 입력받을 필드의 이름(id가 변경되면 name은 id가 되고, name이 변경되면 name은 name이 된다 // value는 사용자가 새롭게 입력한 값)
-    setUser((prev) => ({
-      ...prev,
-      [name]: value, // 필드의 값을 입력받은 것으로 변경
-    }));
-  };
+	const RadioArray = [
+		{
+			value: "female",
+			label: "Female"
+		},
+		{
+			value: "male",
+			label: "Male",
+		}
+	]
 
-  // 비밀번호 보이기/감추기 아이콘을 토글하는 함수
-  const viewPw = () => {
-    setUser((prev) => ({
-      // prev -> user
-      ...prev, // ...prev => user 안에 정보들을 다 가져오기
-      showPw: !prev.showPw, // showPw : prev에서 가져온 showPw만 반대로 사용하기
-    }));
-  };
+	const InputChange = (name, value) => {
+		// name은 입력받을 필드의 이름(id가 변경되면 name은 id가 되고, name이 변경되면 name은 name이 된다 // value는 사용자가 새롭게 입력한 값)
+		setUser((prev) => ({
+			...prev,
+			[name]: value, // 필드의 값을 입력받은 것으로 변경
+		}));
+	};
 
-  // sendInfo시, 배열에 정보 저장
-  const sendInfo = () => {
-    if (!emailValidation(user.email)) {
-      return; // 이메일 형식이 맞지 않으면 함수를 빠져나감
-    }
-    console.log(user); // 입력한 정보 콘솔창에 뜨도록
+	// 비밀번호 보이기/감추기 아이콘을 토글하는 함수
+	const viewPw = () => {
+		setUser((prev) => ({
+			// prev -> user
+			...prev, // ...prev => user 안에 정보들을 다 가져오기
+			showPw: !prev.showPw, // showPw : prev에서 가져온 showPw만 반대로 사용하기
+		}));
+	};
 
-    // 상태 변수 초기화
-    setUser({
-      id: "",
-      pw: "",
-      showPw: false,
-      name: "",
-      age: "",
-      gender: "female",
-      local: "",
-      address: "",
-      email: "",
-    });
-  };
+	// sendInfo시, 배열에 정보 저장
+	const sendInfo = () => {
+		if (!emailValidation(user.email)) {
+			return; // 이메일 형식이 맞지 않으면 함수를 빠져나감
+		}
+		console.log(user); // 입력한 정보 콘솔창에 뜨도록
 
-  const emailValidation = (email) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      alert("이메일 형식이 올바르지 않습니다.");
-      return false; // 이메일 형식이 맞지 않으면 false 반환
-    }
-    return true; // 이메일 형식이 맞으면 true 반환
-  };
+		// 상태 변수 초기화
+		setUser({
+			id: "",
+			pw: "",
+			showPw: false,
+			name: "",
+			age: "",
+			gender: "female",
+			local: "",
+			address: "",
+			email: "",
+		});
+	};
 
-  return (
-    <div
-      style={{
-        vw: "100vw",
-        vh: "100vh",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-      }}
-    >
-      <div style={{ marginTop: "10px" }}>
-        <Typography
-          variant="h3"
-          gutterBottom
-          style={{ fontFamily: "KyoboHandwriting2023wsa" }}
-        >
-          회원가입
-        </Typography>
-      </div>
+	const emailValidation = (email) => {
+		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+		if (!emailRegex.test(email)) {
+			alert("이메일 형식이 올바르지 않습니다.");
+			return false; // 이메일 형식이 맞지 않으면 false 반환
+		}
+		return true; // 이메일 형식이 맞으면 true 반환
+	};
 
-      <div id="cover" style={{ backgroundColor: "#E0FFFF" }}> 
-        <Input
-          type={"text"}
-          label={"아이디"}
-          placeholder={"아이디를 입력하세요."}
-          value={user.id}
-          name={"id"}
-          Function={(name, value) => InputChange(name, value)}
-        /> 
+	return (
+		<div
+			style={{
+				vw: "100vw",
+				vh: "100vh",
+				display: "flex",
+				flexDirection: "column",
+				alignItems: "center",
+			}}
+		>
+			<div style={{ marginTop: "10px" }}>
+				<Typography
+					variant="h3"
+					gutterBottom
+					style={{ fontFamily: "KyoboHandwriting2023wsa" }}
+				>
+					회원가입
+				</Typography>
+			</div>
 
-        <div style={{ display: "flex" }}>
-          <Input
-            type={user.showPw ? "text" : "password"}
-            label={"비밀번호"}
-            placeholder={"비밀번호를 입력하세요."}
-            value={user.pw}
-            name={"pw"}
-            Function={(name, value) => InputChange(name, value)}
-          />
-          <IconButton onClick={viewPw}>
-            {user.showPw ? <VisibilityIcon /> : <VisibilityOffIcon />}
-            {/* 비밀번호 보이기/감추기 아이콘 */}
-          </IconButton>
-        </div>
+			<div id="cover" style={{ backgroundColor: "#E0FFFF" }}>
+				<InputControl
+					type={"text"}
+					label={"아이디"}
+					placeholder={"아이디를 입력하세요."}
+					value={user.id}
+					name={"id"}
+					Function={(name, value) => InputChange(name, value)}
+				/>
 
-        <Input
-          type={"text"}
-          label={"이름"}
-          placeholder={"이름을 입력하세요."}
-          value={user.name}
-          name={"name"}
-          Function={(name, value) => InputChange(name, value)}
-        />
+				<div style={{ display: "flex" }}>
+					<InputControl
+						type={user.showPw ? "text" : "password"}
+						label={"비밀번호"}
+						placeholder={"비밀번호를 입력하세요."}
+						value={user.pw}
+						name={"pw"}
+						Function={(name, value) => {
+							InputChange(name, value)
+						}}
+					/>
+					<IconButton onClick={viewPw}>
+						{user.showPw ? <VisibilityIcon /> : <VisibilityOffIcon />}
+						{/* 비밀번호 보이기/감추기 아이콘 */}
+					</IconButton>
+				</div>
 
-        <Input
-          type={"number"}
-          label={"나이"}
-          placeholder={"나이를 입력하세요."}
-          value={user.age}
-          name={"age"}
-          Function={(name, value) => InputChange(name, value)}
-        />
+				<InputControl
+					type={"text"}
+					label={"이름"}
+					placeholder={"이름을 입력하세요."}
+					value={user.name}
+					name={"name"}
+					Function={(name, value) => InputChange(name, value)}
+				/>
 
-	  	
-        <div style={{ display: "flex", marginBottom: "5px" }}>
-          <Typography // 성별 정리 쉽지 않음
-            variant="h5" 
-            gutterBottom
-            style={{
-              fontFamily: "KyoboHandwriting2023wsa",
-              width: "90px",
-              textAlign: "right",
-              marginRight: "5px",
-            }}
-          >
-            성별 :
-          </Typography>
-          <FormControl>
-            <RadioGroup
-              row
-              aria-labelledby="demo-row-radio-buttons-group-label"
-              name="row-radio-buttons-group"
-              value={user.gender}
-              onChange={(event) => InputChange(event, "gender")}
-            >
-              <FormControlLabel
-                value="female"
-                control={<Radio />}
-                label="Female"
-              />
-              <FormControlLabel value="male" control={<Radio />} label="Male" />
-            </RadioGroup>
-          </FormControl>
-        </div>
+				<InputControl
+					type={"number"}
+					label={"나이"}
+					placeholder={"나이를 입력하세요."}
+					value={user.age}
+					name={"age"}
+					Function={(name, value) => InputChange(name, value)}
+				/>
 
-        <div style={{ display: "flex", marginBottom: "5px" }}>
-          <Typography
-            variant="h5"
-            gutterBottom
-            style={{
-              fontFamily: "KyoboHandwriting2023wsa",
-              width: "90px",
-              textAlign: "right",
-              marginRight: "5px",
-            }}
-          >
-            지역 :
-          </Typography>
-          <Select
-            value={user.local}
-            onChange={(event) => InputChange(event, "local")}
-            style={{ width: "226px", height: "40px" }}
-          >
-            {
-              localArray.map((item) => (
-                <MenuItem value={item.value}>{item.name}</MenuItem>
-              ))
-              // map : for문, item : 내부 배열 요소
-            }
-          </Select>
-        </div>
+				<RadioControl label={"성별"} name={"gender"} value={user.gender}
+					list={RadioArray}
+					Function={(name, value) => InputChange(name, value)}
+				/>
 
-        <div style={{ display: "flex", marginBottom: "5px" }}>
-          <Typography
-            variant="h5"
-            gutterBottom
-            style={{
-              fontFamily: "KyoboHandwriting2023wsa",
-              width: "90px",
-              textAlign: "right",
-              marginRight: "5px",
-            }}
-          >
-            주소 :
-          </Typography>
-          <TextField
-            multiline
-            rows={3}
-            placeholder="주소를 입력하세요."
-            style={{ width: "226px" }}
-            value={user.address}
-            onChange={(event) => InputChange(event, "address")}
-          />
-        </div>
 
-        <Input
-          type={"email"}
-          label={"이메일"}
-          placeholder={"abcd@naver.com"}
-          value={user.email}
-          name={"email"}
-          Function={(name, value) => InputChange(name, value)}
-        />
+				<div style={{ display: "flex", marginBottom: "5px" }}>
+					<Typography
+						variant="h5"
+						gutterBottom
+						style={{
+							fontFamily: "KyoboHandwriting2023wsa",
+							width: "90px",
+							textAlign: "right",
+							marginRight: "5px",
+						}}
+					>
+						지역 :
+					</Typography>
+					<Select
+						value={user.local}
+						onChange={(event) => InputChange(event, "local")}
+						style={{ width: "226px", height: "40px" }}
+					>
+						{
+							localArray.map((item) => (
+								<MenuItem value={item.value}>{item.name}</MenuItem>
+							))
+							// map : for문, item : 내부 배열 요소
+						}
+					</Select>
+				</div>
 
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "flex-end",
-            marginRight: "25px",
-            marginBottom: "5px",
-          }}
-        >
-          <FormControlLabel
-            control={<Checkbox defaultChecked />}
-            label="개인정보 수집 동의"
-          />
-        </div>
-		
-        <div // 버튼 정렬 박스
-          style={{
-            width: "100%",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            marginBottom: "10px",
-          }}
-        >
-          <Button
-            style={{
-              width: "90%",
-              backgroundColor: "#008B8B",
-              border: "3px solid #008B8B",
-              color: "black",
-            }}
-            onClick={sendInfo}
-            variant="outlined"
-            startIcon={<SendIcon />} // endIcon하면 아이콘이 글자 뒤로 옴
-          >
-            회원가입
-          </Button>
-        </div>
-      </div>
-    </div> // div 2개 = 컴포넌트 2개 리턴xx div 1개 안에 여러개는 가능
-  );
+				<div style={{ display: "flex", marginBottom: "5px" }}>
+					<Typography
+						variant="h5"
+						gutterBottom
+						style={{
+							fontFamily: "KyoboHandwriting2023wsa",
+							width: "90px",
+							textAlign: "right",
+							marginRight: "5px",
+						}}
+					>
+						주소 :
+					</Typography>
+					<TextField
+						multiline
+						rows={3}
+						placeholder="주소를 입력하세요."
+						style={{ width: "226px" }}
+						value={user.address}
+						onChange={(event) => InputChange(event, "address")}
+					/>
+				</div>
+
+				<InputControl
+					type={"email"}
+					label={"이메일"}
+					placeholder={"abcd@naver.com"}
+					value={user.email}
+					name={"email"}
+					Function={(name, value) => InputChange(name, value)}
+				/>
+
+				<div
+					style={{
+						display: "flex",
+						justifyContent: "flex-end",
+						marginRight: "25px",
+						marginBottom: "5px",
+					}}
+				>
+					<FormControlLabel
+						control={<Checkbox defaultChecked />}
+						label="개인정보 수집 동의"
+					/>
+				</div>
+
+				<div // 버튼 정렬 박스
+					style={{
+						width: "100%",
+						display: "flex",
+						flexDirection: "column",
+						alignItems: "center",
+						marginBottom: "10px",
+					}}
+				>
+					<Button
+						style={{
+							width: "90%",
+							backgroundColor: "#008B8B",
+							border: "3px solid #008B8B",
+							color: "black",
+						}}
+						onClick={sendInfo}
+						variant="outlined"
+						startIcon={<SendIcon />} // endIcon하면 아이콘이 글자 뒤로 옴
+					>
+						회원가입
+					</Button>
+				</div>
+			</div>
+		</div> // div 2개 = 컴포넌트 2개 리턴xx div 1개 안에 여러개는 가능
+	);
 }
 
 export default SignUp;
