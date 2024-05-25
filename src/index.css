@@ -18,3 +18,21 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#cover {
+    border: 3px solid #008B8B;
+    border-radius: 10px;
+}
+
+input[type=text], input[type=password], input[type=number], input[type=email] {
+    border-style: none; /* mui의 border를 none처리 하는 방법 찾기 */
+    border: 2px solid #008B8B;
+    border-radius: 10px;
+}
+
+/* mui에서 지정된 number icon 제거 */
+input[type='number']::-webkit-inner-spin-button, 
+input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}

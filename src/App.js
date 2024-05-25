@@ -1,10 +1,16 @@
 import SignUp from "./routers/SignUp";
+import Login from "./routers/Login";
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 function App() {
-  return ( 
-    // impot 후 여기에 써주기
-    <SignUp /> // = <SignUp></SignUp> => 얘는 signup 사이에 다른거 들어올 수 있음(ex.icon)
-  );
+	return (
+		<BrowserRouter>
+			<Routes>
+				<Route path="/" element={<Login />} />
+				<Route path="/SignUp" element={<SignUp />} />
+			</Routes>
+		</BrowserRouter>
+	);
 }
 
 export default App;

@@ -25,6 +25,13 @@ const InputAreaControl = (props) => {
 			rows={props.rows}
 			placeholder={props.placeholder}
 			style={{ width: "226px" }}
+			sx={{
+				"& .MuiOutlinedInput-root": {
+				  "&.MuiInputBase-root fieldset": {
+					borderColor: "white",
+				  },
+				},
+			  }}
 			value={props.address}
 			onChange={(event) => InputAreaChange(event, props.name)}
 		/>

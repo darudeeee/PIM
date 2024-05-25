@@ -34,12 +34,23 @@ const RadioControl = (props) => {
 						props.list.map((item) =>
 							<FormControlLabel
 								value={item.value}
-								control={<Radio />}
+								control={<Radio  sx={{
+									'& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root)':
+										{
+											color: 'red',
+										},
+									'& .MuiSvgIcon-root + .MuiSvgIcon-root': {
+										color: 'blue',
+									},
+								}}/>}
 								label={item.label}
 							/>
 						)
 					) : ("")}
+
+					
 				</RadioGroup>
+				
 			</FormControl>
 		</div>
 	)

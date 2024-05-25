@@ -24,6 +24,21 @@ const ComboControl = (props) => {
 				value={props.local}
 				onChange={(event) => ComboChange(event, "local")}
 				style={{ width: "226px", height: "40px" }}
+				sx={{
+					color: "green",
+					'.MuiOutlinedInput-notchedOutline': {
+					  borderColor: 'red',
+					},
+					'&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+					  borderColor: 'blue',
+					},
+					'&:hover .MuiOutlinedInput-notchedOutline': {
+					  borderColor: 'yello',
+					},
+					'.MuiSvgIcon-root ': {
+					  fill: "green !important",
+					}
+				  }}
 			>
 				{props.list !== undefined ? (
 					props.list.map((item) =>
@@ -33,6 +48,7 @@ const ComboControl = (props) => {
 					)
 				) : ("")
 				}
+				
 			</Select>
 		</div>
 	)

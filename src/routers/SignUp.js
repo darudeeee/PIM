@@ -8,11 +8,10 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Typography from "@mui/material/Typography";
 
 import * as React from "react";
-import InputControl from "../component/InputControl";
-import RadioControl from "../component/RadioControl";
-import "./SignUp.css";
 import ComboControl from "../component/ComboConrol";
 import InputAreaControl from "../component/InputAreaControl";
+import InputControl from "../component/InputControl";
+import RadioControl from "../component/RadioControl";
 
 // 수정할 것
 // css(컴포넌트 묶으면 return 안에 값에선 빼)
@@ -233,13 +232,13 @@ function SignUp() {
 
 
 				<InputAreaControl
-				label={"주소"}
-				multiline={true}
-				rows={3}
-				name={"address"}
-				value={user.address}
-				placeholder={"주소를 입력하세요."}
-				Function={(name, value) => InputChange(name, value)}
+					label={"주소"}
+					multiline={true}
+					rows={3}
+					name={"address"}
+					value={user.address}
+					placeholder={"주소를 입력하세요."}
+					Function={(name, value) => InputChange(name, value)}
 				/>
 
 				<InputControl
