@@ -31,7 +31,7 @@ const RadioControl = (props) => {
 					onChange={(event) => RadioChange(event, props.name)}
 				>
 					{props.list !== undefined ? (
-						props.list.map((item) =>				
+						props.list.map((item) =>
 							<FormControlLabel
 								value={item.value}
 								control={<Radio />}

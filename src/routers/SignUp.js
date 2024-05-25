@@ -5,14 +5,13 @@ import { IconButton } from "@mui/material";
 import Button from "@mui/material/Button";
 import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
-import MenuItem from "@mui/material/MenuItem";
-import Select from "@mui/material/Select";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import * as React from "react";
 import InputControl from "../component/InputControl";
 import RadioControl from "../component/RadioControl";
 import "./SignUp.css";
+import ComboControl from "../component/ComboConrol";
 
 // 수정할 것
 // css(컴포넌트 묶으면 return 안에 값에선 빼)
@@ -223,33 +222,14 @@ function SignUp() {
 					Function={(name, value) => InputChange(name, value)}
 				/>
 
+				<ComboControl
+				label={"지역"}
+				name={"local"}
+				value={user.local}
+				list={localArray}
+				Function={(name, value) => InputChange(name, value)}
+				/>
 
-				<div style={{ display: "flex", marginBottom: "5px" }}>
-					<Typography
-						variant="h5"
-						gutterBottom
-						style={{
-							fontFamily: "KyoboHandwriting2023wsa",
-							width: "90px",
-							textAlign: "right",
-							marginRight: "5px",
-						}}
-					>
-						지역 :
-					</Typography>
-					<Select
-						value={user.local}
-						onChange={(event) => InputChange(event, "local")}
-						style={{ width: "226px", height: "40px" }}
-					>
-						{
-							localArray.map((item) => (
-								<MenuItem value={item.value}>{item.name}</MenuItem>
-							))
-							// map : for문, item : 내부 배열 요소
-						}
-					</Select>
-				</div>
 
 				<div style={{ display: "flex", marginBottom: "5px" }}>
 					<Typography
