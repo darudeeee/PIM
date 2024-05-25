@@ -18,7 +18,7 @@ const ComboControl = (props) => {
 					marginRight: "5px",
 				}}
 			>
-				{props.label}
+				{props.label} :
 			</Typography>
 			<Select
 				value={props.local}

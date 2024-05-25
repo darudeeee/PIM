@@ -5,13 +5,14 @@ import { IconButton } from "@mui/material";
 import Button from "@mui/material/Button";
 import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
-import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
+
 import * as React from "react";
 import InputControl from "../component/InputControl";
 import RadioControl from "../component/RadioControl";
 import "./SignUp.css";
 import ComboControl from "../component/ComboConrol";
+import InputAreaControl from "../component/InputAreaControl";
 
 // 수정할 것
 // css(컴포넌트 묶으면 return 안에 값에선 빼)
@@ -223,36 +224,23 @@ function SignUp() {
 				/>
 
 				<ComboControl
-				label={"지역"}
-				name={"local"}
-				value={user.local}
-				list={localArray}
-				Function={(name, value) => InputChange(name, value)}
+					label={"지역"}
+					name={"local"}
+					value={user.local}
+					list={localArray}
+					Function={(name, value) => InputChange(name, value)}
 				/>
 
 
-				<div style={{ display: "flex", marginBottom: "5px" }}>
-					<Typography
-						variant="h5"
-						gutterBottom
-						style={{
-							fontFamily: "KyoboHandwriting2023wsa",
-							width: "90px",
-							textAlign: "right",
-							marginRight: "5px",
-						}}
-					>
-						주소 :
-					</Typography>
-					<TextField
-						multiline
-						rows={3}
-						placeholder="주소를 입력하세요."
-						style={{ width: "226px" }}
-						value={user.address}
-						onChange={(event) => InputChange(event, "address")}
-					/>
-				</div>
+				<InputAreaControl
+				label={"주소"}
+				multiline={true}
+				rows={3}
+				name={"address"}
+				value={user.address}
+				placeholder={"주소를 입력하세요."}
+				Function={(name, value) => InputChange(name, value)}
+				/>
 
 				<InputControl
 					type={"email"}
