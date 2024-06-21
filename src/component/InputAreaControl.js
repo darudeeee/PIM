@@ -9,10 +9,10 @@ const InputAreaControl = (props) => {
 		
 		<div style={{ display: "flex", marginBottom: "5px" }}>
 		<Typography
-			variant="h5"
+			variant="h6"
 			gutterBottom
 			style={{
-				fontFamily: "KyoboHandwriting2023wsa",
+				fontFamily: "Grandiflora One",
 				width: "90px",
 				textAlign: "right",
 				marginRight: "5px",
@@ -28,7 +28,7 @@ const InputAreaControl = (props) => {
 			sx={{
 				"& .MuiOutlinedInput-root": {
 				  "&.MuiInputBase-root fieldset": {
-					borderColor: "white",
+					borderColor: "#89CFFD",
 				  },
 				},
 			  }}

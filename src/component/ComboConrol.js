@@ -9,10 +9,10 @@ const ComboControl = (props) => {
 	return (
 		<div style={{ display: "flex", marginBottom: "5px" }}>
 			<Typography
-				variant="h5"
+				variant="h6"
 				gutterBottom
 				style={{
-					fontFamily: "KyoboHandwriting2023wsa",
+					fontFamily: "Grandiflora One",
 					width: "90px",
 					textAlign: "right",
 					marginRight: "5px",
@@ -25,18 +25,18 @@ const ComboControl = (props) => {
 				onChange={(event) => ComboChange(event, "local")}
 				style={{ width: "226px", height: "40px" }}
 				sx={{
-					color: "green",
+					color: "#000",
 					'.MuiOutlinedInput-notchedOutline': {
-					  borderColor: 'red',
+					  borderColor: '#9bdcfa',
 					},
 					'&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-					  borderColor: 'blue',
+					  borderColor: '#89CFFD', // 클릭
 					},
 					'&:hover .MuiOutlinedInput-notchedOutline': {
-					  borderColor: 'yello',
+					  borderColor: '#89CFFD', // 호버
 					},
 					'.MuiSvgIcon-root ': {
-					  fill: "green !important",
+					  fill: "#9bdcfa !important",
 					}
 				  }}
 			>

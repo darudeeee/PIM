@@ -13,24 +13,6 @@ import InputAreaControl from "../component/InputAreaControl";
 import InputControl from "../component/InputControl";
 import RadioControl from "../component/RadioControl";
 
-// 수정할 것
-// css(컴포넌트 묶으면 return 안에 값에선 빼)
-// 나이 0~100까지
-
-// 추후에 추가할 기능
-// 아이디 중복 확인 + 글자 수 정하기
-// 비밀번호 숫자, 영문, 특수문자 포함 + 글자 수 정하기
-// 이메일 도메인 선택(구글, 네이버 등 자동으로 -> [입력][@][도메인 선택])
-// 비밀번호 확인 받기
-// 휴대폰 통신사, 번호 입력 + 인증번호 받기
-// 형식 유효성 검사 후 메세지 띄우기
-// 회원가입 후 년도마다 회원정보(나이) 바꾸기(만나이?)
-
-// input type = [text] id, name // [password] pw(showPw) // [number] age // [email] email(형식검사 제외) => o
-// [radio] gender 
-// [select] local 
-// [textField] address => mui에서 textArea를 가져오던지, component의 input들어가서 참고하고 생각해보던지
-
 function SignUp() {
 	// const [id, setId] = React.useState(""); 등을 한번에 압축해 정리할 수 있음
 	// 여기서 id : 선언, setId : 값 설정, useState : 초기값 설정
@@ -164,16 +146,16 @@ function SignUp() {
 		>
 			<div style={{ marginTop: "10px" }}>
 				<Typography
-					variant="h3"
+					variant="h4"
 					gutterBottom
-					style={{ fontFamily: "KyoboHandwriting2023wsa" }}
+					style={{ fontFamily: "Song Myung" }}
 				>
 					회원가입
 				</Typography>
 			</div>
 
-			<div id="cover" style={{ backgroundColor: "#E0FFFF" }}>
-				<InputControl
+			<div id="cover" > 
+				<InputControl 
 					type={"text"}
 					label={"아이디"}
 					placeholder={"아이디를 입력하세요."}
@@ -259,7 +241,12 @@ function SignUp() {
 					}}
 				>
 					<FormControlLabel
-						control={<Checkbox defaultChecked />}
+						control={<Checkbox defaultChecked={false} sx={{
+							color: "#0008A",
+							'&.Mui-checked': {
+            				 color: "#B7DDED", // 체크했을 때의 색상
+           					 },
+						}} />}
 						label="개인정보 수집 동의"
 					/>
 				</div>
@@ -276,9 +263,9 @@ function SignUp() {
 					<Button
 						style={{
 							width: "90%",
-							backgroundColor: "#008B8B",
-							border: "3px solid #008B8B",
-							color: "black",
+							backgroundColor: "#89CFFD",
+							border: "1px solid white",
+							color: "white",
 						}}
 						onClick={sendInfo}
 						variant="outlined"

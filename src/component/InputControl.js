@@ -11,14 +11,14 @@ const InputControl = (props) => { // input은 자식(props로 부모 컴포넌�
 	// 공통된 css들을 한 번에 묶어서 처리
 	return (
 		<div
-			style={{ display: "flex", marginTop: "10px", marginBottom: "5px" }}
+			style={{ display: "flex",  marginTop: "10px", marginBottom: "5px" }}
 		>
 			<Typography
-				variant="h5"
+				variant="h6"
 				gutterBottom
 				style={{
-					fontFamily: "KyoboHandwriting2023wsa",
-					width: "90px",
+					fontFamily: "Grandiflora One",
+					width: "95px",
 					textAlign: "right",
 					marginRight: "5px",
 				}}
@@ -32,12 +32,12 @@ const InputControl = (props) => { // input은 자식(props로 부모 컴포넌�
 				type={props.type}
 				size="small"
 				value={props.value}
-				onChange={(event) => InputChange(event, props.name)} // 각 event들의 name과 위 label/placeholder 안의 값들은 조금씩 다르니까 props로 처리해줌
-				sx={{border: 'none', "& fieldset": { border: 'none' } , // mui 기본 css 제거
-			}}
-			/>
-		</div>
-	)
-}
+				onChange={(event) => InputChange(event, props.name)} 
+				// 각 event들의 name과 위 label/placeholder 안의 값들은 조금씩 다르니까 props로 처리해줌	  
+				sx={{border: 'none', "& fieldset" : {border: "none"},}}
+				/>
+			  </div>
+			);
+		}
 
 export default InputControl;

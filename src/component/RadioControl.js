@@ -11,10 +11,10 @@ const RadioControl = (props) => {
 	return (
 		<div style={{ display: "flex", marginBottom: "5px" }}>
 			<Typography // 성별 정리 쉽지 않음
-				variant="h5"
+				variant="h6"
 				gutterBottom
 				style={{
-					fontFamily: "KyoboHandwriting2023wsa",
+					fontFamily: "Grandiflora One",
 					width: "90px",
 					textAlign: "right",
 					marginRight: "5px",
@@ -37,10 +37,10 @@ const RadioControl = (props) => {
 								control={<Radio  sx={{
 									'& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root)':
 										{
-											color: 'red',
+										color: '#B7DDED',
 										},
 									'& .MuiSvgIcon-root + .MuiSvgIcon-root': {
-										color: 'blue',
+										color: '#B7DDED',
 									},
 								}}/>}
 								label={item.label}
