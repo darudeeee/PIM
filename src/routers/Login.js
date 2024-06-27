@@ -35,13 +35,13 @@ const LogIn = () => {
     console.log(user); // 입력한 정보 콘솔창에 뜨도록
 
     if(user.id === tempoId && user.pw === tempoPw) {
-      alert("로그인 성공!");
+      alert("로그인 성공!"); 
       window.location.href = "/";
     } else {
       alert("로그인 실패!")
     }
 
-    // 상태 변수 초기화
+    // 상태 변수 
     setUser({
       id: "",
       pw: "",
