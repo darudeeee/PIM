@@ -156,7 +156,8 @@ function SignUp() {
         </Typography>
       </div>
 
-      <div id="cover">
+      <div id="cover" style={{width:"400px"}}>
+        <div style={{display: "flex", flexDirection:"column"}}>
         <InputControl
           type={"text"}
           label={"아이디"}
@@ -282,6 +283,7 @@ function SignUp() {
           >
             회원가입
           </Button>
+        </div>
         </div>
       </div>
     </div> // div 2개 = 컴포넌트 2개 리턴xx div 1개 안에 여러개는 가능

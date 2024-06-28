@@ -20,6 +20,8 @@ code {
 }
 
 #cover {
+    display: flex;
+    justify-content: center;
     border: 3px solid #89CFFD;
     border-radius: 8px;
 }
