@@ -5,6 +5,7 @@ import { IconButton } from "@mui/material";
 import Button from "@mui/material/Button";
 import * as React from "react";
 import InputControl from "../component/InputControl";
+import Typography from "@mui/material/Typography";
 
 const LogIn = () => {
   const [user, setUser] = React.useState({
@@ -56,10 +57,19 @@ const LogIn = () => {
         width: "100vw",
         height: "100vh",
         display: "flex",
+        flexDirection: "column",
         justifyContent: "center",
-        alignItems: "center"
+        alignItems: "center",
       }}
     >
+      <Typography
+        variant="h4"
+        gutterBottom
+        style={{ fontFamily: "Song Myung" }}
+      >
+        로그인
+      </Typography>
+
       <div id="cover">
         <div
           id="left"

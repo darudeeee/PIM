@@ -110,8 +110,8 @@ function SignUp() {
     }
     console.log(user); // 입력한 정보 콘솔창에 뜨도록
 
-	alert("회원가입 성공!");
-	window.location.href = "/LogIn";
+    alert("회원가입 성공!");
+    window.location.href = "/LogIn";
 
     // 상태 변수 초기화
     setUser({
@@ -156,134 +156,134 @@ function SignUp() {
         </Typography>
       </div>
 
-      <div id="cover" style={{width:"400px"}}>
-        <div style={{display: "flex", flexDirection:"column"}}>
-        <InputControl
-          type={"text"}
-          label={"아이디"}
-          placeholder={"아이디를 입력하세요."}
-          value={user.id}
-          name={"id"}
-          Function={(name, value) => InputChange(name, value)}
-        />
-
-        <div style={{ display: "flex" }}>
+      <div id="cover" style={{ width: "400px" }}>
+        <div style={{ display: "flex", flexDirection: "column" }}>
           <InputControl
-            type={user.showPw ? "text" : "password"}
-            label={"비밀번호"}
-            placeholder={"비밀번호를 입력하세요."}
-            value={user.pw}
-            name={"pw"}
-            Function={(name, value) => {
-              InputChange(name, value);
-            }}
+            type={"text"}
+            label={"아이디"}
+            placeholder={"아이디를 입력하세요."}
+            value={user.id}
+            name={"id"}
+            Function={(name, value) => InputChange(name, value)}
           />
-          <IconButton onClick={viewPw}>
-            {user.showPw ? <VisibilityIcon /> : <VisibilityOffIcon />}
-            {/* 비밀번호 보이기/감추기 아이콘 */}
-          </IconButton>
-        </div>
 
-        <InputControl
-          type={"text"}
-          label={"이름"}
-          placeholder={"이름을 입력하세요."}
-          value={user.name}
-          name={"name"}
-          Function={(name, value) => InputChange(name, value)}
-        />
+          <div style={{ display: "flex" }}>
+            <InputControl
+              type={user.showPw ? "text" : "password"}
+              label={"비밀번호"}
+              placeholder={"비밀번호를 입력하세요."}
+              value={user.pw}
+              name={"pw"}
+              Function={(name, value) => {
+                InputChange(name, value);
+              }}
+            />
+            <IconButton onClick={viewPw}>
+              {user.showPw ? <VisibilityIcon /> : <VisibilityOffIcon />}
+              {/* 비밀번호 보이기/감추기 아이콘 */}
+            </IconButton>
+          </div>
 
-        <InputControl
-          type={"number"}
-          label={"나이"}
-          placeholder={"나이를 입력하세요."}
-          value={user.age}
-          name={"age"}
-          Function={(name, value) => InputChange(name, value)}
-        />
-
-        <RadioControl
-          label={"성별"}
-          name={"gender"}
-          value={user.gender}
-          list={RadioArray}
-          Function={(name, value) => InputChange(name, value)}
-        />
-
-        <ComboControl
-          label={"지역"}
-          name={"local"}
-          value={user.local}
-          list={localArray}
-          Function={(name, value) => InputChange(name, value)}
-        />
-
-        <InputAreaControl
-          label={"주소"}
-          multiline={true}
-          rows={3}
-          name={"address"}
-          value={user.address}
-          placeholder={"주소를 입력하세요."}
-          Function={(name, value) => InputChange(name, value)}
-        />
-
-        <InputControl
-          type={"email"}
-          label={"이메일"}
-          placeholder={"abcd@naver.com"}
-          value={user.email}
-          name={"email"}
-          Function={(name, value) => InputChange(name, value)}
-        />
-
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "flex-end",
-            marginRight: "25px",
-            marginBottom: "5px",
-          }}
-        >
-          <FormControlLabel
-            control={
-              <Checkbox
-                defaultChecked={false}
-                sx={{
-                  color: "#0008A",
-                  "&.Mui-checked": {
-                    color: "#B7DDED", // 체크했을 때의 색상
-                  },
-                }}
-              />
-            }
-            label="개인정보 수집 동의"
+          <InputControl
+            type={"text"}
+            label={"이름"}
+            placeholder={"이름을 입력하세요."}
+            value={user.name}
+            name={"name"}
+            Function={(name, value) => InputChange(name, value)}
           />
-        </div>
 
-        <div // 버튼 정렬 박스
-          style={{
-            width: "100%",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            marginBottom: "10px",
-          }}
-        >
-          <Button
+          <InputControl
+            type={"number"}
+            label={"나이"}
+            placeholder={"나이를 입력하세요."}
+            value={user.age}
+            name={"age"}
+            Function={(name, value) => InputChange(name, value)}
+          />
+
+          <RadioControl
+            label={"성별"}
+            name={"gender"}
+            value={user.gender}
+            list={RadioArray}
+            Function={(name, value) => InputChange(name, value)}
+          />
+
+          <ComboControl
+            label={"지역"}
+            name={"local"}
+            value={user.local}
+            list={localArray}
+            Function={(name, value) => InputChange(name, value)}
+          />
+
+          <InputAreaControl
+            label={"주소"}
+            multiline={true}
+            rows={3}
+            name={"address"}
+            value={user.address}
+            placeholder={"주소를 입력하세요."}
+            Function={(name, value) => InputChange(name, value)}
+          />
+
+          <InputControl
+            type={"email"}
+            label={"이메일"}
+            placeholder={"abcd@naver.com"}
+            value={user.email}
+            name={"email"}
+            Function={(name, value) => InputChange(name, value)}
+          />
+
+          <div
             style={{
-              width: "90%",
-              backgroundColor: "#89CFFD",
-              border: "1px solid white",
-              color: "white",
+              display: "flex",
+              justifyContent: "flex-end",
+              marginRight: "25px",
+              marginBottom: "5px",
             }}
-            onClick={sendInfo}
-            variant="outlined"
-            startIcon={<SendIcon />} // endIcon하면 아이콘이 글자 뒤로 옴
           >
-            회원가입
-          </Button>
-        </div>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  defaultChecked={false}
+                  sx={{
+                    color: "#0008A",
+                    "&.Mui-checked": {
+                      color: "#B7DDED", // 체크했을 때의 색상
+                    },
+                  }}
+                />
+              }
+              label="개인정보 수집 동의"
+            />
+          </div>
+
+          <div // 버튼 정렬 박스
+            style={{
+              width: "100%",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              marginBottom: "10px",
+            }}
+          >
+            <Button
+              style={{
+                width: "90%",
+                backgroundColor: "#89CFFD",
+                border: "1px solid white",
+                color: "white",
+              }}
+              onClick={sendInfo}
+              variant="outlined"
+              startIcon={<SendIcon />} // endIcon하면 아이콘이 글자 뒤로 옴
+            >
+              회원가입
+            </Button>
+          </div>
         </div>
       </div>
     </div> // div 2개 = 컴포넌트 2개 리턴xx div 1개 안에 여러개는 가능
