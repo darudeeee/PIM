@@ -12,6 +12,7 @@ const LogIn = () => {
     pw: "",
   });
 
+  // 임시 아이디 부여
   const tempoId = "admin";
   const tempoPw = "123";
 
@@ -34,14 +35,14 @@ const LogIn = () => {
   const sendInfo = () => {
     console.log(user); // 입력한 정보 콘솔창에 뜨도록
 
-    if(user.id === tempoId && user.pw === tempoPw) {
-      alert("로그인 성공!"); 
+    if (user.id === tempoId && user.pw === tempoPw) {
+      alert("로그인 성공!");
       window.location.href = "/";
     } else {
-      alert("로그인 실패!")
+      alert("로그인 실패!");
     }
 
-    // 상태 변수 
+    // 상태 변수
     setUser({
       id: "",
       pw: "",
@@ -70,7 +71,7 @@ const LogIn = () => {
         <div
           id="left"
           style={{
-            display:"flex",
+            display: "flex",
             alignItems: "center",
             justifyContent: "center",
             width: "400px",
@@ -78,7 +79,14 @@ const LogIn = () => {
             flexDirection: "column",
           }}
         >
-
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-around",
+              height: "300px",
+            }}
+          >
             <InputControl
               type={"text"}
               label={"아이디"}
@@ -135,9 +143,8 @@ const LogIn = () => {
             >
               회원가입
             </div>
-
+          </div>
         </div>
-
         <div
           id="right"
           style={{
