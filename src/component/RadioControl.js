@@ -15,7 +15,7 @@ const RadioControl = (props) => {
 				gutterBottom
 				style={{
 					fontFamily: "Grandiflora One",
-					width: "95px",
+					width: "110px",
 					display: "flex",
 					alignItems: "center",
 					justifyContent: "flex-end",
@@ -25,7 +25,7 @@ const RadioControl = (props) => {
 			>
 				{props.label} :
 			</Typography>
-			<FormControl>
+			<FormControl style={{ width: "100%" }}>
 				<RadioGroup
 					row
 					aria-labelledby="demo-row-radio-buttons-group-label"

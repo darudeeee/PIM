@@ -13,7 +13,7 @@ const ComboControl = (props) => {
 				gutterBottom
 				style={{
 					fontFamily: "Grandiflora One",
-					width: "95px",
+					width: "110px",
 					display: "flex",
 					alignItems: "center",
 					justifyContent: "flex-end",
@@ -26,22 +26,23 @@ const ComboControl = (props) => {
 			<Select
 				value={props.local}
 				onChange={(event) => ComboChange(event, "local")}
-				style={{ width: "226px", height: "40px" }}
+				// style={{ width: "226px", height: "40px" }}
 				sx={{
 					color: "#000",
 					'.MuiOutlinedInput-notchedOutline': {
 						borderColor: '#9bdcfa',
 					},
 					'&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-						borderColor: '#0c79b3', // 클릭
+						borderColor: '#2289C3', // 클릭
 					},
 					'&:hover .MuiOutlinedInput-notchedOutline': {
-						borderColor: '#0c79b3', // 호버
+						borderColor: '#2289C3', // 호버
 					},
 					'.MuiSvgIcon-root ': {
 						fill: "#9bdcfa !important",
 					}
 				}}
+				style={{width: "100%"}}
 			>
 				{props.list !== undefined ? (
 					props.list.map((item) =>

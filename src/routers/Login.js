@@ -78,7 +78,7 @@ const LogIn = () => {
 							display: "flex",
 							flexDirection: "column",
 							justifyContent: "space-around",
-							height: "40%",
+							height: "40%"
 						}}
 					>
 						<div>
@@ -101,29 +101,28 @@ const LogIn = () => {
 									Function={(name, value) => {
 										InputChange(name, value);
 									}}
+									endAdornment={<IconButton onClick={viewPw} style={{ padding: "0px" }}>
+										{user.showPw ? <VisibilityIcon /> : <VisibilityOffIcon />}
+										{/* 비밀번호 보이기/감추기 아이콘 */}
+									</IconButton>}
 								/>
-								<IconButton onClick={viewPw}>
-									{user.showPw ? <VisibilityIcon /> : <VisibilityOffIcon />}
-									{/* 비밀번호 보이기/감추기 아이콘 */}
-								</IconButton>
 							</div>
 						</div>
 						<div // 버튼 정렬 박스
 							style={{
-								width: "100%",
 								display: "flex",
-								flexDirection: "column",
+								flexDirection: "row",
 								alignItems: "center",
 								marginBottom: "10px",
 							}}
 						>
 							<Button
 								style={{
-									backgroundColor: "#0c79b3",
+									backgroundColor: "#2289C3",
 									border: "1px solid white",
 									color: "white",
 									fontWeight: 600,
-									width: "80%"
+									width: "100%"
 								}}
 								onClick={sendInfo}
 								variant="outlined"
@@ -133,12 +132,11 @@ const LogIn = () => {
 							</Button>
 							<Button
 								style={{
-									backgroundColor: "#0c79b3",
+									backgroundColor: "#2289C3",
 									border: "1px solid white",
 									color: "white",
 									fontWeight: 600,
-									marginTop: "10px",
-									width: "80%"
+									width: "100%"
 								}}
 								onClick={() => {
 									window.location.href = "/SignUp";

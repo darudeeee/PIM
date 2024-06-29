@@ -162,7 +162,7 @@ function SignUp() {
 					<div
 						style={{
 							display: "flex",
-							flexDirection: "column",
+							flexDirection: "column"
 						}}
 					>
 						<InputControl
@@ -184,11 +184,12 @@ function SignUp() {
 								Function={(name, value) => {
 									InputChange(name, value);
 								}}
+								endAdornment={<IconButton onClick={viewPw} style={{ padding: "0px" }}>
+									{user.showPw ? <VisibilityIcon /> : <VisibilityOffIcon />}
+									{/* 비밀번호 보이기/감추기 아이콘 */}
+								</IconButton>}
 							/>
-							<IconButton onClick={viewPw}>
-								{user.showPw ? <VisibilityIcon /> : <VisibilityOffIcon />}
-								{/* 비밀번호 보이기/감추기 아이콘 */}
-							</IconButton>
+
 						</div>
 
 						<InputControl
@@ -284,17 +285,16 @@ function SignUp() {
 
 						<div // 버튼 정렬 박스
 							style={{
-								width: "100%",
 								display: "flex",
-								flexDirection: "column",
+								flexDirection: "row",
 								alignItems: "center",
 								marginBottom: "10px",
 							}}
 						>
 							<Button
 								style={{
-									width: "90%",
-									backgroundColor: "#0c79b3",
+									width: "100%",
+									backgroundColor: "#2289C3",
 									border: "1px solid white",
 									color: "white",
 									fontWeight: 600,
@@ -307,8 +307,8 @@ function SignUp() {
 							</Button>
 							<Button
 								style={{
-									width: "90%",
-									backgroundColor: "#0c79b3",
+									width: "100%",
+									backgroundColor: "#2289C3",
 									border: "1px solid white",
 									color: "white",
 									fontWeight: 600,
