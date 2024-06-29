@@ -10,14 +10,17 @@ const RadioControl = (props) => {
 	};
 	return (
 		<div style={{ display: "flex", marginBottom: "5px" }}>
-			<Typography // 성별 정리 쉽지 않음
-				variant="h6"
+			<Typography
+				variant="subtitle"
 				gutterBottom
 				style={{
 					fontFamily: "Grandiflora One",
-					width: "90px",
-					textAlign: "right",
+					width: "95px",
+					display: "flex",
+					alignItems: "center",
+					justifyContent: "flex-end",
 					marginRight: "5px",
+					fontWeight: 600,
 				}}
 			>
 				{props.label} :
@@ -34,23 +37,30 @@ const RadioControl = (props) => {
 						props.list.map((item) =>
 							<FormControlLabel
 								value={item.value}
-								control={<Radio  sx={{
+								control={<Radio sx={{
 									'& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root)':
-										{
+									{
 										color: '#B7DDED',
-										},
+									},
 									'& .MuiSvgIcon-root + .MuiSvgIcon-root': {
 										color: '#B7DDED',
 									},
-								}}/>}
-								label={item.label}
+								}} />}
+								label={<Typography
+									variant="subtitle"
+									gutterBottom
+									style={{
+										fontFamily: "Grandiflora One",
+										fontSize: "0.8rem",
+										fontWeight: 600,
+									}}
+								>
+									{item.label}
+								</Typography>}
 							/>
 						)
 					) : ("")}
-
-					
 				</RadioGroup>
-				
 			</FormControl>
 		</div>
 	)

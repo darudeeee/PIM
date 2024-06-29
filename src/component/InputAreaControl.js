@@ -7,15 +7,18 @@ const InputAreaControl = (props) => {
 	};
 	return (
 		
-		<div style={{ display: "flex", marginBottom: "5px" }}>
+		<div style={{ display: "flex" }}>
 		<Typography
-			variant="h6"
+			variant="subtitle"
 			gutterBottom
 			style={{
 				fontFamily: "Grandiflora One",
-				width: "90px",
-				textAlign: "right",
+				width: "95px",
+				display: "flex",
+				alignItems: "center",
+				justifyContent: "flex-end",
 				marginRight: "5px",
+				fontWeight: 600,
 			}}
 		>
 			{props.label} :
@@ -24,11 +27,11 @@ const InputAreaControl = (props) => {
 			multiline={props.multiline}
 			rows={props.rows}
 			placeholder={props.placeholder}
-			style={{ width: "226px" }}
 			sx={{
 				"& .MuiOutlinedInput-root": {
 				  "&.MuiInputBase-root fieldset": {
-					borderColor: "#89CFFD",
+					border: "2px solid #9bdcfa",
+					padding: "4px"
 				  },
 				},
 			  }}

@@ -1,6 +1,6 @@
-import Typography from "@mui/material/Typography";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
+import Typography from "@mui/material/Typography";
 
 const ComboControl = (props) => {
 	const ComboChange = (event, name) => {
@@ -9,13 +9,16 @@ const ComboControl = (props) => {
 	return (
 		<div style={{ display: "flex", marginBottom: "5px" }}>
 			<Typography
-				variant="h6"
+				variant="subtitle"
 				gutterBottom
 				style={{
 					fontFamily: "Grandiflora One",
-					width: "90px",
-					textAlign: "right",
+					width: "95px",
+					display: "flex",
+					alignItems: "center",
+					justifyContent: "flex-end",
 					marginRight: "5px",
+					fontWeight: 600,
 				}}
 			>
 				{props.label} :
@@ -27,18 +30,18 @@ const ComboControl = (props) => {
 				sx={{
 					color: "#000",
 					'.MuiOutlinedInput-notchedOutline': {
-					  borderColor: '#9bdcfa',
+						borderColor: '#9bdcfa',
 					},
 					'&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-					  borderColor: '#89CFFD', // 클릭
+						borderColor: '#0c79b3', // 클릭
 					},
 					'&:hover .MuiOutlinedInput-notchedOutline': {
-					  borderColor: '#89CFFD', // 호버
+						borderColor: '#0c79b3', // 호버
 					},
 					'.MuiSvgIcon-root ': {
-					  fill: "#9bdcfa !important",
+						fill: "#9bdcfa !important",
 					}
-				  }}
+				}}
 			>
 				{props.list !== undefined ? (
 					props.list.map((item) =>
@@ -48,7 +51,7 @@ const ComboControl = (props) => {
 					)
 				) : ("")
 				}
-				
+
 			</Select>
 		</div>
 	)
