@@ -3,7 +3,7 @@ import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { IconButton } from "@mui/material";
 import Button from "@mui/material/Button";
 import * as React from "react";
-import InputControl from "../component/InputControl";
+import InputControl from "../component/Control/InputControl";
 
 const LogIn = () => {
 	const [user, setUser] = React.useState({
@@ -36,7 +36,7 @@ const LogIn = () => {
 
 		if (user.id === tempoId && user.pw === tempoPw) {
 			alert("로그인 성공!");
-			window.location.href = "/";
+			window.location.href = "/Home";
 		} else {
 			alert("로그인 실패!");
 		}

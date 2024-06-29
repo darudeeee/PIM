@@ -6,10 +6,10 @@ import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Typography from "@mui/material/Typography";
 import * as React from "react";
-import ComboControl from "../component/ComboControl";
-import InputAreaControl from "../component/InputAreaControl";
-import InputControl from "../component/InputControl";
-import RadioControl from "../component/RadioControl";
+import ComboControl from "../component/Control/ComboControl";
+import InputAreaControl from "../component/Control/InputAreaControl";
+import InputControl from "../component/Control/InputControl";
+import RadioControl from "../component/Control/RadioControl";
 
 function SignUp() {
 	// const [id, setId] = React.useState(""); 등을 한번에 압축해 정리할 수 있음
