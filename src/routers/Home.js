@@ -4,8 +4,17 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import { convertDateToStr } from "../component/CommonFuntion";
 import ScheduleData from "../data/ScheduleData";
+import "swiper/css";
+import "swiper/css/scrollbar";
+import { Scrollbar } from "swiper/modules";
+import SwiperCore from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 const Home = () => {
+  SwiperCore.use([Scrollbar]);
+  let deviceWidth = window.innerWidth;
+  const [isMobile, setIsMobile] = useState(deviceWidth <= 1200);
+
   const curDate = new Date(); // 현재 날짜
   const [value, onChange] = useState(curDate); // 클릭한 날짜 (초기값으로 현재 날짜 넣어줌)
 
@@ -47,33 +56,58 @@ const Home = () => {
   // []를 빼면 상태가 바뀔 때마다 렌더링(ex. 클릭 1번 마다 렌더링)
   // height, width 가져오는 방식들 : https://apost.dev/706/
 
+  window.addEventListener("resize", function () {
+    setIsMobile(window.innerWidth <= 1200); // 크기 감지만 해줌
+  });
+
   return (
     <>
-      <div
-        style={{
-          display: "flex",
-          height: `calc(100% - ${heights}px)`,
-          width: "100%",
-        }}
-      >
-        <div id="calendar">
-          <Calendar
-            locale="en"
-            onChange={onChange}
-            value={value}
-            next2Label={null}
-            prev2Label={null}
-            formatDay={(locale, date) => moment(date).format("D")}
-            tileContent={addContent}
-            showNeighboringMonth={false}
-          />
+      {!isMobile ? (
+        <div
+          style={{
+            display: "flex",
+            height: `calc(100% - ${heights}px)`,
+            width: "100%",
+          }}
+        >
+          <div id="calendar">
+            <Calendar
+              locale="en"
+              onChange={onChange}
+              value={value}
+              next2Label={null}
+              prev2Label={null}
+              formatDay={(locale, date) => moment(date).format("D")}
+              tileContent={addContent}
+              showNeighboringMonth={false}
+            />
+          </div>
+          <div>
+            <div>test1</div>
+            <div>test2</div>
+            <div>test3</div>
+          </div>
         </div>
-        <div>
-          <div>test1</div>
-          <div>test2</div>
-          <div>test3</div>
-        </div>
-      </div>
+      ) : (
+        <>
+          <Swiper
+            scrollbar={{
+              hide: false,
+            }}
+            modules={[Scrollbar]}
+            className="mySwiper"
+          >
+            <SwiperSlide>Slide 1</SwiperSlide>
+            <SwiperSlide>
+              <div>
+                <div>test1</div>
+                <div>test2</div>
+                <div>test3</div>
+              </div>
+            </SwiperSlide>
+          </Swiper>
+        </>
+      )}
     </>
   );
 };
