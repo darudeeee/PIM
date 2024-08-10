@@ -13,7 +13,7 @@ const LogIn = () => {
 
 	// 임시 아이디 부여
 	const tempoId = "admin";
-	const tempoPw = "123";
+	const tempoPw = "1234";
 
 	const InputChange = (name, value) => {
 		setUser((prev) => ({

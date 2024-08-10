@@ -146,8 +146,8 @@ const AppBarContainer = ({ children }) => {
   // AppBar의 Children들에겐 아래 return
   return (
     <>
-      <Box sx={{ flexGrow: 1}}>
-        <AppBar position="static">
+      <Box sx={{ flexGrow: 1, height: "100%"}}>
+        <AppBar position="static" id="header">
           <Toolbar style={{backgroundColor: "lightblue"}}>
             <IconButton
               size="medium"
