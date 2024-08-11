@@ -97,7 +97,28 @@ const Home = () => {
             modules={[Scrollbar]}
             className="mySwiper"
           >
-            <SwiperSlide>Slide 1</SwiperSlide>
+            <SwiperSlide>
+              <div
+                style={{
+                  display: "flex",
+                  height: `calc(100% - ${heights}px)`,
+                  width: "100%",
+                }}
+              >
+                <div id="miniCalendar">
+                  <Calendar
+                    locale="en"
+                    onChange={onChange}
+                    value={value}
+                    next2Label={null}
+                    prev2Label={null}
+                    formatDay={(locale, date) => moment(date).format("D")}
+                    tileContent={addContent}
+                    showNeighboringMonth={false}
+                  />
+                </div>
+              </div>
+            </SwiperSlide>
             <SwiperSlide>
               <div>
                 <div>test1</div>
