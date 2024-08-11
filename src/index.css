@@ -54,6 +54,7 @@ input[type='number']::-webkit-outer-spin-button {
 	margin: 0;
 }
 
+/* 캘린더 */
 #calendar {
 	height: 100%;
 	width: 70%;
@@ -111,16 +112,17 @@ input[type='number']::-webkit-outer-spin-button {
 		}
 	}
 
-	.react-calendar__month-view > div{
+	.react-calendar__month-view>div {
 		height: 100%;
 	}
 
-	.react-calendar__month-view > div > div{
+	.react-calendar__month-view>div>div {
 		height: 100%;
 	}
 
 	.react-calendar__month-view__weekdays {
 		height: 34px;
+
 		abbr {
 			font-size: 18px;
 			font-weight: 900;
@@ -144,7 +146,6 @@ input[type='number']::-webkit-outer-spin-button {
 		align-items: center;
 	}
 
-	/*hover, focus, 선택됐을 시 */
 	.react-calendar__tile:enabled:hover,
 	.react-calendar__tile:enabled:focus,
 	.react-calendar__tile--active {
@@ -157,7 +158,6 @@ input[type='number']::-webkit-outer-spin-button {
 		border-radius: 14px;
 	}
 
-	/*hover, focus 시 */
 	.react-calendar__tile--now:enabled:hover,
 	.react-calendar__tile--now:enabled:focus {
 		background: rgb(201, 201, 201);
@@ -269,16 +269,17 @@ input[type='number']::-webkit-outer-spin-button {
 		}
 	}
 
-	.react-calendar__month-view > div{
+	.react-calendar__month-view>div {
 		height: 100%;
 	}
 
-	.react-calendar__month-view > div > div{
+	.react-calendar__month-view>div>div {
 		height: 100%;
 	}
 
 	.react-calendar__month-view__weekdays {
 		height: 25px;
+
 		abbr {
 			font-size: 16px;
 			font-weight: 900;
@@ -302,7 +303,6 @@ input[type='number']::-webkit-outer-spin-button {
 		align-items: center;
 	}
 
-	/*hover, focus, 선택됐을 시 */
 	.react-calendar__tile:enabled:hover,
 	.react-calendar__tile:enabled:focus,
 	.react-calendar__tile--active {
@@ -315,7 +315,6 @@ input[type='number']::-webkit-outer-spin-button {
 		border-radius: 14px;
 	}
 
-	/*hover, focus 시 */
 	.react-calendar__tile--now:enabled:hover,
 	.react-calendar__tile--now:enabled:focus {
 		background: rgb(201, 201, 201);

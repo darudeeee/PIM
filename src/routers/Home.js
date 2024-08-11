@@ -82,10 +82,47 @@ const Home = () => {
               showNeighboringMonth={false}
             />
           </div>
-          <div>
-            <div>test1</div>
-            <div>test2</div>
-            <div>test3</div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              height: `calc(100% - ${heights}px)`,
+              width: "30%",
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                height: "33%",
+                width: "100%",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              Budget
+            </div>
+            <div
+              style={{
+                display: "flex",
+                height: "33%",
+                width: "100%",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              Menstruation
+            </div>
+            <div
+              style={{
+                display: "flex",
+                height: "33%",
+                width: "100%",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              Exercise
+            </div>
           </div>
         </div>
       ) : (
@@ -120,10 +157,47 @@ const Home = () => {
               </div>
             </SwiperSlide>
             <SwiperSlide>
-              <div>
-                <div>test1</div>
-                <div>test2</div>
-                <div>test3</div>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  height: `calc(100% - ${heights}px)`,
+                  width: "100%",
+                }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    height: "33%",
+                    width: "100%",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  Budget
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    height: "33%",
+                    width: "100%",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  Menstruation
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    height: "33%",
+                    width: "100%",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  Exercise
+                </div>
               </div>
             </SwiperSlide>
           </Swiper>
