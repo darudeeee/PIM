@@ -10,6 +10,13 @@ import { Scrollbar } from "swiper/modules";
 import SwiperCore from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+
 const Home = () => {
   SwiperCore.use([Scrollbar]);
   let deviceWidth = window.innerWidth;
@@ -84,46 +91,156 @@ const Home = () => {
           </div>
           <div
             style={{
+              backgroundColor: "white",
               display: "flex",
               flexDirection: "column",
-              height: `calc(100% - ${heights}px)`,
+              justifyContent: "space-evenly",
               width: "30%",
             }}
           >
-            <div
-              style={{
+            <Card
+              sx={{
                 display: "flex",
-                height: "33%",
-                width: "100%",
+                height: "22%",
+                width: "95%",
                 alignItems: "center",
                 justifyContent: "center",
+                borderRadius: "10%",
               }}
             >
-              Budget
-			  {/* mui card */}
-            </div>
-            <div
-              style={{
+              <CardMedia
+                sx={{ width: "50%", height: "100%" }}
+                image="/images/budget.jpg"
+                title="budget"
+              />
+              <div
+                style={{
+                  width: "50%",
+                  height: "100%",
+                  display: "flex",
+                  flexDirection: "column",
+                }}
+              >
+                <CardContent
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    width: "95%",
+                    height: "80%",
+                    padding: "0% 5%",
+                  }}
+                >
+                  <Typography gutterBottom variant="h5" component="div">
+                    Budget
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Budget ... Budget ... Budget ... Budget ... Budget ...
+                    Budget ...
+                  </Typography>
+                </CardContent>
+                <CardActions sx={{ width: "95%", height: "20%" }}>
+                  <Button size="small">Share</Button>
+                  <Button size="small">Learn More</Button>
+                </CardActions>
+              </div>
+            </Card>
+
+            <Card
+              sx={{
                 display: "flex",
-                height: "33%",
-                width: "100%",
+                height: "22%",
+                width: "95%",
                 alignItems: "center",
                 justifyContent: "center",
+                borderRadius: "10%",
               }}
             >
-              Menstruation
-            </div>
-            <div
-              style={{
+              <CardMedia
+                sx={{ width: "50%", height: "100%" }}
+                image="/images/menstruation.jpg"
+                title="menstruation"
+              />
+              <div
+                style={{
+                  width: "50%",
+                  height: "100%",
+                  display: "flex",
+                  flexDirection: "column",
+                }}
+              >
+                <CardContent
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    width: "95%",
+                    height: "80%",
+                    padding: "0% 5%",
+                  }}
+                >
+                  <Typography gutterBottom variant="h5" component="div">
+                    Menstruation
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Menstruation ... Menstruation ... Menstruation ...
+                    Menstruation ...
+                  </Typography>
+                </CardContent>
+                <CardActions sx={{ width: "95%", height: "20%" }}>
+                  <Button size="small">Share</Button>
+                  <Button size="small">Learn More</Button>
+                </CardActions>
+              </div>
+            </Card>
+
+            <Card
+              sx={{
                 display: "flex",
-                height: "33%",
-                width: "100%",
+                height: "22%",
+                width: "95%",
                 alignItems: "center",
                 justifyContent: "center",
+                borderRadius: "10%",
               }}
             >
-              Exercise
-            </div>
+              <CardMedia
+                sx={{ width: "50%", height: "100%" }}
+                image="/images/exercise.jpg"
+                title="exercise"
+              />
+              <div
+                style={{
+                  width: "50%",
+                  height: "100%",
+                  display: "flex",
+                  flexDirection: "column",
+                }}
+              >
+                <CardContent
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    width: "95%",
+                    height: "80%",
+                    padding: "0% 5%",
+                  }}
+                >
+                  <Typography gutterBottom variant="h5" component="div">
+                    Exercise
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Exercise ... Exercise ... Exercise ... Exercise ... Exercise
+                    ... Exercise ...
+                  </Typography>
+                </CardContent>
+                <CardActions sx={{ width: "95%", height: "20%" }}>
+                  <Button size="small">Share</Button>
+                  <Button size="small">Learn More</Button>
+                </CardActions>
+              </div>
+            </Card>
           </div>
         </div>
       ) : (
