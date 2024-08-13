@@ -370,41 +370,42 @@ input[type='number']::-webkit-outer-spin-button {
 
 /* 노트 */
 #note {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
 	height: 100%;
-	width: 70%;
+	background-color: white;
 
-	.react-calendar {
+	.live {
+		width: 90%;
+		height: 90%;
+	}
+
+	.markdown {
 		width: 100%;
-		height: 100%;
-		padding: 5% 5%;
-		border: none;
+		height: 100% !important;
+		border: 1px solid #000;
 	}
 
-	.react-calendar__navigation {
-		background: rgb(197, 234, 247);
-		border-bottom: 4px solid #009fb1;
-		height: 90px;
-		border-radius: 20px 20px 0 0;
-
-		span {
-			font-size: 24px;
-			font-weight: 600;
-			color: rgb(255, 255, 255);
-		}
+	.w-md-editor-toolbar {
+		width: 99%;
+		/* 1%는 보더 */
+		height: 9%;
+		/* 1%는 보더 */
+		border-bottom: 1px solid #5f5f5f;
 	}
 
-	.react-calendar__month-view {
-		height: 100%;
-		padding: 12px 32px;
-
-		abbr {
-			color: #009fb1;
-			font-size: 16px;
-			font-weight: 500;
-		}
+	.w-md-editor-content {
+		width: 100%;
+		height: 90% !important;
 	}
-}
 
-.swiper {
-	height: calc(100% - 90px);
+	.w-md-editor-preview {
+		border-left: 1px solid #5f5f5f;
+	}
+
+	.w-md-editor-bar {
+		opacity: 0;
+	}
 }
