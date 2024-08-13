@@ -7,6 +7,8 @@ import Search from "../routers/Search";
 import Schedule from "../routers/Schedule";
 import Menstruation from "../routers/Menstruation";
 import Exercise from "../routers/Exercise";
+// import LogIn from "../routers/LogIn";
+// import { Login } from "@mui/icons-material";
 
 const AuthRoute = () => {
   return (
@@ -25,6 +27,8 @@ const AuthRoute = () => {
 
       <Route path="/Menstruation" element={<Menstruation />} />
       <Route path="/Exercise" element={<Exercise />} />
+
+	  {/* <Route path="/" element={<LogIn />} /> */}
     </Routes>
   );
 };

@@ -1,15 +1,15 @@
-import HomeIcon from '@mui/icons-material/Home';
-import PersonIcon from '@mui/icons-material/Person';
-import BorderColorIcon from '@mui/icons-material/BorderColor';
-import ContentPasteSearchIcon from '@mui/icons-material/ContentPasteSearch';
-import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
-import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
+import HomeIcon from "@mui/icons-material/Home";
+import PersonIcon from "@mui/icons-material/Person";
+import BorderColorIcon from "@mui/icons-material/BorderColor";
+import ContentPasteSearchIcon from "@mui/icons-material/ContentPasteSearch";
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
 // Todo 아이콘임 // import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
-import PermIdentityIcon from '@mui/icons-material/PermIdentity';
-import LogoutIcon from '@mui/icons-material/Logout';
-import MenuIcon from '@mui/icons-material/Menu';
+import PermIdentityIcon from "@mui/icons-material/PermIdentity";
+import LogoutIcon from "@mui/icons-material/Logout";
+import MenuIcon from "@mui/icons-material/Menu";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -47,9 +47,11 @@ const AppBarContainer = ({ children }) => {
           },
         ].map((obj, index) => (
           <ListItem key={index} disablePadding>
-            <ListItemButton onClick={() => {
-									window.location.href = obj.Link
-								}}>
+            <ListItemButton
+              onClick={() => {
+                window.location.href = obj.Link;
+              }}
+            >
               <ListItemIcon> {obj.Icon}</ListItemIcon>
               <ListItemText primary={obj.Category} />
             </ListItemButton>
@@ -57,7 +59,7 @@ const AppBarContainer = ({ children }) => {
         ))}
       </List>
       <Divider />
-	  <List id="study">
+      <List id="study">
         {[
           {
             Category: "Note",
@@ -71,9 +73,11 @@ const AppBarContainer = ({ children }) => {
           },
         ].map((obj, index) => (
           <ListItem key={index} disablePadding>
-            <ListItemButton onClick={() => {
-									window.location.href = obj.Link
-								}}>
+            <ListItemButton
+              onClick={() => {
+                window.location.href = obj.Link;
+              }}
+            >
               <ListItemIcon> {obj.Icon}</ListItemIcon>
               <ListItemText primary={obj.Category} />
             </ListItemButton>
@@ -81,7 +85,7 @@ const AppBarContainer = ({ children }) => {
         ))}
       </List>
       <Divider />
-	  <List id="life">
+      <List id="life">
         {[
           {
             Category: "Schedule",
@@ -95,9 +99,11 @@ const AppBarContainer = ({ children }) => {
           },
         ].map((obj, index) => (
           <ListItem key={index} disablePadding>
-            <ListItemButton onClick={() => {
-									window.location.href = obj.Link
-								}}>
+            <ListItemButton
+              onClick={() => {
+                window.location.href = obj.Link;
+              }}
+            >
               <ListItemIcon> {obj.Icon}</ListItemIcon>
               <ListItemText primary={obj.Category} />
             </ListItemButton>
@@ -105,7 +111,7 @@ const AppBarContainer = ({ children }) => {
         ))}
       </List>
       <Divider />
-	  <List id="health">
+      <List id="health">
         {[
           {
             Category: "Menstruation",
@@ -119,9 +125,11 @@ const AppBarContainer = ({ children }) => {
           },
         ].map((obj, index) => (
           <ListItem key={index} disablePadding>
-            <ListItemButton onClick={() => {
-									window.location.href = obj.Link
-								}}>
+            <ListItemButton
+              onClick={() => {
+                window.location.href = obj.Link;
+              }}
+            >
               <ListItemIcon> {obj.Icon}</ListItemIcon>
               <ListItemText primary={obj.Category} />
             </ListItemButton>
@@ -131,10 +139,14 @@ const AppBarContainer = ({ children }) => {
       <Divider />
       <List>
         {["LogOut"].map((text, index) => (
-          <ListItem key={text} disablePadding> 
-            <ListItemButton>
+          <ListItem key={text} disablePadding>
+            <ListItemButton
+              onClick={() => {
+                window.location.href = "/";
+              }}
+            >
               <ListItemIcon>
-               <LogoutIcon />
+                <LogoutIcon />
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItemButton>
@@ -146,13 +158,13 @@ const AppBarContainer = ({ children }) => {
   // AppBar의 Children들에겐 아래 return
   return (
     <>
-      <Box sx={{ flexGrow: 1, height: "100%"}}>
+      <Box sx={{ flexGrow: 1, height: "100%" }}>
         <AppBar position="static" id="header">
-          <Toolbar style={{backgroundColor: "lightblue"}}>
+          <Toolbar style={{ backgroundColor: "lightblue" }}>
             <IconButton
               size="medium"
               edge="start"
-              color="inherit" 
+              color="inherit"
               aria-label="menu"
               sx={{ mr: 2 }}
               onClick={toggleDrawer(true)}
@@ -160,9 +172,14 @@ const AppBarContainer = ({ children }) => {
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-			Personal Information Management
+              Personal Information Management
             </Typography>
-            <Button color="inherit">Logout</Button>
+            <Button
+              color="inherit"
+              onClick={() => (window.location.href = "/")}
+            >
+              Logout
+            </Button>
           </Toolbar>
         </AppBar>
         {children}
