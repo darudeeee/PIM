@@ -505,8 +505,8 @@ const Home = () => {
                 >
                   <CardMedia
                     sx={{ width: "50%", height: "100%" }}
-                    image="/images/budget.jpg"
-                    title="budget"
+                    image="/images/exercise.jpg"
+                    title="exercise"
                   />
                   <div
                     style={{

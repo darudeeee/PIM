@@ -156,6 +156,7 @@ const AppBarContainer = ({ children }) => {
     </Box>
   );
   // AppBar의 Children들에겐 아래 return
+
   return (
     <>
       <Box sx={{ flexGrow: 1, height: "100%" }}>
