@@ -141,7 +141,7 @@ const Home = () => {
                       WebkitBoxOrient: "vertical",
                       overflow: "hidden",
                       WebkitLineClamp: 1, // 줄 수를 설정하세요
-                      textOverflow: "eclipsis",
+                      textOverflow: "ellipsis",
                       width: "90%",
                     }}
                   >
@@ -155,7 +155,7 @@ const Home = () => {
                       WebkitBoxOrient: "vertical",
                       overflow: "hidden",
                       WebkitLineClamp: 3, // 줄 수를 설정하세요
-                      textOverflow: "eclipsis",
+                      textOverflow: "ellipsis",
                       width: "90%",
                     }}
                   >
@@ -213,7 +213,7 @@ const Home = () => {
                       WebkitBoxOrient: "vertical",
                       overflow: "hidden",
                       WebkitLineClamp: 1, // 줄 수를 설정하세요
-                      textOverflow: "eclipsis",
+                      textOverflow: "ellipsis",
                       width: "90%",
                     }}
                   >
@@ -227,7 +227,7 @@ const Home = () => {
                       WebkitBoxOrient: "vertical",
                       overflow: "hidden",
                       WebkitLineClamp: 3, // 줄 수를 설정하세요
-                      textOverflow: "eclipsis",
+                      textOverflow: "ellipsis",
                       width: "90%",
                     }}
                   >
@@ -285,7 +285,7 @@ const Home = () => {
                       WebkitBoxOrient: "vertical",
                       overflow: "hidden",
                       WebkitLineClamp: 1, // 줄 수를 설정하세요
-                      textOverflow: "eclipsis",
+                      textOverflow: "ellipsis",
                       width: "90%",
                     }}
                   >
@@ -299,7 +299,7 @@ const Home = () => {
                       WebkitBoxOrient: "vertical",
                       overflow: "hidden",
                       WebkitLineClamp: 3, // 줄 수를 설정하세요
-                      textOverflow: "eclipsis",
+                      textOverflow: "ellipsis",
                       width: "90%",
                     }}
                   >
@@ -393,7 +393,7 @@ const Home = () => {
                           WebkitBoxOrient: "vertical",
                           overflow: "hidden",
                           WebkitLineClamp: 1,
-                          textOverflow: "eclipsis",
+                          textOverflow: "ellipsis",
                           width: "90%",
                         }}
                       >
@@ -407,7 +407,7 @@ const Home = () => {
                           WebkitBoxOrient: "vertical",
                           overflow: "hidden",
                           WebkitLineClamp: 2,
-                          textOverflow: "eclipsis",
+                          textOverflow: "ellipsis",
                           width: "90%",
                         }}
                       >
@@ -465,7 +465,7 @@ const Home = () => {
                           WebkitBoxOrient: "vertical",
                           overflow: "hidden",
                           WebkitLineClamp: 1,
-                          textOverflow: "eclipsis",
+                          textOverflow: "ellipsis",
                           width: "90%",
                         }}
                       >
@@ -479,7 +479,7 @@ const Home = () => {
                           WebkitBoxOrient: "vertical",
                           overflow: "hidden",
                           WebkitLineClamp: 2,
-                          textOverflow: "eclipsis",
+                          textOverflow: "ellipsis",
                           width: "90%",
                         }}
                       >
@@ -537,7 +537,7 @@ const Home = () => {
                           WebkitBoxOrient: "vertical",
                           overflow: "hidden",
                           WebkitLineClamp: 1,
-                          textOverflow: "eclipsis",
+                          textOverflow: "ellipsis",
                           width: "90%",
                         }}
                       >
@@ -551,7 +551,7 @@ const Home = () => {
                           WebkitBoxOrient: "vertical",
                           overflow: "hidden",
                           WebkitLineClamp: 2,
-                          textOverflow: "eclipsis",
+                          textOverflow: "ellipsis",
                           width: "90%",
                         }}
                       >

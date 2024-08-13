@@ -33,7 +33,7 @@ const Note = () => {
       {/* 모바일일땐 미리보기 버튼이나 슬라이드(에디터/프리뷰) */}
       {/* 웹 버전 디자인 + 저장버튼, 취소버튼 등등 */}
       {!isMobile ? (
-        <div
+        <div id="note"
           style={{
             display: "flex",
             height: `calc(100% - ${heights}px)`,
@@ -45,7 +45,7 @@ const Note = () => {
           </div>
         </div>
       ) : (
-		
+		// 슬라이드로 할건지, 미리보기 버튼을 만들건지 고민 해야됨
         <Swiper
           scrollbar={{
             hide: false,
@@ -54,24 +54,12 @@ const Note = () => {
           className="mySwiper"
         >
           <SwiperSlide>
-            <div
-              style={{
-                display: "flex",
-                height: `calc(100% - ${heights}px)`,
-                width: "100%",
-              }}
-            >
+            <div>
               slide1
             </div>
           </SwiperSlide>
           <SwiperSlide>
-            <div
-              style={{
-                display: "flex",
-                height: `calc(100% - ${heights}px)`,
-                width: "100%",
-              }}
-            >
+            <div>
               slide2
             </div>
           </SwiperSlide>
