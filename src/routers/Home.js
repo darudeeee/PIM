@@ -9,7 +9,6 @@ import "swiper/css/scrollbar";
 import { Scrollbar } from "swiper/modules";
 import SwiperCore from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -325,25 +324,17 @@ const Home = () => {
             className="mySwiper"
           >
             <SwiperSlide>
-              <div
-                style={{
-                  display: "flex",
-                  height: `calc(100% - ${heights}px)`,
-                  width: "100%",
-                }}
-              >
-                <div id="miniCalendar">
-                  <Calendar
-                    locale="en"
-                    onChange={onChange}
-                    value={value}
-                    next2Label={null}
-                    prev2Label={null}
-                    formatDay={(locale, date) => moment(date).format("D")}
-                    tileContent={addContent}
-                    showNeighboringMonth={false}
-                  />
-                </div>
+              <div id="miniCalendar">
+                <Calendar
+                  locale="en"
+                  onChange={onChange}
+                  value={value}
+                  next2Label={null}
+                  prev2Label={null}
+                  formatDay={(locale, date) => moment(date).format("D")}
+                  tileContent={addContent}
+                  showNeighboringMonth={false}
+                />
               </div>
             </SwiperSlide>
             <SwiperSlide>
