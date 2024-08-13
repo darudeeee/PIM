@@ -16,7 +16,7 @@ const Note = () => {
 	{/* 웹 버전 디자인 + 저장버튼, 취소버튼 등등 */}
       <h3>Note</h3>
       <div data-color-mode="light">
-        <MDEditor height={200} value={value} onChange={setValue} />
+        <MDEditor height={200} value={value} onChange={setValue}/>
       </div>
     </>
   );

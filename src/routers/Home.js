@@ -129,13 +129,37 @@ const Home = () => {
                     width: "95%",
                     height: "80%",
                     padding: "0% 5%",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
                   }}
                 >
-                  <Typography gutterBottom variant="h5" component="div">
+                  <Typography
+                    gutterBottom
+                    variant="h5"
+                    component="div"
+                    sx={{
+                      display: "-webkit-box",
+                      WebkitBoxOrient: "vertical",
+                      overflow: "hidden",
+                      WebkitLineClamp: 1, // 줄 수를 설정하세요
+                      textOverflow: "eclipsis",
+                      width: "90%",
+                    }}
+                  >
                     Budget
                   </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    Budget ... Budget ... Budget ... Budget ... Budget ...
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    sx={{
+                      display: "-webkit-box",
+                      WebkitBoxOrient: "vertical",
+                      overflow: "hidden",
+                      WebkitLineClamp: 3, // 줄 수를 설정하세요
+                      textOverflow: "eclipsis",
+                      width: "90%",
+                    }}
+                  >
                     Budget ...
                   </Typography>
                 </CardContent>
@@ -177,13 +201,37 @@ const Home = () => {
                     width: "95%",
                     height: "80%",
                     padding: "0% 5%",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
                   }}
                 >
-                  <Typography gutterBottom variant="h5" component="div">
+                  <Typography
+                    gutterBottom
+                    variant="h5"
+                    component="div"
+                    sx={{
+                      display: "-webkit-box",
+                      WebkitBoxOrient: "vertical",
+                      overflow: "hidden",
+                      WebkitLineClamp: 1, // 줄 수를 설정하세요
+                      textOverflow: "eclipsis",
+                      width: "90%",
+                    }}
+                  >
                     Menstruation
                   </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    Menstruation ... Menstruation ... Menstruation ...
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    sx={{
+                      display: "-webkit-box",
+                      WebkitBoxOrient: "vertical",
+                      overflow: "hidden",
+                      WebkitLineClamp: 3, // 줄 수를 설정하세요
+                      textOverflow: "eclipsis",
+                      width: "90%",
+                    }}
+                  >
                     Menstruation ...
                   </Typography>
                 </CardContent>
@@ -225,14 +273,38 @@ const Home = () => {
                     width: "95%",
                     height: "80%",
                     padding: "0% 5%",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
                   }}
                 >
-                  <Typography gutterBottom variant="h5" component="div">
+                  <Typography
+                    gutterBottom
+                    variant="h5"
+                    component="div"
+                    sx={{
+                      display: "-webkit-box",
+                      WebkitBoxOrient: "vertical",
+                      overflow: "hidden",
+                      WebkitLineClamp: 1, // 줄 수를 설정하세요
+                      textOverflow: "eclipsis",
+                      width: "90%",
+                    }}
+                  >
                     Exercise
                   </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    Exercise ... Exercise ... Exercise ... Exercise ... Exercise
-                    ... Exercise ...
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    sx={{
+                      display: "-webkit-box",
+                      WebkitBoxOrient: "vertical",
+                      overflow: "hidden",
+                      WebkitLineClamp: 3, // 줄 수를 설정하세요
+                      textOverflow: "eclipsis",
+                      width: "90%",
+                    }}
+                  >
+                    Exercise ...
                   </Typography>
                 </CardContent>
                 <CardActions sx={{ width: "95%", height: "20%" }}>
@@ -277,45 +349,230 @@ const Home = () => {
             <SwiperSlide>
               <div
                 style={{
+                  backgroundColor: "white",
                   display: "flex",
                   flexDirection: "column",
-                  height: `calc(100% - ${heights}px)`,
+                  alignItems: "center",
+                  justifyContent: "space-evenly",
                   width: "100%",
+                  height: "100%",
                 }}
               >
-                <div
-                  style={{
+                <Card
+                  sx={{
                     display: "flex",
-                    height: "33%",
-                    width: "100%",
+                    height: "25%",
+                    width: "90%",
                     alignItems: "center",
                     justifyContent: "center",
+                    borderRadius: "10%",
                   }}
                 >
-                  Budget
-                </div>
-                <div
-                  style={{
+                  <CardMedia
+                    sx={{ width: "50%", height: "100%" }}
+                    image="/images/budget.jpg"
+                    title="budget"
+                  />
+                  <div
+                    style={{
+                      width: "50%",
+                      height: "100%",
+                      display: "flex",
+                      flexDirection: "column",
+                    }}
+                  >
+                    <CardContent
+                      sx={{
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "center",
+                        width: "95%",
+                        height: "80%",
+                        padding: "0% 5%",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                      }}
+                    >
+                      <Typography
+                        gutterBottom
+                        variant="h6"
+                        component="div"
+                        sx={{
+                          display: "-webkit-box",
+                          WebkitBoxOrient: "vertical",
+                          overflow: "hidden",
+                          WebkitLineClamp: 1,
+                          textOverflow: "eclipsis",
+                          width: "90%",
+                        }}
+                      >
+                        Budget
+                      </Typography>
+                      <Typography
+                        variant="body2"
+                        color="text.secondary"
+                        sx={{
+                          display: "-webkit-box",
+                          WebkitBoxOrient: "vertical",
+                          overflow: "hidden",
+                          WebkitLineClamp: 2,
+                          textOverflow: "eclipsis",
+                          width: "90%",
+                        }}
+                      >
+                        Budget ...
+                      </Typography>
+                    </CardContent>
+                    <CardActions sx={{ width: "95%", height: "20%" }}>
+                      <Button size="small">Share</Button>
+                      <Button size="small">Learn More</Button>
+                    </CardActions>
+                  </div>
+                </Card>
+
+                <Card
+                  sx={{
                     display: "flex",
-                    height: "33%",
-                    width: "100%",
+                    height: "25%",
+                    width: "90%",
                     alignItems: "center",
                     justifyContent: "center",
+                    borderRadius: "10%",
                   }}
                 >
-                  Menstruation
-                </div>
-                <div
-                  style={{
+                  <CardMedia
+                    sx={{ width: "50%", height: "100%" }}
+                    image="/images/menstruation.jpg"
+                    title="menstruation"
+                  />
+                  <div
+                    style={{
+                      width: "50%",
+                      height: "100%",
+                      display: "flex",
+                      flexDirection: "column",
+                    }}
+                  >
+                    <CardContent
+                      sx={{
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "center",
+                        width: "95%",
+                        height: "80%",
+                        padding: "0% 5%",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                      }}
+                    >
+                      <Typography
+                        gutterBottom
+                        variant="h6"
+                        component="div"
+                        sx={{
+                          display: "-webkit-box",
+                          WebkitBoxOrient: "vertical",
+                          overflow: "hidden",
+                          WebkitLineClamp: 1,
+                          textOverflow: "eclipsis",
+                          width: "90%",
+                        }}
+                      >
+                        Menstruation
+                      </Typography>
+                      <Typography
+                        variant="body2"
+                        color="text.secondary"
+                        sx={{
+                          display: "-webkit-box",
+                          WebkitBoxOrient: "vertical",
+                          overflow: "hidden",
+                          WebkitLineClamp: 2,
+                          textOverflow: "eclipsis",
+                          width: "90%",
+                        }}
+                      >
+                        Menstruation ...
+                      </Typography>
+                    </CardContent>
+                    <CardActions sx={{ width: "95%", height: "20%" }}>
+                      <Button size="small">Share</Button>
+                      <Button size="small">Learn More</Button>
+                    </CardActions>
+                  </div>
+                </Card>
+
+                <Card
+                  sx={{
                     display: "flex",
-                    height: "33%",
-                    width: "100%",
+                    height: "25%",
+                    width: "90%",
                     alignItems: "center",
                     justifyContent: "center",
+                    borderRadius: "10%",
                   }}
                 >
-                  Exercise
-                </div>
+                  <CardMedia
+                    sx={{ width: "50%", height: "100%" }}
+                    image="/images/budget.jpg"
+                    title="budget"
+                  />
+                  <div
+                    style={{
+                      width: "50%",
+                      height: "100%",
+                      display: "flex",
+                      flexDirection: "column",
+                    }}
+                  >
+                    <CardContent
+                      sx={{
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "center",
+                        width: "95%",
+                        height: "80%",
+                        padding: "0% 5%",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                      }}
+                    >
+                      <Typography
+                        gutterBottom
+                        variant="h6"
+                        component="div"
+                        sx={{
+                          display: "-webkit-box",
+                          WebkitBoxOrient: "vertical",
+                          overflow: "hidden",
+                          WebkitLineClamp: 1,
+                          textOverflow: "eclipsis",
+                          width: "90%",
+                        }}
+                      >
+                        Exercise
+                      </Typography>
+                      <Typography
+                        variant="body2"
+                        color="text.secondary"
+                        sx={{
+                          display: "-webkit-box",
+                          WebkitBoxOrient: "vertical",
+                          overflow: "hidden",
+                          WebkitLineClamp: 2,
+                          textOverflow: "eclipsis",
+                          width: "90%",
+                        }}
+                      >
+                        Exercise ...
+                      </Typography>
+                    </CardContent>
+                    <CardActions sx={{ width: "95%", height: "20%" }}>
+                      <Button size="small">Share</Button>
+                      <Button size="small">Learn More</Button>
+                    </CardActions>
+                  </div>
+                </Card>
               </div>
             </SwiperSlide>
           </Swiper>
