@@ -7,7 +7,7 @@ import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
 // Todo 아이콘임 // import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
-import PermIdentityIcon from "@mui/icons-material/PermIdentity";
+// import PermIdentityIcon from "@mui/icons-material/PermIdentity";
 import LogoutIcon from "@mui/icons-material/Logout";
 import MenuIcon from "@mui/icons-material/Menu";
 import AppBar from "@mui/material/AppBar";
@@ -24,7 +24,19 @@ import ListItemText from "@mui/material/ListItemText";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import * as React from "react";
+import { useLocation } from "react-router-dom";
+
 const AppBarContainer = ({ children }) => {
+
+  const location = useLocation();
+  const path = location.pathname.split("/")[1];
+  let appBarrColor =
+  path === "Home" || path === "MyPage" ? "#f5f590" :
+  path === "Note" || path === "Search" ? "lightgreen" :
+  path === "Schedule" || path === "Budget" ? "lightblue" :
+  path === "Menstruation" || path === "Exercise" ? "lightcoral" :
+  "defaultColor"; // 기본 색상
+  
   const [open, setOpen] = React.useState(false);
 
   const toggleDrawer = (newOpen) => () => {
@@ -161,7 +173,7 @@ const AppBarContainer = ({ children }) => {
     <>
       <Box sx={{ flexGrow: 1, height: "100%" }}>
         <AppBar position="static" id="header">
-          <Toolbar style={{ backgroundColor: "lightblue" }}>
+          <Toolbar style={{ backgroundColor: appBarrColor }}>
             <IconButton
               size="medium"
               edge="start"
