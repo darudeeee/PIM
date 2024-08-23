@@ -9,23 +9,17 @@ const Schedule = () => {
   let deviceWidth = window.innerWidth;
   const [isMobile, setIsMobile] = useState(deviceWidth <= 1200);
 
-  const [heights, setHeight] = useState(0); // return값 안에 초기값 지정
+  const [heights, setHeight] = useState(0);
+
   useEffect(() => {
-    // 렌더링 되면 값 지정
     setHeight(document.getElementById("header").offsetHeight);
-  }, []); // [] : 초기 1번만 렌더링
-  // []에 변수를 넣으면 변수가 바뀔 때마다 렌더링
-  // []를 빼면 상태가 바뀔 때마다 렌더링(ex. 클릭 1번 마다 렌더링)
-  // height, width 가져오는 방식들 : https://apost.dev/706/
+  }, []);
 
-  const curDate = new Date(); // 현재 날짜
-  const [value, onChange] = useState(curDate); // 클릭한 날짜 (초기값으로 현재 날짜 넣어줌)
+  const curDate = new Date();
+  const [value, onChange] = useState(curDate);
 
-  // 각 날짜 타일에 컨텐츠 추가
   const addContent = ({ date }) => {
-    // 해당 날짜(하루)에 추가할 컨텐츠의 배열
     const contents = [];
-    // date(각 날짜)가  리스트의 날짜와 일치하면 해당 컨텐츠(이모티콘) 추가
     if (
       ScheduleData.find(
         (day) =>
@@ -33,21 +27,19 @@ const Schedule = () => {
       )
     ) {
       contents.push(
-        <>
-          <div
-            className="dot"
-            style={{
-              width: "10px",
-              height: "10px",
-              borderRadius: "50%",
-              backgroundColor: "#009fb1",
-              marginTop: "7px",
-            }}
-          ></div>
-        </>
+        <div
+          className="dot"
+          style={{
+            width: "10px",
+            height: "10px",
+            borderRadius: "50%",
+            backgroundColor: "#009fb1",
+            marginTop: "7px",
+          }}
+        ></div>
       );
     }
-    return <div>{contents}</div>; // 각 날짜마다 해당 요소가 들어감
+    return <div>{contents}</div>;
   };
 
   const [schedules, setSchedules] = useState([]);
@@ -151,7 +143,7 @@ const Schedule = () => {
                   style={{
                     margin: "5px",
                     padding: "10px",
-                    width: "300px",
+                    width: "60%",
                     border: "1px solid #ccc",
                     borderRadius: "4px",
                   }}
@@ -194,7 +186,7 @@ const Schedule = () => {
                 {schedules.map((schedule, index) => (
                   <li key={index} style={{ margin: "10px 0" }}>
                     {editIndex === index ? (
-                      <div>
+                      <div style={{ display: "flex", alignItems: "center" }}>
                         <input
                           type="text"
                           value={editSchedule}
@@ -202,7 +194,7 @@ const Schedule = () => {
                           style={{
                             margin: "5px",
                             padding: "10px",
-                            width: "300px",
+                            width: "50%",
                             border: "1px solid #ccc",
                             borderRadius: "4px",
                           }}
@@ -225,7 +217,31 @@ const Schedule = () => {
                             (e.target.style.backgroundColor = "#c5eaf7")
                           }
                         >
-                          save
+                          Save
+                        </button>
+                      </div>
+                    ) : (
+                      <div style={{ display: "flex", alignItems: "center" }}>
+                        <span>{schedule}</span>
+                        <button
+                          onClick={() => startEdit(index)}
+                          style={{
+                            padding: "10px 15px",
+                            border: "none",
+                            borderRadius: "4px",
+                            backgroundColor: "#c5eaf7",
+                            color: "white",
+                            cursor: "pointer",
+                            margin: "5px",
+                          }}
+                          onMouseOver={(e) =>
+                            (e.target.style.backgroundColor = "#7ab8cd")
+                          }
+                          onMouseOut={(e) =>
+                            (e.target.style.backgroundColor = "#c5eaf7")
+                          }
+                        >
+                          Edit
                         </button>
                         <button
                           onClick={() => deleteSchedule(index)}
@@ -248,31 +264,6 @@ const Schedule = () => {
                           Delete
                         </button>
                       </div>
-                    ) : (
-                      <span>{schedule}</span>
-                    )}
-
-                    {editIndex === null && (
-                      <button
-                        onClick={() => startEdit(index)}
-                        style={{
-                          padding: "10px 15px",
-                          border: "none",
-                          borderRadius: "4px",
-                          backgroundColor: "#c5eaf7",
-                          color: "white",
-                          cursor: "pointer",
-                          margin: "5px",
-                        }}
-                        onMouseOver={(e) =>
-                          (e.target.style.backgroundColor = "#7ab8cd")
-                        }
-                        onMouseOut={(e) =>
-                          (e.target.style.backgroundColor = "#c5eaf7")
-                        }
-                      >
-                        Edit
-                      </button>
                     )}
                   </li>
                 ))}
@@ -281,28 +272,26 @@ const Schedule = () => {
           </div>
         </div>
       ) : (
-        <>
-          <div
-            style={{
-              display: "flex",
-              height: `calc(100% - ${heights}px)`,
-              width: "100%",
-            }}
-          >
-            <div id="miniCalendar" style={{ width: "100%", height: "100%" }}>
-              <Calendar
-                locale="en"
-                onChange={onChange}
-                value={value}
-                next2Label={null}
-                prev2Label={null}
-                formatDay={(locale, date) => moment(date).format("D")}
-                tileContent={addContent}
-                showNeighboringMonth={false}
-              />
-            </div>
+        <div
+          style={{
+            display: "flex",
+            height: `calc(100% - ${heights}px)`,
+            width: "100%",
+          }}
+        >
+          <div id="miniCalendar" style={{ width: "100%", height: "100%" }}>
+            <Calendar
+              locale="en"
+              onChange={onChange}
+              value={value}
+              next2Label={null}
+              prev2Label={null}
+              formatDay={(locale, date) => moment(date).format("D")}
+              tileContent={addContent}
+              showNeighboringMonth={false}
+            />
           </div>
-        </>
+        </div>
       )}
     </>
   );
