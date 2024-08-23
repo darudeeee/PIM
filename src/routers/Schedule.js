@@ -10,10 +10,13 @@ const Schedule = () => {
   const [isMobile, setIsMobile] = useState(deviceWidth <= 1200);
 
   const [heights, setHeight] = useState(0);
-
   useEffect(() => {
     setHeight(document.getElementById("header").offsetHeight);
   }, []);
+
+  window.addEventListener("resize", function () {
+    setIsMobile(window.innerWidth <= 1200); // 크기 감지만 해줌
+  });
 
   const curDate = new Date();
   const [value, onChange] = useState(curDate);
@@ -272,14 +275,16 @@ const Schedule = () => {
           </div>
         </div>
       ) : (
+        // 애초에 리스트를 나눠놓는게 아니라 날짜를 클릭하면 캘린더 높이가 100에서 60으로 줄어들고 40은 리스트를 띄우고 싶은데...
         <div
           style={{
             display: "flex",
+            flexDirection: "column",
             height: `calc(100% - ${heights}px)`,
             width: "100%",
           }}
         >
-          <div id="miniCalendar" style={{ width: "100%", height: "100%" }}>
+          <div id="miniCalendar" style={{ width: "100%", height: "60%" }}>
             <Calendar
               locale="en"
               onChange={onChange}
@@ -290,6 +295,9 @@ const Schedule = () => {
               tileContent={addContent}
               showNeighboringMonth={false}
             />
+          </div>
+          <div id="miniCalendar" style={{ width: "100%", height: "40%", backgroundColor: "000" }}>
+            일정 리스트 띄울겁니다.
           </div>
         </div>
       )}

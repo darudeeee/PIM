@@ -21,6 +21,19 @@ const Home = () => {
   let deviceWidth = window.innerWidth;
   const [isMobile, setIsMobile] = useState(deviceWidth <= 1200);
 
+  const [heights, setHeight] = useState(0); // return값 안에 초기값 지정
+  useEffect(() => {
+    // 렌더링 되면 값 지정
+    setHeight(document.getElementById("header").offsetHeight);
+  }, []); // [] : 초기 1번만 렌더링
+  // []에 변수를 넣으면 변수가 바뀔 때마다 렌더링
+  // []를 빼면 상태가 바뀔 때마다 렌더링(ex. 클릭 1번 마다 렌더링)
+  // height, width 가져오는 방식들 : https://apost.dev/706/
+
+  window.addEventListener("resize", function () {
+    setIsMobile(window.innerWidth <= 1200); // 크기 감지만 해줌
+  });
+
   const curDate = new Date(); // 현재 날짜
   const [value, onChange] = useState(curDate); // 클릭한 날짜 (초기값으로 현재 날짜 넣어줌)
 
@@ -52,19 +65,6 @@ const Home = () => {
     }
     return <div>{contents}</div>; // 각 날짜마다 해당 요소가 들어감
   };
-
-  const [heights, setHeight] = useState(0); // return값 안에 초기값 지정
-  useEffect(() => {
-    // 렌더링 되면 값 지정
-    setHeight(document.getElementById("header").offsetHeight);
-  }, []); // [] : 초기 1번만 렌더링
-  // []에 변수를 넣으면 변수가 바뀔 때마다 렌더링
-  // []를 빼면 상태가 바뀔 때마다 렌더링(ex. 클릭 1번 마다 렌더링)
-  // height, width 가져오는 방식들 : https://apost.dev/706/
-
-  window.addEventListener("resize", function () {
-    setIsMobile(window.innerWidth <= 1200); // 크기 감지만 해줌
-  });
 
   return (
     <>
