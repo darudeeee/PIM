@@ -409,3 +409,359 @@ input[type='number']::-webkit-outer-spin-button {
 		opacity: 0;
 	}
 }
+
+/* 홈 캘린더 */
+#homeCalendar {
+	height: 100%;
+	width: 70%;
+
+	.react-calendar {
+		width: 100%;
+		height: 100%;
+		padding: 5% 5%;
+		border: none;
+	}
+
+	.react-calendar__navigation {
+		background: #f5f5b8;
+		border-bottom: 4px solid #bfc20e;
+		height: 90px;
+		border-radius: 20px 20px 0 0;
+
+		span {
+			font-size: 24px;
+			font-weight: 600;
+			color: rgb(255, 255, 255);
+		}
+	}
+
+	.react-calendar__navigation__prev-button,
+	.react-calendar__navigation__next-button {
+		font-size: 40px;
+		color: white;
+	}
+
+	.react-calendar__navigation button:disabled {
+		background-color: #f5f5b8;
+		border-radius: 20px 20px 0 0;
+	}
+
+	.react-calendar__navigation button:enabled:hover,
+	.react-calendar__navigation button:enabled:focus {
+		background-color: #f5f5b8;
+		border-radius: 20px 20px 0 0;
+	}
+
+
+	.react-calendar__viewContainer {
+		height: calc(100% - 90px);
+	}
+
+	.react-calendar__month-view {
+		height: 100%;
+		padding: 12px 32px;
+
+		abbr {
+			color: #bfc20e;
+			font-size: 16px;
+			font-weight: 500;
+		}
+	}
+
+	.react-calendar__month-view>div {
+		height: 100%;
+	}
+
+	.react-calendar__month-view>div>div {
+		height: 100%;
+	}
+
+	.react-calendar__month-view__weekdays {
+		height: 34px;
+
+		abbr {
+			font-size: 18px;
+			font-weight: 900;
+		}
+	}
+
+	.react-calendar__month-view__days {
+		height: calc(100% - 34px);
+	}
+
+	.react-calendar__month-view__days__day {
+		height: 16%;
+	}
+
+	.react-calendar__tile {
+		text-align: center;
+		height: 60px;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: center;
+	}
+
+	.react-calendar__tile:enabled:hover,
+	.react-calendar__tile:enabled:focus,
+	.react-calendar__tile--active {
+		background: rgb(201, 201, 201);
+		border-radius: 14px;
+	}
+
+	.react-calendar__tile--now {
+		background: #f5f5b8;
+		border-radius: 14px;
+	}
+
+	.react-calendar__tile--now:enabled:hover,
+	.react-calendar__tile--now:enabled:focus {
+		background: rgb(201, 201, 201);
+		border-radius: 14px;
+	}
+
+	.react-calendar__year-view {
+		height: 100%;
+		padding: 12px 32px;
+	}
+
+	.react-calendar__year-view__months {
+		height: 100%;
+	}
+
+	.react-calendar__year-view__months__month {
+		height: 25%;
+		justify-content: center;
+	}
+
+	.react-calendar__decade-view {
+		height: 100%;
+		padding: 12px 32px;
+	}
+
+	.react-calendar__decade-view__years {
+		height: 100%;
+	}
+
+	.react-calendar__decade-view__years__year {
+		height: 25%;
+		justify-content: center;
+	}
+
+	.react-calendar__century-view {
+		height: 100%;
+		padding: 12px 32px;
+	}
+
+	.react-calendar__century-view__decades {
+		height: 100%;
+	}
+
+	.react-calendar__century-view__decades__decade {
+		height: 25%;
+		justify-content: center;
+	}
+}
+
+.swiper {
+	height: calc(100% - 90px);
+}
+
+/* 홈 미니 캘린더 */
+#homeMiniCalendar {
+	height: 100%;
+	width: 100%;
+
+	.react-calendar {
+		width: 100%;
+		height: 100%;
+		padding: 5% 5%;
+		border: none;
+	}
+
+	.react-calendar__navigation {
+		background: #f5f5b8;
+		border-bottom: 4px solid #bfc20e;
+		height: 60px;
+		border-radius: 20px 20px 0 0;
+
+		span {
+			font-size: 16px;
+			font-weight: 600;
+			color: rgb(255, 255, 255);
+		}
+	}
+
+	.react-calendar__navigation__prev-button,
+	.react-calendar__navigation__next-button {
+		font-size: 30px;
+		color: white;
+	}
+
+	.react-calendar__navigation button:disabled {
+		background-color: #f5f5b8;
+		border-radius: 20px 20px 0 0;
+	}
+
+	.react-calendar__navigation button:enabled:hover,
+	.react-calendar__navigation button:enabled:focus {
+		background-color: #f5f5b8;
+		border-radius: 20px 20px 0 0;
+	}
+
+
+	.react-calendar__viewContainer {
+		height: calc(100% - 60px);
+	}
+
+	.react-calendar__month-view {
+		height: 100%;
+		padding: 8px 20px;
+
+		abbr {
+			color: #bfc20e;
+			font-size: 16px;
+			font-weight: 500;
+		}
+	}
+
+	.react-calendar__month-view>div {
+		height: 100%;
+	}
+
+	.react-calendar__month-view>div>div {
+		height: 100%;
+	}
+
+	.react-calendar__month-view__weekdays {
+		height: 25px;
+
+		abbr {
+			font-size: 16px;
+			font-weight: 900;
+		}
+	}
+
+	.react-calendar__month-view__days {
+		height: calc(100% - 25px);
+	}
+
+	.react-calendar__month-view__days__day {
+		height: 16%;
+	}
+
+	.react-calendar__tile {
+		text-align: center;
+		height: 60px;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: center;
+	}
+
+	.react-calendar__tile:enabled:hover,
+	.react-calendar__tile:enabled:focus,
+	.react-calendar__tile--active {
+		background: rgb(201, 201, 201);
+		border-radius: 14px;
+	}
+
+	.react-calendar__tile--now {
+		background: #f5f5b8;
+		border-radius: 14px;
+	}
+
+	.react-calendar__tile--now:enabled:hover,
+	.react-calendar__tile--now:enabled:focus {
+		background: rgb(201, 201, 201);
+		border-radius: 14px;
+	}
+
+	.react-calendar__year-view {
+		height: 100%;
+		padding: 8px 20px;
+	}
+
+	.react-calendar__year-view__months {
+		height: 100%;
+	}
+
+	.react-calendar__year-view__months__month {
+		height: 25%;
+		justify-content: center;
+	}
+
+	.react-calendar__decade-view {
+		height: 100%;
+		padding: 8px 20px;
+	}
+
+	.react-calendar__decade-view__years {
+		height: 100%;
+	}
+
+	.react-calendar__decade-view__years__year {
+		height: 25%;
+		justify-content: center;
+	}
+
+	.react-calendar__century-view {
+		height: 100%;
+		padding: 8px 20px;
+	}
+
+	.react-calendar__century-view__decades {
+		height: 100%;
+	}
+
+	.react-calendar__century-view__decades__decade {
+		height: 25%;
+		justify-content: center;
+	}
+}
+
+.swiper {
+	height: calc(100% - 60px);
+}
+
+/* 노트 */
+#note {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+	background-color: white;
+
+	.live {
+		width: 90%;
+		height: 90%;
+	}
+
+	.markdown {
+		width: 100%;
+		height: 100% !important;
+		border: 1px solid #000;
+	}
+
+	.w-md-editor-toolbar {
+		width: 99%;
+		/* 1%는 보더 */
+		height: 9%;
+		/* 1%는 보더 */
+		border-bottom: 1px solid #5f5f5f;
+	}
+
+	.w-md-editor-content {
+		width: 100%;
+		height: 90% !important;
+	}
+
+	.w-md-editor-preview {
+		border-left: 1px solid #5f5f5f;
+	}
+
+	.w-md-editor-bar {
+		opacity: 0;
+	}
+}

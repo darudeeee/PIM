@@ -56,7 +56,7 @@ const Home = () => {
               width: "10px",
               height: "10px",
               borderRadius: "50%",
-              backgroundColor: "#009fb1",
+              backgroundColor: "#bfc20e",
               marginTop: "7px",
             }}
           ></div>
@@ -76,7 +76,7 @@ const Home = () => {
             width: "100%",
           }}
         >
-          <div id="calendar">
+          <div id="homeCalendar">
             <Calendar
               locale="en"
               onChange={onChange}
@@ -324,7 +324,7 @@ const Home = () => {
             className="mySwiper"
           >
             <SwiperSlide>
-              <div id="miniCalendar">
+              <div id="homeMiniCalendar">
                 <Calendar
                   locale="en"
                   onChange={onChange}
