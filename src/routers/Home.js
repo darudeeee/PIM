@@ -56,7 +56,7 @@ const Home = () => {
               width: "10px",
               height: "10px",
               borderRadius: "50%",
-              backgroundColor: "#bfc20e",
+              backgroundColor: "#CC99FF",
               marginTop: "7px",
             }}
           ></div>

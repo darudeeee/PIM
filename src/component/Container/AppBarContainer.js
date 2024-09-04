@@ -31,7 +31,7 @@ const AppBarContainer = ({ children }) => {
   const location = useLocation();
   const path = location.pathname.split("/")[1];
   let appBarrColor =
-  path === "Home" || path === "MyPage" ? "#F1F18F" :
+  path === "Home" || path === "MyPage" ? "#ccccff" :
   path === "Note" || path === "Search" ? "lightgreen" :
   path === "Schedule" || path === "Budget" ? "lightblue" :
   path === "Menstruation" || path === "Exercise" ? "lightcoral" :
