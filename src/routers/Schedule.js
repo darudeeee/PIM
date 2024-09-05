@@ -4,6 +4,7 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import { convertDateToStr } from "../component/CommonFuntion";
 import ScheduleData from "../data/ScheduleData";
+import Button from '@mui/material/Button';
 
 const Schedule = () => {
   let deviceWidth = window.innerWidth;
@@ -284,7 +285,7 @@ const Schedule = () => {
             width: "100%",
           }}
         >
-          <div id="miniCalendar" style={{ width: "100%", height: "60%" }}>
+          <div id="miniCalendar" style={{ width: "100%", height: "60%", minHeight: "460px" }}>
             <Calendar
               locale="en"
               onChange={onChange}
@@ -296,8 +297,15 @@ const Schedule = () => {
               showNeighboringMonth={false}
             />
           </div>
-          <div id="miniCalendar" style={{ width: "100%", height: "40%", backgroundColor: "000" }}>
-            일정 리스트 띄울겁니다.
+          <div style={{ width: "100%", height: "40%", backgroundColor: "000", borderTop: "3px solid #009fb1" }}>
+            <h3 style={{display: "flex", justifyContent: "center"}}>Today's Schedule</h3>
+            <div style={{display: "flex", justifyContent: "flex-end", marginRight: "5%"}}>
+              <Button color="secondary" onClick={addSchedule} style={{color: "#009fb1", fontSize: "12px"}}> + Add to Schedule</Button>
+              {/* 축소 돼도 디자인만 다르지 기능은 같아야 함! */}
+            </div> 
+            <div id="schedule">
+              
+            </div>
           </div>
         </div>
       )}
