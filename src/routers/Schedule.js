@@ -4,7 +4,7 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import { convertDateToStr } from "../component/CommonFuntion";
 import ScheduleData from "../data/ScheduleData";
-import Button from '@mui/material/Button';
+import Button from "@mui/material/Button";
 
 const Schedule = () => {
   let deviceWidth = window.innerWidth;
@@ -285,7 +285,10 @@ const Schedule = () => {
             width: "100%",
           }}
         >
-          <div id="miniCalendar" style={{ width: "100%", height: "60%", minHeight: "460px" }}>
+          <div
+            id="miniCalendar"
+            style={{ width: "100%", height: "60%", minHeight: "460px" }}
+          >
             <Calendar
               locale="en"
               onChange={onChange}
@@ -297,14 +300,163 @@ const Schedule = () => {
               showNeighboringMonth={false}
             />
           </div>
-          <div style={{ width: "100%", height: "40%", backgroundColor: "000", borderTop: "3px solid #009fb1" }}>
-            <h3 style={{display: "flex", justifyContent: "center"}}>Today's Schedule</h3>
-            <div style={{display: "flex", justifyContent: "flex-end", marginRight: "5%"}}>
-              <Button color="secondary" onClick={addSchedule} style={{color: "#009fb1", fontSize: "12px"}}> + Add to Schedule</Button>
-              {/* 축소 돼도 디자인만 다르지 기능은 같아야 함! */}
-            </div> 
-            <div id="schedule">
-              
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              width: "100%",
+              height: "40%",
+              backgroundColor: "#fff",
+            }}
+          >
+            <div
+              id="schedule"
+              style={{
+                width: "80%",
+                height: "80%",
+                overflow: "hidden",
+              }}
+            >
+              <h5 style={{ display: "flex", justifyContent: "center" }}>
+                Today's Schedule
+              </h5>
+              <div
+                id="addSchedule"
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <input
+                  type="text"
+                  value={newSchedule}
+                  onChange={(e) => setNewSchedule(e.target.value)}
+                  placeholder="Enter a new schedule"
+                  style={{
+                    padding: "5px",
+                    width: "60%",
+                    border: "1px solid #ccc",
+                    borderRadius: "4px",
+                  }}
+                />
+                <button
+                  onClick={addSchedule}
+                  style={{
+                    padding: "5px 5px",
+                    border: "none",
+                    borderRadius: "4px",
+                    backgroundColor: "#009fb1",
+                    color: "white",
+                    cursor: "pointer",
+                    margin: "5px",
+                  }}
+                  onMouseOver={(e) =>
+                    (e.target.style.backgroundColor = "#047f8d")
+                  }
+                  onMouseOut={(e) =>
+                    (e.target.style.backgroundColor = "#009fb1")
+                  }
+                >
+                  Add
+                </button>
+              </div>
+              <ul
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "flex-start",
+                  marginLeft: "5%",
+                  listStyleType: "none",
+                  padding: "0",
+                }}
+              >
+                {schedules.map((schedule, index) => (
+                  <li key={index} style={{ margin: "10px 0" }}>
+                    {editIndex === index ? (
+                      <div style={{ display: "flex", alignItems: "center" }}>
+                        <input
+                          type="text"
+                          value={editSchedule}
+                          onChange={(e) => setEditSchedule(e.target.value)}
+                          style={{
+                            margin: "5px",
+                            padding: "10px",
+                            width: "50%",
+                            border: "1px solid #ccc",
+                            borderRadius: "4px",
+                          }}
+                        />
+                        <button
+                          onClick={saveEdit}
+                          style={{
+                            padding: "10px 15px",
+                            border: "none",
+                            borderRadius: "4px",
+                            backgroundColor: "#c5eaf7",
+                            color: "white",
+                            cursor: "pointer",
+                            margin: "5px",
+                          }}
+                          onMouseOver={(e) =>
+                            (e.target.style.backgroundColor = "#7ab8cd")
+                          }
+                          onMouseOut={(e) =>
+                            (e.target.style.backgroundColor = "#c5eaf7")
+                          }
+                        >
+                          Save
+                        </button>
+                      </div>
+                    ) : (
+                      <div style={{ display: "flex", alignItems: "center" }}>
+                        <span>{schedule}</span>
+                        <button
+                          onClick={() => startEdit(index)}
+                          style={{
+                            padding: "10px 15px",
+                            border: "none",
+                            borderRadius: "4px",
+                            backgroundColor: "#c5eaf7",
+                            color: "white",
+                            cursor: "pointer",
+                            margin: "5px",
+                          }}
+                          onMouseOver={(e) =>
+                            (e.target.style.backgroundColor = "#7ab8cd")
+                          }
+                          onMouseOut={(e) =>
+                            (e.target.style.backgroundColor = "#c5eaf7")
+                          }
+                        >
+                          Edit
+                        </button>
+                        <button
+                          onClick={() => deleteSchedule(index)}
+                          style={{
+                            padding: "10px 15px",
+                            border: "none",
+                            borderRadius: "4px",
+                            backgroundColor: "#fda39e",
+                            color: "white",
+                            cursor: "pointer",
+                            margin: "5px",
+                          }}
+                          onMouseOver={(e) =>
+                            (e.target.style.backgroundColor = "#df7d77")
+                          }
+                          onMouseOut={(e) =>
+                            (e.target.style.backgroundColor = "#fda39e")
+                          }
+                        >
+                          Delete
+                        </button>
+                      </div>
+                    )}
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>
