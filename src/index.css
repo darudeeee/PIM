@@ -230,7 +230,7 @@ input[type='number']::-webkit-outer-spin-button {
 		border-radius: 20px 20px 0 0;
 
 		span {
-			font-size: 16px;
+			font-size: 14px;
 			font-weight: 600;
 			color: rgb(255, 255, 255);
 		}
@@ -264,7 +264,7 @@ input[type='number']::-webkit-outer-spin-button {
 
 		abbr {
 			color: #009fb1;
-			font-size: 16px;
+			font-size: 14px;
 			font-weight: 500;
 		}
 	}
@@ -281,7 +281,7 @@ input[type='number']::-webkit-outer-spin-button {
 		height: 25px;
 
 		abbr {
-			font-size: 16px;
+			font-size: 14px;
 			font-weight: 900;
 		}
 	}
@@ -586,7 +586,7 @@ input[type='number']::-webkit-outer-spin-button {
 		border-radius: 20px 20px 0 0;
 
 		span {
-			font-size: 16px;
+			font-size: 14px;
 			font-weight: 600;
 			color: rgb(255, 255, 255);
 		}
@@ -620,7 +620,7 @@ input[type='number']::-webkit-outer-spin-button {
 
 		abbr {
 			color: #CC99FF;
-			font-size: 16px;
+			font-size: 14px;
 			font-weight: 500;
 		}
 	}
@@ -637,7 +637,7 @@ input[type='number']::-webkit-outer-spin-button {
 		height: 25px;
 
 		abbr {
-			font-size: 16px;
+			font-size: 14px;
 			font-weight: 900;
 		}
 	}

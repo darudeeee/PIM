@@ -276,7 +276,6 @@ const Schedule = () => {
           </div>
         </div>
       ) : (
-        // 애초에 리스트를 나눠놓는게 아니라 날짜를 클릭하면 캘린더 높이가 100에서 60으로 줄어들고 40은 리스트를 띄우고 싶은데...
         <div
           style={{
             display: "flex",
@@ -287,7 +286,7 @@ const Schedule = () => {
         >
           <div
             id="miniCalendar"
-            style={{ width: "100%", height: "60%", minHeight: "460px" }}
+            style={{ width: "100%", height: "50%", minHeight: "470px" }}
           >
             <Calendar
               locale="en"
@@ -306,7 +305,7 @@ const Schedule = () => {
               alignItems: "center",
               justifyContent: "center",
               width: "100%",
-              height: "40%",
+              height: "50%",
               backgroundColor: "#fff",
             }}
           >
@@ -316,52 +315,10 @@ const Schedule = () => {
                 width: "80%",
                 height: "80%",
                 overflow: "hidden",
+                borderTop: "1px solid #009fb1",
               }}
             >
-              <h5 style={{ display: "flex", justifyContent: "center" }}>
-                Today's Schedule
-              </h5>
-              <div
-                id="addSchedule"
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                <input
-                  type="text"
-                  value={newSchedule}
-                  onChange={(e) => setNewSchedule(e.target.value)}
-                  placeholder="Enter a new schedule"
-                  style={{
-                    padding: "5px",
-                    width: "60%",
-                    border: "1px solid #ccc",
-                    borderRadius: "4px",
-                  }}
-                />
-                <button
-                  onClick={addSchedule}
-                  style={{
-                    padding: "5px 5px",
-                    border: "none",
-                    borderRadius: "4px",
-                    backgroundColor: "#009fb1",
-                    color: "white",
-                    cursor: "pointer",
-                    margin: "5px",
-                  }}
-                  onMouseOver={(e) =>
-                    (e.target.style.backgroundColor = "#047f8d")
-                  }
-                  onMouseOut={(e) =>
-                    (e.target.style.backgroundColor = "#009fb1")
-                  }
-                >
-                  Add
-                </button>
-              </div>
+			  <h6 style={{margin: "2px", padding: "2px"}}>Today...</h6>
               <ul
                 style={{
                   display: "flex",
@@ -373,7 +330,13 @@ const Schedule = () => {
                 }}
               >
                 {schedules.map((schedule, index) => (
-                  <li key={index} style={{ margin: "10px 0" }}>
+                  <li
+                    key={index}
+                    style={{
+                      padding: "5px 0",
+                      borderBottom: "1px dashed #c5eaf7",
+                    }}
+                  >
                     {editIndex === index ? (
                       <div style={{ display: "flex", alignItems: "center" }}>
                         <input
@@ -388,70 +351,10 @@ const Schedule = () => {
                             borderRadius: "4px",
                           }}
                         />
-                        <button
-                          onClick={saveEdit}
-                          style={{
-                            padding: "10px 15px",
-                            border: "none",
-                            borderRadius: "4px",
-                            backgroundColor: "#c5eaf7",
-                            color: "white",
-                            cursor: "pointer",
-                            margin: "5px",
-                          }}
-                          onMouseOver={(e) =>
-                            (e.target.style.backgroundColor = "#7ab8cd")
-                          }
-                          onMouseOut={(e) =>
-                            (e.target.style.backgroundColor = "#c5eaf7")
-                          }
-                        >
-                          Save
-                        </button>
                       </div>
                     ) : (
                       <div style={{ display: "flex", alignItems: "center" }}>
                         <span>{schedule}</span>
-                        <button
-                          onClick={() => startEdit(index)}
-                          style={{
-                            padding: "10px 15px",
-                            border: "none",
-                            borderRadius: "4px",
-                            backgroundColor: "#c5eaf7",
-                            color: "white",
-                            cursor: "pointer",
-                            margin: "5px",
-                          }}
-                          onMouseOver={(e) =>
-                            (e.target.style.backgroundColor = "#7ab8cd")
-                          }
-                          onMouseOut={(e) =>
-                            (e.target.style.backgroundColor = "#c5eaf7")
-                          }
-                        >
-                          Edit
-                        </button>
-                        <button
-                          onClick={() => deleteSchedule(index)}
-                          style={{
-                            padding: "10px 15px",
-                            border: "none",
-                            borderRadius: "4px",
-                            backgroundColor: "#fda39e",
-                            color: "white",
-                            cursor: "pointer",
-                            margin: "5px",
-                          }}
-                          onMouseOver={(e) =>
-                            (e.target.style.backgroundColor = "#df7d77")
-                          }
-                          onMouseOut={(e) =>
-                            (e.target.style.backgroundColor = "#fda39e")
-                          }
-                        >
-                          Delete
-                        </button>
                       </div>
                     )}
                   </li>
