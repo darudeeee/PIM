@@ -199,12 +199,14 @@ const Schedule = () => {
                   marginLeft: "5%",
                   listStyleType: "none",
                   padding: "0",
+				  height: "60%",
+				  overflow: "auto"
                 }}
               >
                 {currentSchedules.map((schedule, index) => (
                   <li key={index} style={{ margin: "10px 0" }}>
                     {editIndex === index ? (
-                      <div style={{ display: "flex", alignItems: "center" }}>
+                      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                         <input
                           type="text"
                           value={editSchedule}
@@ -239,8 +241,9 @@ const Schedule = () => {
                         </button>
                       </div>
                     ) : (
-                      <div style={{ display: "flex", alignItems: "center" }}>
+                      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                         <span>{schedule}</span>
+						<div>
                         <button
                           onClick={() => startEdit(index)}
                           style={{
@@ -281,6 +284,7 @@ const Schedule = () => {
                         >
                           Delete
                         </button>
+						</div>
                       </div>
                     )}
                   </li>
