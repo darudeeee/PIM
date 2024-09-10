@@ -4,7 +4,6 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import { convertDateToStr } from "../component/CommonFuntion";
 import ScheduleData from "../data/ScheduleData";
-import Button from "@mui/material/Button";
 
 const Schedule = () => {
   let deviceWidth = window.innerWidth;
@@ -19,18 +18,59 @@ const Schedule = () => {
     setIsMobile(window.innerWidth <= 1200); // 크기 감지만 해줌
   });
 
+  // 현재 날짜를 상태로 저장
   const curDate = new Date();
-  const [value, onChange] = useState(curDate);
+  const [value, onChange] = useState(curDate); // ?
+
+  const [schedules, setSchedules] = useState({}); // 날짜별 스케줄 관리
+  const [newSchedule, setNewSchedule] = useState(""); // 새 스케쥴 필드
+  const [editIndex, setEditIndex] = useState(null); // 편집 중 스케쥴 인덱스
+  const [editSchedule, setEditSchedule] = useState(""); // 편집 중 스케쥴 내용
+
+  const addSchedule = () => {
+    if (newSchedule.trim() === "") return;
+
+    const dateStr = moment(value).format("YYYY-MM-DD"); // 현재 날짜를 문자열로
+    setSchedules((prevSchedules) => ({
+      // setSchedule 해줌
+      ...prevSchedules,
+      [dateStr]: [...(prevSchedules[dateStr] || []), newSchedule], // 기존 스케쥴에 새 스케쥴 추가(기존 없으면 빈 배열 시작)
+    }));
+    setNewSchedule("");
+  };
+
+  const startEdit = (index) => {
+    setEditIndex(index);
+    setEditSchedule(schedules[moment(value).format("YYYY-MM-DD")][index]);
+  };
+
+  const saveEdit = () => {
+    if (editSchedule.trim() === "") return;
+
+    const dateStr = moment(value).format("YYYY-MM-DD");
+    const updatedSchedules = schedules[dateStr].map((schedule, i) =>
+      i === editIndex ? editSchedule : schedule
+    );
+    setSchedules({
+      ...schedules,
+      [dateStr]: updatedSchedules,
+    });
+    setEditIndex(null);
+    setEditSchedule("");
+  };
+
+  const deleteSchedule = (index) => {
+    const dateStr = moment(value).format("YYYY-MM-DD");
+    setSchedules({
+      ...schedules,
+      [dateStr]: schedules[dateStr].filter((_, i) => i !== index),
+    });
+  };
 
   const addContent = ({ date }) => {
-    const contents = [];
-    if (
-      ScheduleData.find(
-        (day) =>
-          convertDateToStr(day.start) === moment(date).format("YYYY-MM-DD")
-      )
-    ) {
-      contents.push(
+    const dateStr = moment(date).format("YYYY-MM-DD");
+    if (schedules[dateStr] && schedules[dateStr].length > 0) {
+      return (
         <div
           className="dot"
           style={{
@@ -43,38 +83,12 @@ const Schedule = () => {
         ></div>
       );
     }
-    return <div>{contents}</div>;
+    return null;
   };
 
-  const [schedules, setSchedules] = useState([]);
-  const [newSchedule, setNewSchedule] = useState("");
-  const [editIndex, setEditIndex] = useState(null);
-  const [editSchedule, setEditSchedule] = useState("");
-
-  const addSchedule = () => {
-    if (newSchedule.trim() === "") return;
-    setSchedules([...schedules, newSchedule]);
-    setNewSchedule("");
-  };
-
-  const startEdit = (index) => {
-    setEditIndex(index);
-    setEditSchedule(schedules[index]);
-  };
-
-  const saveEdit = () => {
-    if (editSchedule.trim() === "") return;
-    const updatedSchedules = schedules.map((schedule, i) =>
-      i === editIndex ? editSchedule : schedule
-    );
-    setSchedules(updatedSchedules);
-    setEditIndex(null);
-    setEditSchedule("");
-  };
-
-  const deleteSchedule = (index) => {
-    setSchedules(schedules.filter((_, i) => i !== index));
-  };
+  // 현재 선택된 날짜의 스케쥴 가져오기
+  const currentDateStr = moment(value).format("YYYY-MM-DD");
+  const currentSchedules = schedules[currentDateStr] || [];
 
   return (
     <>
@@ -142,7 +156,7 @@ const Schedule = () => {
                 <input
                   type="text"
                   value={newSchedule}
-                  onChange={(e) => setNewSchedule(e.target.value)}
+                  onChange={(e) => setNewSchedule(e.target.value)} // setSchedule로 상태 저장
                   placeholder="Enter a new schedule"
                   style={{
                     margin: "5px",
@@ -153,7 +167,7 @@ const Schedule = () => {
                   }}
                 />
                 <button
-                  onClick={addSchedule}
+                  onClick={addSchedule} // newSchedule의 상태값을 schedule 목록에 추가
                   style={{
                     padding: "10px 15px",
                     border: "none",
@@ -187,7 +201,7 @@ const Schedule = () => {
                   padding: "0",
                 }}
               >
-                {schedules.map((schedule, index) => (
+                {currentSchedules.map((schedule, index) => (
                   <li key={index} style={{ margin: "10px 0" }}>
                     {editIndex === index ? (
                       <div style={{ display: "flex", alignItems: "center" }}>
@@ -318,7 +332,9 @@ const Schedule = () => {
                 borderTop: "1px solid #009fb1",
               }}
             >
-			  <h6 style={{margin: "2px", padding: "2px"}}>Today...</h6>
+              <h6 style={{ margin: "2px", padding: "2px" }}>
+                {moment(value).format("YYYY-MM-DD")}
+              </h6>
               <ul
                 style={{
                   display: "flex",
@@ -329,7 +345,7 @@ const Schedule = () => {
                   padding: "0",
                 }}
               >
-                {schedules.map((schedule, index) => (
+                {currentSchedules.map((schedule, index) => (
                   <li
                     key={index}
                     style={{

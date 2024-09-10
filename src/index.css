@@ -220,13 +220,14 @@ input[type='number']::-webkit-outer-spin-button {
 		width: 100%;
 		height: 100%;
 		padding: 5% 5%;
+		padding-bottom: 0%;
 		border: none;
 	}
 
 	.react-calendar__navigation {
 		background: #c5eaf7;
 		border-bottom: 4px solid #009fb1;
-		height: 60px;
+		height: 50px;
 		border-radius: 20px 20px 0 0;
 
 		span {
@@ -260,7 +261,7 @@ input[type='number']::-webkit-outer-spin-button {
 
 	.react-calendar__month-view {
 		height: 100%;
-		padding: 8px 20px;
+		padding: 4px 10px;
 
 		abbr {
 			color: #009fb1;
@@ -296,7 +297,7 @@ input[type='number']::-webkit-outer-spin-button {
 
 	.react-calendar__tile {
 		text-align: center;
-		height: 60px;
+		height: 50px;
 		display: flex;
 		flex-direction: column;
 		justify-content: flex-start;
@@ -576,13 +577,14 @@ input[type='number']::-webkit-outer-spin-button {
 		width: 100%;
 		height: 100%;
 		padding: 5% 5%;
+		padding-bottom: 0%;
 		border: none;
 	}
 
 	.react-calendar__navigation {
 		background: #dcdcff;
 		border-bottom: 4px solid #CC99FF;
-		height: 60px;
+		height: 50px;
 		border-radius: 20px 20px 0 0;
 
 		span {
@@ -616,7 +618,7 @@ input[type='number']::-webkit-outer-spin-button {
 
 	.react-calendar__month-view {
 		height: 100%;
-		padding: 8px 20px;
+		padding: 4px 10px;
 
 		abbr {
 			color: #CC99FF;
@@ -652,7 +654,7 @@ input[type='number']::-webkit-outer-spin-button {
 
 	.react-calendar__tile {
 		text-align: center;
-		height: 60px;
+		height: 50px;
 		display: flex;
 		flex-direction: column;
 		justify-content: flex-start;
