@@ -199,14 +199,20 @@ const Schedule = () => {
                   marginLeft: "5%",
                   listStyleType: "none",
                   padding: "0",
-				  height: "60%",
-				  overflow: "auto"
+                  height: "60%",
+                  overflow: "auto",
                 }}
               >
                 {currentSchedules.map((schedule, index) => (
                   <li key={index} style={{ margin: "10px 0" }}>
                     {editIndex === index ? (
-                      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "space-between",
+                        }}
+                      >
                         <input
                           type="text"
                           value={editSchedule}
@@ -225,7 +231,7 @@ const Schedule = () => {
                             padding: "10px 15px",
                             border: "none",
                             borderRadius: "4px",
-                            backgroundColor: "#c5eaf7",
+                            backgroundColor: "#009fb1",
                             color: "white",
                             cursor: "pointer",
                             margin: "5px",
@@ -241,50 +247,56 @@ const Schedule = () => {
                         </button>
                       </div>
                     ) : (
-                      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "space-between",
+                        }}
+                      >
                         <span>{schedule}</span>
-						<div>
-                        <button
-                          onClick={() => startEdit(index)}
-                          style={{
-                            padding: "10px 15px",
-                            border: "none",
-                            borderRadius: "4px",
-                            backgroundColor: "#c5eaf7",
-                            color: "white",
-                            cursor: "pointer",
-                            margin: "5px",
-                          }}
-                          onMouseOver={(e) =>
-                            (e.target.style.backgroundColor = "#7ab8cd")
-                          }
-                          onMouseOut={(e) =>
-                            (e.target.style.backgroundColor = "#c5eaf7")
-                          }
-                        >
-                          Edit
-                        </button>
-                        <button
-                          onClick={() => deleteSchedule(index)}
-                          style={{
-                            padding: "10px 15px",
-                            border: "none",
-                            borderRadius: "4px",
-                            backgroundColor: "#fda39e",
-                            color: "white",
-                            cursor: "pointer",
-                            margin: "5px",
-                          }}
-                          onMouseOver={(e) =>
-                            (e.target.style.backgroundColor = "#df7d77")
-                          }
-                          onMouseOut={(e) =>
-                            (e.target.style.backgroundColor = "#fda39e")
-                          }
-                        >
-                          Delete
-                        </button>
-						</div>
+                        <div>
+                          <button
+                            onClick={() => startEdit(index)}
+                            style={{
+                              padding: "10px 15px",
+                              border: "none",
+                              borderRadius: "4px",
+                              backgroundColor: "#c5eaf7",
+                              color: "white",
+                              cursor: "pointer",
+                              margin: "5px",
+                            }}
+                            onMouseOver={(e) =>
+                              (e.target.style.backgroundColor = "#7ab8cd")
+                            }
+                            onMouseOut={(e) =>
+                              (e.target.style.backgroundColor = "#c5eaf7")
+                            }
+                          >
+                            Edit
+                          </button>
+                          <button
+                            onClick={() => deleteSchedule(index)}
+                            style={{
+                              padding: "10px 15px",
+                              border: "none",
+                              borderRadius: "4px",
+                              backgroundColor: "#fda39e",
+                              color: "white",
+                              cursor: "pointer",
+                              margin: "5px",
+                            }}
+                            onMouseOver={(e) =>
+                              (e.target.style.backgroundColor = "#df7d77")
+                            }
+                            onMouseOut={(e) =>
+                              (e.target.style.backgroundColor = "#fda39e")
+                            }
+                          >
+                            Delete
+                          </button>
+                        </div>
                       </div>
                     )}
                   </li>
@@ -336,9 +348,51 @@ const Schedule = () => {
                 borderTop: "1px solid #009fb1",
               }}
             >
-              <h6 style={{ margin: "2px", padding: "2px" }}>
-                {moment(value).format("YYYY-MM-DD")}
-              </h6>
+              <div
+                id="addSchedule"
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <h5 style={{ margin: "2px", padding: "2px" }}>
+                  {moment(value).format("YYYY-MM-DD")}
+                </h5>
+                <input
+                  type="text"
+                  value={newSchedule}
+                  onChange={(e) => setNewSchedule(e.target.value)} // setSchedule로 상태 저장
+                  placeholder="Enter a new schedule"
+                  style={{
+                    margin: "1px",
+                    padding: "2px",
+                    width: "60%",
+                    border: "1px solid #ccc",
+                    borderRadius: "4px",
+                  }}
+                />
+                <button
+                  onClick={addSchedule} // newSchedule의 상태값을 schedule 목록에 추가
+                  style={{
+                    padding: "4px 8px",
+                    border: "none",
+                    borderRadius: "4px",
+                    backgroundColor: "#009fb1",
+                    color: "white",
+                    cursor: "pointer",
+                    margin: "5px",
+                  }}
+                  onMouseOver={(e) =>
+                    (e.target.style.backgroundColor = "#047f8d")
+                  }
+                  onMouseOut={(e) =>
+                    (e.target.style.backgroundColor = "#009fb1")
+                  }
+                >
+                  Add
+                </button>
+              </div>
               <ul
                 style={{
                   display: "flex",
@@ -353,28 +407,102 @@ const Schedule = () => {
                   <li
                     key={index}
                     style={{
-                      padding: "5px 0",
+                      margin: "5px 0",
                       borderBottom: "1px dashed #c5eaf7",
                     }}
                   >
                     {editIndex === index ? (
-                      <div style={{ display: "flex", alignItems: "center" }}>
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "space-between",
+                        }}
+                      >
                         <input
                           type="text"
                           value={editSchedule}
                           onChange={(e) => setEditSchedule(e.target.value)}
-                          style={{
-                            margin: "5px",
-                            padding: "10px",
-                            width: "50%",
-                            border: "1px solid #ccc",
-                            borderRadius: "4px",
-                          }}
+						  style={{
+							margin: "1px",
+							padding: "2px",
+							width: "60%",
+							border: "1px solid #ccc",
+							borderRadius: "4px",
+						  }}
                         />
+                        <button
+                          onClick={saveEdit}
+                          style={{
+                            padding: "4px 8px",
+                            border: "none",
+                            borderRadius: "4px",
+                            backgroundColor: "#009fb1",
+                            color: "white",
+                            cursor: "pointer",
+                            margin: "5px",
+                          }}
+                          onMouseOver={(e) =>
+                            (e.target.style.backgroundColor = "#7ab8cd")
+                          }
+                          onMouseOut={(e) =>
+                            (e.target.style.backgroundColor = "#c5eaf7")
+                          }
+                        >
+                          Save
+                        </button>
                       </div>
                     ) : (
-                      <div style={{ display: "flex", alignItems: "center" }}>
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "space-between",
+                        }}
+                      >
                         <span>{schedule}</span>
+                        <div>
+                          <button
+                            onClick={() => startEdit(index)}
+                            style={{
+                              padding: "4px 8px",
+                              border: "none",
+                              borderRadius: "4px",
+                              backgroundColor: "#c5eaf7",
+                              color: "white",
+                              cursor: "pointer",
+                              margin: "5px",
+                            }}
+                            onMouseOver={(e) =>
+                              (e.target.style.backgroundColor = "#7ab8cd")
+                            }
+                            onMouseOut={(e) =>
+                              (e.target.style.backgroundColor = "#c5eaf7")
+                            }
+                          >
+                            Edit
+                          </button>
+                          <button
+                            onClick={() => deleteSchedule(index)}
+                            style={{
+                              padding: "4px 8px",
+                              border: "none",
+                              borderRadius: "4px",
+                              backgroundColor: "#fda39e",
+                              color: "white",
+                              cursor: "pointer",
+                              margin: "5px",
+                            }}
+                            onMouseOver={(e) =>
+                              (e.target.style.backgroundColor = "#df7d77")
+                            }
+                            onMouseOut={(e) =>
+                              (e.target.style.backgroundColor = "#fda39e")
+                            }
+                          >
+                            Delete
+                          </button>
+                        </div>
                       </div>
                     )}
                   </li>
