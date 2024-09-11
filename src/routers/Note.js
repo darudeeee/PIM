@@ -99,7 +99,7 @@ const Note = () => {
 		  </SwiperSlide> */}
               <SwiperSlide>
                 <h4 style={{ margin: "20px 5%" }}>
-                  여기에 나중에 모바일 조회 했을때 노트 제목
+                  모바일 노트 제목 위치
                 </h4>
                 <div
                   className="markdown-preview"
