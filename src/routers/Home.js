@@ -316,6 +316,13 @@ const Home = () => {
         </div>
       ) : (
         <>
+        <div
+          style={{
+            display: "flex",
+            height: `calc(100% - ${heights}px)`,
+            width: "100%",
+          }}
+        >
           <Swiper
             scrollbar={{
               hide: false,
@@ -567,6 +574,7 @@ const Home = () => {
               </div>
             </SwiperSlide>
           </Swiper>
+          </div>
         </>
       )}
     </>

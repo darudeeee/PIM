@@ -9,6 +9,11 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import dayjs from "dayjs";
 import { useEffect, useState } from "react";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import { Pie } from "react-chartjs-2"; // 원하는 차트 종류를 가져오세요.
+import BudgetData from "../data/BudgetData";
+
+ChartJS.register(ArcElement, Tooltip, Legend);
 
 const Budget = () => {
   const [value, setValue] = useState(dayjs());
@@ -31,50 +36,61 @@ const Budget = () => {
     highestCategory: "",
   });
 
-  const [data, setData] = useState([
-    {
-      type: 1, //1: 수입, 2: 지출
-      amt: 1,
-      use: 1, // 1:데이트, 2: 식비, 3: 기타
-    },
-    {
-      type: 1, //1: 수입, 2: 지출
-      amt: 2,
-      use: 2, // 1:데이트, 2: 식비, 3: 기타
-    },
-    {
-      type: 1, //1: 수입, 2: 지출
-      amt: 3,
-      use: 3, // 1:데이트, 2: 식비, 3: 기타
-    },
-    {
-      type: 2, //1: 수입, 2: 지출
-      amt: 1,
-      use: 1, // 1:데이트, 2: 식비, 3: 기타
-    },
-    {
-      type: 2, //1: 수입, 2: 지출
-      amt: 3,
-      use: 3, // 1:데이트, 2: 식비, 3: 기타
-    },
-    {
-      type: 2, //1: 수입, 2: 지출
-      amt: 3,
-      use: 3, // 1:데이트, 2: 식비, 3: 기타
-    },
-    {
-      type: 2, //1: 수입, 2: 지출
-      amt: 3,
-      use: 3, // 1:데이트, 2: 식비, 3: 기타
-    },
-    {
-      type: 2, //1: 수입, 2: 지출
-      amt: 3,
-      use: 3, // 1:데이트, 2: 식비, 3: 기타
-    },
-  ]);
-  const [dense, setDense] = useState(false);
+  const [data, setData] = useState(
+    BudgetData
+  );
 
+  const [dense, setDense] = useState(false);
+  const Pies = {
+    labels: ["데이트", "식비", "기타"],
+    datasets: [
+      {
+        label: "금액",
+        data: data
+          .filter((item) => item.type == 1)
+          .map((item, index) => item.amt),
+        backgroundColor: [
+          "rgba(255, 99, 132, 0.2)",
+          "rgba(54, 162, 235, 0.2)",
+          "rgba(255, 206, 86, 0.2)",
+          // 'rgba(75, 192, 192, 0.2)',
+          // 'rgba(153, 102, 255, 0.2)',
+          // 'rgba(255, 159, 64, 0.2)',
+        ],
+        borderColor: [
+          "rgba(255, 99, 132, 1)",
+          "rgba(54, 162, 235, 1)",
+          "rgba(255, 206, 86, 1)",
+          // 'rgba(75, 192, 192, 1)',
+          // 'rgba(153, 102, 255, 1)',
+          // 'rgba(255, 159, 64, 1)',
+        ],
+        borderWidth: 1,
+      },
+    ],
+  };
+  const Pies2 = {
+    labels: ["데이트", "식비", "기타"],
+    datasets: [
+      {
+        label: "금액",
+        data: data
+          .filter((item) => item.type == 2)
+          .map((item, index) => item.amt),
+        backgroundColor: [
+          "rgba(75, 192, 192, 0.2)",
+          "rgba(153, 102, 255, 0.2)",
+          "rgba(255, 159, 64, 0.2)",
+        ],
+        borderColor: [
+          "rgba(75, 192, 192, 1)",
+          "rgba(153, 102, 255, 1)",
+          "rgba(255, 159, 64, 1)",
+        ],
+        borderWidth: 1,
+      },
+    ],
+  };
   return (
     <>
       <div
@@ -178,40 +194,22 @@ const Budget = () => {
               </ListItem>
             ))}
           </List>
-          <PieChart
-            series={[
-              {
-                data: data
-                  .filter((item) => item.type == 1)
-                  .map((item, index) => {
-                    return {
-                      id: index,
-                      value: item.amt,
-                      label: item.use.toString(),
-                    };
-                  }),
-              },
-            ]}
-            width={200}
-            height={350}
-          />
-          <PieChart
-            series={[
-              {
-                data: data
-                  .filter((item) => item.type == 2)
-                  .map((item, index) => {
-                    return {
-                      id: index,
-                      value: item.amt,
-                      label: item.use.toString(),
-                    };
-                  }),
-              },
-            ]}
-			width={200}
-            height={350}
-          />
+          <div
+            style={{
+              height: "80%",
+              width: "25%",
+            }}
+          >
+            <Pie data={Pies} />
+          </div>
+          <div
+            style={{
+              height: "80%",
+              width: "25%",
+            }}
+          >
+            <Pie data={Pies2} />
+          </div>
         </div>
       </div>
     </>
