@@ -36,11 +36,10 @@ const Budget = () => {
     highestCategory: "",
   });
 
-  const [data, setData] = useState(
-    BudgetData
-  );
+  const [data, setData] = useState(BudgetData);
 
   const [dense, setDense] = useState(false);
+
   const Pies = {
     labels: ["데이트", "식비", "기타"],
     datasets: [
@@ -53,7 +52,6 @@ const Budget = () => {
           "rgba(255, 99, 132, 0.2)",
           "rgba(54, 162, 235, 0.2)",
           "rgba(255, 206, 86, 0.2)",
-
         ],
         borderColor: [
           "rgba(255, 99, 132, 1)",
@@ -91,9 +89,9 @@ const Budget = () => {
       <div
         style={{
           display: "flex",
-          height: `calc(100% - ${heights}px)`,
-          width: "100%",
           flexDirection: "column",
+          height: `calc(100% - ${heights}px)`,
+          width: "100%",          
           overflow: "auto", // gird는 넘쳐도 크기 유지 다른게 줄어서 auto로 스크롤 만들어줌
         }}
       >
@@ -106,8 +104,10 @@ const Budget = () => {
               margin: "30px 5%",
               alignItems: "center",
               justifyContent: "center",
+              boxShadow: "none",
             }}
           >
+            {/* mui에서 dayjs를 사용 가능하게 */}
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <DatePicker
                 label="date"
@@ -116,7 +116,8 @@ const Budget = () => {
               />
             </LocalizationProvider>
           </Card>
-        </div>
+          </div>
+          
         <Grid container spacing={2}>
           {/* gird는 세로로 12줄로 나눔, spacing은 간격 자른것들 사이 */}
 
@@ -129,7 +130,7 @@ const Budget = () => {
                 justifyContent: "center",
               }}
             >
-              {cardData.income}원
+              {cardData.income} won
             </Card>
           </Grid>
           <Grid item xs={12} sm={12} md={6} lg={3}>
@@ -141,7 +142,7 @@ const Budget = () => {
                 justifyContent: "center",
               }}
             >
-              {cardData.expenditure}원
+              {cardData.expenditure} won
             </Card>
           </Grid>
           <Grid item xs={12} sm={12} md={6} lg={3}>
@@ -153,7 +154,7 @@ const Budget = () => {
                 justifyContent: "center",
               }}
             >
-              {cardData.total}원
+              {cardData.total} won
             </Card>
           </Grid>
           <Grid item xs={12} sm={12} md={6} lg={3}>
@@ -169,13 +170,81 @@ const Budget = () => {
             </Card>
           </Grid>
           {/* xs 옆이 얇은 모바일, sm 넓은 모바일, md 좀 더 큰그, lg 더 큰그... */}
+
+          <Grid item xs={12} sm={12} md={6} lg={3}>
+            <Card
+              sx={{
+                display: "flex",
+                height: "100%",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <List
+                dense={false} // 리스트 간에 여백 조정
+                style={{ height: "80%", overflow: "auto", width: "100%" }}
+              >
+                {data.map((item) => (
+                  <ListItem>
+                    <ListItemText
+                      primary={
+                        <>
+                          {item.type}(1:수입, 2:지출)　
+                          {item.use}(1:데이트, 2:식비, 3:기타)　
+                          {item.amt}(won)
+                        </>
+                      }
+                    />
+                  </ListItem>
+                ))}
+              </List>
+            </Card>
+          </Grid>
+          <Grid item xs={12} sm={12} md={6} lg={3}>
+            <Card
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                height: "100%",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <h4>income</h4>
+              <Pie data={Pies} />
+            </Card>
+          </Grid>
+          <Grid item xs={12} sm={12} md={6} lg={3}>
+            <Card
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                height: "100%",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <h4>expenditure</h4>
+              <Pie data={Pies2} />
+            </Card>
+          </Grid>
+          <Grid item xs={12} sm={12} md={6} lg={3}>
+            <Card
+              sx={{
+                display: "flex",
+                height: "100%",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              폼
+            </Card>
+          </Grid>
         </Grid>
 
-
-        {/* 그리드 컨테이너 안에 그리드 넣고, 그리드로 사용 가능한지 해보기 */}
-        <div style={{ display: "flex", marginTop: "20px" }}>
+        {/* <div style={{ display: "flex", marginTop: "20px" }}>
           <List
-            dense={dense}
+            dense={true} // 리스트 간에 여백 조정
             style={{ height: "80%", overflow: "auto", width: "25%" }}
           >
             {data.map((item) => (
@@ -183,32 +252,17 @@ const Budget = () => {
                 <ListItemText
                   primary={
                     <>
-                      {item.type}
-                      {item.use}
-                      {item.amt}
+                      {item.type}(1:수입, 2:지출)　
+                      {item.use}(1:데이트, 2:식비, 3:기타)　
+                      {item.amt}(원)
                     </>
                   }
                 />
               </ListItem>
             ))}
           </List>
-          <div
-            style={{
-              height: "80%",
-              width: "25%",
-            }}
-          >
-            <Pie data={Pies} />
-          </div>
-          <div
-            style={{
-              height: "80%",
-              width: "25%",
-            }}
-          >
-            <Pie data={Pies2} />
-          </div>
-        </div>
+
+        </div> */}
       </div>
     </>
   );
