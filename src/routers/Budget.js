@@ -15,6 +15,8 @@ import BudgetData from "../data/BudgetData";
 import Select from "@mui/material/Select";
 import { MenuItem } from "@mui/material";
 import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import SendIcon from "@mui/icons-material/Send";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -40,13 +42,6 @@ const Budget = () => {
   });
 
   const [data, setData] = useState(BudgetData);
-
-  const [type, setType] = useState(""); // 폼 select
-
-  const transactionType = (event) => {
-    setType(event.target.value);
-  };
-
   const [dense, setDense] = useState(false);
 
   const Pies = {
@@ -71,6 +66,7 @@ const Budget = () => {
       },
     ],
   };
+
   const Pies2 = {
     labels: ["식비", "교통비", "기타"],
     datasets: [
@@ -92,6 +88,16 @@ const Budget = () => {
         borderWidth: 1,
       },
     ],
+  };
+
+  const [type, setType] = useState(""); // 폼 select
+  const handleType = (event) => {
+    setType(event.target.value);
+  };
+
+  const [use, setUse] = useState(""); // 폼 textField
+  const handleUse = (event) => {
+    setUse(event.target.value);
   };
 
   return (
@@ -258,55 +264,43 @@ const Budget = () => {
                   width: "60%",
                 }}
               >
-                <Select value={type} onChange={transactionType}>
+                <div style={{ display: "flex", justifyContent: "center", height: "20%" }}>
+                  <h3>Budget Management</h3>
+                </div>
+                <Select value={type} onChange={handleType}>
                   <MenuItem value={1}>income</MenuItem>
                   <MenuItem value={2}>expenditure</MenuItem>
                 </Select>
-
-                <TextField id="outlined-basic" label="Amount" variant="outlined" margin="dense" />
-
-                {/* <div style={{marginTop: "30px"}} />
-
+                <div style={{ marginTop: "20px" }} />
                 <TextField
-            label="Size"
-            id="outlined-size-small"
-            defaultValue="Small"
-            size="small"
-          />
-
-                <div style={{marginTop: "30px"}} /> */}
-
-                <Select value={type} onChange={transactionType}>
-                  <MenuItem value={1}>income</MenuItem>
-                  <MenuItem value={2}>expenditure</MenuItem>
-                  <MenuItem value={2}>expenditure</MenuItem>
+                  fullWidth
+                  label="fullWidth"
+                  id="fullWidth"
+                  sx={{
+                    "& .MuiInputBase-root": {
+                      height: "50px",
+                      padding: "16px 0px",
+                    },
+                  }}
+                />
+                <div style={{ marginTop: "20px" }} />
+                <Select value={type} onChange={handleUse}>
+                  <MenuItem value={1}>식비</MenuItem>
+                  <MenuItem value={2}>교통비</MenuItem>
+                  <MenuItem value={3}>기타</MenuItem>
                 </Select>
+                <div style={{ marginTop: "20px" }} />
+                <Button
+                  variant="contained"
+                  endIcon={<SendIcon />}
+                  style={{ backgroundColor: "lightblue" }}
+                >
+                  Send
+                </Button>
               </div>
             </Card>
           </Grid>
         </Grid>
-
-        {/* <div style={{ display: "flex", marginTop: "20px" }}>
-          <List
-            dense={true} // 리스트 간에 여백 조정
-            style={{ height: "80%", overflow: "auto", width: "25%" }}
-          >
-            {data.map((item) => (
-              <ListItem>
-                <ListItemText
-                  primary={
-                    <>
-                      {item.type}(1:수입, 2:지출)　
-                      {item.use}(1:데이트, 2:식비, 3:기타)　
-                      {item.amt}(원)
-                    </>
-                  }
-                />
-              </ListItem>
-            ))}
-          </List>
-
-        </div> */}
       </div>
     </>
   );
