@@ -12,6 +12,9 @@ import { useEffect, useState } from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Pie } from "react-chartjs-2"; // 원하는 차트 종류를 가져오세요.
 import BudgetData from "../data/BudgetData";
+import Select from "@mui/material/Select";
+import { MenuItem } from "@mui/material";
+import TextField from "@mui/material/TextField";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -38,10 +41,16 @@ const Budget = () => {
 
   const [data, setData] = useState(BudgetData);
 
+  const [type, setType] = useState(""); // 폼 select
+
+  const transactionType = (event) => {
+    setType(event.target.value);
+  };
+
   const [dense, setDense] = useState(false);
 
   const Pies = {
-    labels: ["데이트", "식비", "기타"],
+    labels: ["식비", "교통비", "기타"],
     datasets: [
       {
         label: "금액",
@@ -63,7 +72,7 @@ const Budget = () => {
     ],
   };
   const Pies2 = {
-    labels: ["데이트", "식비", "기타"],
+    labels: ["식비", "교통비", "기타"],
     datasets: [
       {
         label: "금액",
@@ -84,6 +93,7 @@ const Budget = () => {
       },
     ],
   };
+
   return (
     <>
       <div
@@ -91,8 +101,9 @@ const Budget = () => {
           display: "flex",
           flexDirection: "column",
           height: `calc(100% - ${heights}px)`,
-          width: "100%",          
+          width: "100%",
           overflow: "auto", // gird는 넘쳐도 크기 유지 다른게 줄어서 auto로 스크롤 만들어줌
+          backgroundColor: "#f7fdff",
         }}
       >
         <div>
@@ -105,6 +116,7 @@ const Budget = () => {
               alignItems: "center",
               justifyContent: "center",
               boxShadow: "none",
+              backgroundColor: "#f7fdff",
             }}
           >
             {/* mui에서 dayjs를 사용 가능하게 */}
@@ -116,8 +128,8 @@ const Budget = () => {
               />
             </LocalizationProvider>
           </Card>
-          </div>
-          
+        </div>
+
         <Grid container spacing={2}>
           {/* gird는 세로로 12줄로 나눔, spacing은 간격 자른것들 사이 */}
 
@@ -210,7 +222,7 @@ const Budget = () => {
                 justifyContent: "center",
               }}
             >
-              <h4>income</h4>
+              <h4>Income Tracker</h4>
               <Pie data={Pies} />
             </Card>
           </Grid>
@@ -224,7 +236,7 @@ const Budget = () => {
                 justifyContent: "center",
               }}
             >
-              <h4>expenditure</h4>
+              <h4>Expense Tracker</h4>
               <Pie data={Pies2} />
             </Card>
           </Grid>
@@ -237,7 +249,39 @@ const Budget = () => {
                 justifyContent: "center",
               }}
             >
-              폼
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  height: "90%",
+                  width: "60%",
+                }}
+              >
+                <Select value={type} onChange={transactionType}>
+                  <MenuItem value={1}>income</MenuItem>
+                  <MenuItem value={2}>expenditure</MenuItem>
+                </Select>
+
+                <TextField id="outlined-basic" label="Amount" variant="outlined" margin="dense" />
+
+                {/* <div style={{marginTop: "30px"}} />
+
+                <TextField
+            label="Size"
+            id="outlined-size-small"
+            defaultValue="Small"
+            size="small"
+          />
+
+                <div style={{marginTop: "30px"}} /> */}
+
+                <Select value={type} onChange={transactionType}>
+                  <MenuItem value={1}>income</MenuItem>
+                  <MenuItem value={2}>expenditure</MenuItem>
+                  <MenuItem value={2}>expenditure</MenuItem>
+                </Select>
+              </div>
             </Card>
           </Grid>
         </Grid>
