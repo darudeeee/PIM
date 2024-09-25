@@ -50,9 +50,9 @@ const Budget = () => {
         highestCategory[0] = item;
       }
     });
-    total += income + expenditure;
+    total += income - expenditure;
 
-	// 형변환 : 가장 많은 소비를 한 곳
+	// 형변환, 다 else로 나오네
 	if (highestCategory[0].use == 1) {
 		highestCategory[0].use = "Food";
 	}
@@ -78,14 +78,14 @@ const Budget = () => {
     income: 0,
     expenditure: 0,
     total: 0,
-    highestCategory: "Highest Category",
+    highestCategory: 0, 
   });
 
   const [data, setData] = useState(BudgetData);
   const [dense, setDense] = useState(false);
 
   const Pies = {
-    labels: ["Food", "Transportation", "Other"],
+    labels: ["Salary", "Rental", "Other"],
     datasets: [
       {
         label: "amt",
@@ -135,10 +135,12 @@ const Budget = () => {
     setType(event.target.value);
   };
 
-  const [amt, setAmt] = useState(0);
-  const handleAmt = (event) => {
-    setAmt(event.target.value);
-  };
+//   price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+  
+	const [amt, setAmt] = useState(0);
+	const handleAmt = (event) => {
+		setAmt(event.target.value);
+	};
 
   const [use, setUse] = useState(0); // 폼 select
   const handleUse = (event) => {
@@ -200,7 +202,8 @@ const Budget = () => {
                 justifyContent: "center",
               }}
             >
-              {cardData.income} won
+			  <h5>Income :</h5>&nbsp;
+              +{cardData.income} won
             </Card>
           </Grid>
           <Grid item xs={12} sm={12} md={6} lg={3}>
@@ -212,7 +215,8 @@ const Budget = () => {
                 justifyContent: "center",
               }}
             >
-              {cardData.expenditure} won
+			  <h5>Expenditure :</h5>&nbsp;
+              -{cardData.expenditure} won
             </Card>
           </Grid>
           <Grid item xs={12} sm={12} md={6} lg={3}>
@@ -224,6 +228,7 @@ const Budget = () => {
                 justifyContent: "center",
               }}
             >
+			  <h5>Total :</h5>&nbsp;
               {cardData.total} won
             </Card>
           </Grid>
@@ -236,7 +241,10 @@ const Budget = () => {
                 justifyContent: "center",
               }}
             >
-              {cardData.highestCategory} {/* 형변환 ㄱㄱ띵 */}
+			  <h5>Highest Category : </h5>&nbsp;
+			  {/* 형변환 */}
+              {cardData.highestCategory}
+			  
             </Card>
           </Grid>
           {/* xs 옆이 얇은 모바일, sm 넓은 모바일, md 좀 더 큰그, lg 더 큰그... */}
@@ -269,7 +277,15 @@ const Budget = () => {
                       primary={
                         <>
                           {item.type === 1 ? "Income" : item.type === 2 ? "Expenditure" : "None"}　
-                          {item.use  === 1 ? "Food" : item.type === 2 ? "Transportation" : item.type === 3 ? "Other" : "None"}　
+                          {
+							(item.type === 1 && item.use === 1) ? "Salary" :
+							(item.type === 1 && item.use === 2) ? "Rental" :
+							(item.type === 1 && item.use === 3) ? "Other" :
+							(item.type === 2 && item.use === 1) ? "Food" :
+							(item.type === 2 && item.use === 2) ? "Transportation" :
+							(item.type === 2 && item.use === 3) ? "Other" :
+							"None"
+							}　
                           {item.amt}won
                         </>
                       }
