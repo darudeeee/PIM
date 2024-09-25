@@ -236,14 +236,6 @@ const Budget = () => {
                 justifyContent: "center",
               }}
             >
-			<div
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    height: "20%",
-                  }}
-                >
-                </div>
               <List
                 dense={false} // 리스트 간에 여백 조정
                 style={{ height: "80%", overflow: "auto", width: "100%" }}
@@ -253,6 +245,7 @@ const Budget = () => {
 					border: "1px solid #D4E8FB",
 					padding: "5px",
 				  }}
+					// width 지정 하거나, margin주면 뒤 card들 밀림
 				  >
 					{/* 여기에 div랑 아이콘 넣으면 밀림 */}
                     <ListItemText
