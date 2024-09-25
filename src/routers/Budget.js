@@ -37,11 +37,16 @@ const Budget = () => {
 //     setIsMobile(window.innerWidth <= 1200); // 크기 감지만 해줌
 //   });
 
+  const [highestCategory, setHighestCategory] = useState(0);
+  const handleHighestCategory = (event) => {
+    setHighestCategory(event.target.value);
+  };
+
   const [cardData, setCardData] = useState({
     income: 0,
     expenditure: 0,
     total: 0,
-    highestCategory: "Highest Category : ",
+    highestCategory: "Highest Category : " + {highestCategory},
   });
 
   const [data, setData] = useState(BudgetData);
@@ -124,7 +129,7 @@ const Budget = () => {
           <Card
             sx={{
               display: "flex",
-              height: "70px",
+              height: "50px",
               width: "90%",
               margin: "30px 5%",
               alignItems: "center",
@@ -216,8 +221,8 @@ const Budget = () => {
                     <ListItemText
                       primary={
                         <>
-                          {item.type}(1:수입, 2:지출)　
-                          {item.use}(1:데이트, 2:식비, 3:기타)　
+                          {item.type}(1:I, 2:O)　
+                          {item.use}(1:F, 2:T, 3:O)　
                           {item.amt}(won)
                         </>
                       }
@@ -268,7 +273,7 @@ const Budget = () => {
                 style={{
                   display: "flex",
                   flexDirection: "column",
-                  justifyContent: "center",
+                  justifyContent: "space-evenly",
                   height: "90%",
                   width: "60%",
                 }}
@@ -297,8 +302,6 @@ const Budget = () => {
                   </Select>
                 </FormControl>
 
-                <div style={{ marginTop: "20px" }} />
-
                 <FormControl fullWidth sx={{ m: 1 }} variant="standard">
                   <InputLabel
 				  	value={amt}
@@ -314,8 +317,6 @@ const Budget = () => {
                     }
                   />{" "}
                 </FormControl>
-
-                <div style={{ marginTop: "20px" }} />
 
                 <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
                   <InputLabel id="demo-simple-select-standard-label">
