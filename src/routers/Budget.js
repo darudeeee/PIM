@@ -237,15 +237,18 @@ const Budget = () => {
               }}
             >
               <List
-                dense={false} // 리스트 간에 여백 조정
                 style={{ height: "80%", overflow: "auto", width: "100%" }}
               >
+				<div style={{
+					// 여기에 width랑 margin해도 뒤 card 밀림
+				}}>
                 {data.map((item) => (
                   <ListItem style={{
 					border: "1px solid #D4E8FB",
 					padding: "5px",
 				  }}
 					// width 지정 하거나, margin주면 뒤 card들 밀림
+					// dense 안먹힘
 				  >
 					{/* 여기에 div랑 아이콘 넣으면 밀림 */}
                     <ListItemText
@@ -259,6 +262,7 @@ const Budget = () => {
                     />
                   </ListItem>
                 ))}
+				</div>
               </List>
             </Card>
           </Grid>
