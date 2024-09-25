@@ -274,10 +274,11 @@ const Budget = () => {
 					// dense 안먹힘
 				  >
 					{/* 여기에 div랑 아이콘 넣으면 밀림 */}
+					&nbsp;<PaidIcon />&nbsp;
                     <ListItemText
                       primary={
                         <>
-                          {item.type === 1 ? "Income" : item.type === 2 ? "Expenditure" : "None"}　
+                          {item.type === 1 ? "Income" : item.type === 2 ? "Expenditure" : "None"},&nbsp;
                           {
 							(item.type === 1 && item.use === 1) ? "Salary" :
 							(item.type === 1 && item.use === 2) ? "Rental" :
@@ -286,7 +287,7 @@ const Budget = () => {
 							(item.type === 2 && item.use === 2) ? "Transportation" :
 							(item.type === 2 && item.use === 3) ? "Other" :
 							"None"
-							}　
+							},&nbsp;
                           {item.amt}won
                         </>
                       }
@@ -393,7 +394,7 @@ const Budget = () => {
                 <Button
                   variant="contained"
                   endIcon={<SendIcon />}
-                  style={{ backgroundColor: "lightblue", marginBottom: "10%",
+                  style={{ backgroundColor: "lightblue", 
 				   }}
                 >
                   Send
