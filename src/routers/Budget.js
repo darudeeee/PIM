@@ -47,6 +47,7 @@ const Budget = () => {
         expenditure += item.amt;
       }
       if (temp < item.amt) {
+		// 지출 중에서 가져와야하지 않나? filter(item.type == 2)
         highestCategory[0] = item;
       }
     });
