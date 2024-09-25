@@ -14,6 +14,31 @@ body {
 	width: 100%;
 }
 
+/*** Box3 스크롤바 설정 ***/
+/* 스크롤바 설정*/
+::-webkit-scrollbar{
+    background-color:transparent;
+    width: 8px;
+}
+/* 스크롤바 막대 설정*/
+::-webkit-scrollbar-thumb{
+    background-color:#babac0;
+    border-radius:16px;
+}
+::-webkit-scrollbar-thumb:hover{
+    background-color:#a0a0a5;
+}
+
+/* 스크롤바 뒷 배경 설정*/
+::-webkit-scrollbar-track{
+  border-radius: 10px;
+  background-color:transparent;
+}
+::-webkit-scrollbar-track:hover{
+  background-color:transparent;
+}
+::-webkit-scrollbar-button {display:none;}
+
 @font-face {
 	font-family: 'KyoboHandwriting2023wsa';
 	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2404-2@1.0/KyoboHandwriting2023wsa.woff2') format('woff2');

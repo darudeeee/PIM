@@ -17,7 +17,6 @@ import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import InputAdornment from "@mui/material/InputAdornment";
 import Input from "@mui/material/Input";
-
 import Button from "@mui/material/Button";
 import SendIcon from "@mui/icons-material/Send";
 
@@ -26,34 +25,52 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 const Budget = () => {
   const [value, setValue] = useState(dayjs());
 
-//   let deviceWidth = window.innerWidth;
-//   const [isMobile, setIsMobile] = useState(deviceWidth <= 1200);
-
   const [heights, setHeight] = useState(0);
   useEffect(() => {
     setHeight(document.getElementById("header").offsetHeight);
-  }, []);
-//   window.addEventListener("resize", function () {
-//     setIsMobile(window.innerWidth <= 1200); // 크기 감지만 해줌
-//   });
 
-  const [highestCategory, setHighestCategory] = useState(0);
-  const handleHighestCategory = (event) => {
-    setHighestCategory(event.target.value);
-  };
+    // 데이터 가져온거 계산 때리고 cardData에 넣어주기
+    // map 돌려서 sum
+
+    var income = 0;
+    var expenditure = 0;
+    var total = 0;
+    var highestCategory = [];
+    var temp = 0;
+
+    data.map((item) => {
+      if (item.type == 1) {
+        income += item.amt;
+      }
+      if (item.type == 2) {
+        expenditure += item.amt;
+      }
+      if (temp < item.amt) {
+        highestCategory[0] = item;
+      }
+    });
+    total += income + expenditure;
+
+    setCardData({
+      income: income,
+      expenditure: expenditure,
+      total: total,
+      highestCategory: highestCategory[0].use, // 형변환
+    });
+  }, []);
 
   const [cardData, setCardData] = useState({
     income: 0,
     expenditure: 0,
     total: 0,
-    highestCategory: "Highest Category : " + {highestCategory},
+    highestCategory: "Highest Category",
   });
 
   const [data, setData] = useState(BudgetData);
   const [dense, setDense] = useState(false);
 
   const Pies = {
-    labels: ["식비", "교통비", "기타"],
+    labels: ["Food", "Transportation", "Other"],
     datasets: [
       {
         label: "금액",
@@ -76,7 +93,7 @@ const Budget = () => {
   };
 
   const Pies2 = {
-    labels: ["식비", "교통비", "기타"],
+    labels: ["Food", "Transportation", "Other"],
     datasets: [
       {
         label: "금액",
@@ -292,25 +309,19 @@ const Budget = () => {
                   <InputLabel id="demo-simple-select-standard-label">
                     Type
                   </InputLabel>
-                  <Select
-                    value={type}
-                    onChange={handleType}
-                  >
-    				<MenuItem value={0}>None</MenuItem>
+                  <Select value={type} onChange={handleType}>
+                    <MenuItem value={0}>None</MenuItem>
                     <MenuItem value={1}>Income</MenuItem>
                     <MenuItem value={2}>expenditure</MenuItem>
                   </Select>
                 </FormControl>
 
                 <FormControl fullWidth sx={{ m: 1 }} variant="standard">
-                  <InputLabel
-				  	value={amt}
-					onChange={handleAmt}
-				  >
+                  <InputLabel value={amt} onChange={handleAmt}>
                     Amt
                   </InputLabel>
-                  <Input 
-				    type="number"
+                  <Input
+                    type="number"
                     id="standard-adornment-amount"
                     endAdornment={
                       <InputAdornment position="start">won</InputAdornment>
@@ -322,14 +333,11 @@ const Budget = () => {
                   <InputLabel id="demo-simple-select-standard-label">
                     Use
                   </InputLabel>
-                  <Select
-                    value={use}
-                    onChange={handleUse}
-                  >
-				  <MenuItem value={0}>None</MenuItem>
-                  <MenuItem value={1}>Food</MenuItem>
-                  <MenuItem value={2}>Transportation</MenuItem>
-                  <MenuItem value={3}>Other</MenuItem>
+                  <Select value={use} onChange={handleUse}>
+                    <MenuItem value={0}>None</MenuItem>
+                    <MenuItem value={1}>Food</MenuItem>
+                    <MenuItem value={2}>Transportation</MenuItem>
+                    <MenuItem value={3}>Other</MenuItem>
                   </Select>
                 </FormControl>
 
