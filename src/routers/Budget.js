@@ -52,11 +52,25 @@ const Budget = () => {
     });
     total += income + expenditure;
 
+	// 형변환 : 가장 많은 소비를 한 곳
+	if (highestCategory[0].use == 1) {
+		highestCategory[0].use = "Food";
+	}
+	else if (highestCategory[0].use == 2) {
+		highestCategory[0].use = "Transportation";
+	}
+	else if (highestCategory[0].use == 3) {
+		highestCategory[0].use = "Other";
+	} else {
+		highestCategory[0].use = "None";
+	}
+	;
+
     setCardData({
       income: income,
       expenditure: expenditure,
       total: total,
-      highestCategory: highestCategory[0].use, // 형변환
+      highestCategory: highestCategory[0].use, // 형변환? 밑에서 3항연산자로 match.max?
     });
   }, []);
 
@@ -222,7 +236,7 @@ const Budget = () => {
                 justifyContent: "center",
               }}
             >
-              {cardData.highestCategory}
+              {cardData.highestCategory} {/* 형변환 ㄱㄱ띵 */}
             </Card>
           </Grid>
           {/* xs 옆이 얇은 모바일, sm 넓은 모바일, md 좀 더 큰그, lg 더 큰그... */}
@@ -254,9 +268,9 @@ const Budget = () => {
                     <ListItemText
                       primary={
                         <>
-                          {item.type}(1:I, 2:O)　
-                          {item.use}(1:F, 2:T, 3:O)　
-                          {item.amt}(won)
+                          {item.type === 1 ? "Income" : item.type === 2 ? "Expenditure" : "None"}　
+                          {item.use  === 1 ? "Food" : item.type === 2 ? "Transportation" : item.type === 3 ? "Other" : "None"}　
+                          {item.amt}won
                         </>
                       }
                     />
@@ -329,7 +343,7 @@ const Budget = () => {
                   <Select value={type} onChange={handleType}>
                     <MenuItem value={0}>None</MenuItem>
                     <MenuItem value={1}>Income</MenuItem>
-                    <MenuItem value={2}>expenditure</MenuItem>
+                    <MenuItem value={2}>Expenditure</MenuItem>
                   </Select>
                 </FormControl>
 
