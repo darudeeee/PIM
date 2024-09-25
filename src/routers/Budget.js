@@ -19,6 +19,7 @@ import InputAdornment from "@mui/material/InputAdornment";
 import Input from "@mui/material/Input";
 import Button from "@mui/material/Button";
 import SendIcon from "@mui/icons-material/Send";
+import PaidIcon from '@mui/icons-material/Paid';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -73,7 +74,7 @@ const Budget = () => {
     labels: ["Food", "Transportation", "Other"],
     datasets: [
       {
-        label: "금액",
+        label: "amt",
         data: data
           .filter((item) => item.type == 1)
           .map((item, index) => item.amt),
@@ -96,7 +97,7 @@ const Budget = () => {
     labels: ["Food", "Transportation", "Other"],
     datasets: [
       {
-        label: "금액",
+        label: "amt",
         data: data
           .filter((item) => item.type == 2)
           .map((item, index) => item.amt),
@@ -136,6 +137,7 @@ const Budget = () => {
         style={{
           display: "flex",
           flexDirection: "column",
+		  alignItems: "center",
           height: `calc(100% - ${heights}px)`,
           width: "100%",
           overflow: "auto", // gird는 넘쳐도 크기 유지 다른게 줄어서 auto로 스크롤 만들어줌
@@ -161,12 +163,17 @@ const Budget = () => {
                 label="date"
                 value={value}
                 onChange={(newValue) => setValue(newValue)}
-                sx={{ width: "50%", backgroundColor: "#fff" }}
+                sx={{ width: "100%", backgroundColor: "#fff" }}
               />
             </LocalizationProvider>
           </Card>
         </div>
 
+		<div style={{
+			display: "flex",
+			width: "90%",
+			marginBottom: "50px"
+		}}>
         <Grid container spacing={2}>
           {/* gird는 세로로 12줄로 나눔, spacing은 간격 자른것들 사이 */}
 
@@ -229,12 +236,25 @@ const Budget = () => {
                 justifyContent: "center",
               }}
             >
+			<div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    height: "20%",
+                  }}
+                >
+                </div>
               <List
                 dense={false} // 리스트 간에 여백 조정
                 style={{ height: "80%", overflow: "auto", width: "100%" }}
               >
                 {data.map((item) => (
-                  <ListItem>
+                  <ListItem style={{
+					border: "1px solid #D4E8FB",
+					padding: "5px",
+				  }}
+				  >
+					{/* 여기에 div랑 아이콘 넣으면 밀림 */}
                     <ListItemText
                       primary={
                         <>
@@ -299,7 +319,7 @@ const Budget = () => {
                   style={{
                     display: "flex",
                     justifyContent: "center",
-                    height: "20%",
+                    height: "10%",
                   }}
                 >
                   <h3>Budget Management</h3>
@@ -345,7 +365,8 @@ const Budget = () => {
                 <Button
                   variant="contained"
                   endIcon={<SendIcon />}
-                  style={{ backgroundColor: "lightblue" }}
+                  style={{ backgroundColor: "lightblue", marginBottom: "10%",
+				   }}
                 >
                   Send
                 </Button>
@@ -353,6 +374,7 @@ const Budget = () => {
             </Card>
           </Grid>
         </Grid>
+		</div>
       </div>
     </>
   );
