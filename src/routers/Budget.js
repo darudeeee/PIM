@@ -3,7 +3,6 @@ import Card from "@mui/material/Card";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
-import { PieChart } from "@mui/x-charts/PieChart";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -14,7 +13,11 @@ import { Pie } from "react-chartjs-2"; // 원하는 차트 종류를 가져오�
 import BudgetData from "../data/BudgetData";
 import Select from "@mui/material/Select";
 import { MenuItem } from "@mui/material";
-import TextField from "@mui/material/TextField";
+import FormControl from "@mui/material/FormControl";
+import InputLabel from "@mui/material/InputLabel";
+import InputAdornment from "@mui/material/InputAdornment";
+import Input from "@mui/material/Input";
+
 import Button from "@mui/material/Button";
 import SendIcon from "@mui/icons-material/Send";
 
@@ -23,22 +26,22 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 const Budget = () => {
   const [value, setValue] = useState(dayjs());
 
-  let deviceWidth = window.innerWidth;
-  const [isMobile, setIsMobile] = useState(deviceWidth <= 1200);
+//   let deviceWidth = window.innerWidth;
+//   const [isMobile, setIsMobile] = useState(deviceWidth <= 1200);
 
   const [heights, setHeight] = useState(0);
   useEffect(() => {
     setHeight(document.getElementById("header").offsetHeight);
   }, []);
-  window.addEventListener("resize", function () {
-    setIsMobile(window.innerWidth <= 1200); // 크기 감지만 해줌
-  });
+//   window.addEventListener("resize", function () {
+//     setIsMobile(window.innerWidth <= 1200); // 크기 감지만 해줌
+//   });
 
   const [cardData, setCardData] = useState({
     income: 0,
     expenditure: 0,
     total: 0,
-    highestCategory: "",
+    highestCategory: "Highest Category : ",
   });
 
   const [data, setData] = useState(BudgetData);
@@ -90,12 +93,17 @@ const Budget = () => {
     ],
   };
 
-  const [type, setType] = useState(""); // 폼 select
+  const [type, setType] = useState(0); // 폼 select
   const handleType = (event) => {
     setType(event.target.value);
   };
 
-  const [use, setUse] = useState(""); // 폼 textField
+  const [amt, setAmt] = useState(0);
+  const handleAmt = (event) => {
+    setAmt(event.target.value);
+  };
+
+  const [use, setUse] = useState(0); // 폼 select
   const handleUse = (event) => {
     setUse(event.target.value);
   };
@@ -131,6 +139,7 @@ const Budget = () => {
                 label="date"
                 value={value}
                 onChange={(newValue) => setValue(newValue)}
+                sx={{ width: "50%", backgroundColor: "#fff" }}
               />
             </LocalizationProvider>
           </Card>
@@ -264,31 +273,65 @@ const Budget = () => {
                   width: "60%",
                 }}
               >
-                <div style={{ display: "flex", justifyContent: "center", height: "20%" }}>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    height: "20%",
+                  }}
+                >
                   <h3>Budget Management</h3>
                 </div>
-                <Select value={type} onChange={handleType}>
-                  <MenuItem value={1}>income</MenuItem>
-                  <MenuItem value={2}>expenditure</MenuItem>
-                </Select>
+
+                <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+                  <InputLabel id="demo-simple-select-standard-label">
+                    Type
+                  </InputLabel>
+                  <Select
+                    value={type}
+                    onChange={handleType}
+                  >
+    				<MenuItem value={0}>None</MenuItem>
+                    <MenuItem value={1}>Income</MenuItem>
+                    <MenuItem value={2}>expenditure</MenuItem>
+                  </Select>
+                </FormControl>
+
                 <div style={{ marginTop: "20px" }} />
-                <TextField
-                  fullWidth
-                  label="fullWidth"
-                  id="fullWidth"
-                  sx={{
-                    "& .MuiInputBase-root": {
-                      height: "50px",
-                      padding: "16px 0px",
-                    },
-                  }}
-                />
+
+                <FormControl fullWidth sx={{ m: 1 }} variant="standard">
+                  <InputLabel
+				  	value={amt}
+					onChange={handleAmt}
+				  >
+                    Amt
+                  </InputLabel>
+                  <Input 
+				    type="number"
+                    id="standard-adornment-amount"
+                    endAdornment={
+                      <InputAdornment position="start">won</InputAdornment>
+                    }
+                  />{" "}
+                </FormControl>
+
                 <div style={{ marginTop: "20px" }} />
-                <Select value={type} onChange={handleUse}>
-                  <MenuItem value={1}>식비</MenuItem>
-                  <MenuItem value={2}>교통비</MenuItem>
-                  <MenuItem value={3}>기타</MenuItem>
-                </Select>
+
+                <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+                  <InputLabel id="demo-simple-select-standard-label">
+                    Use
+                  </InputLabel>
+                  <Select
+                    value={use}
+                    onChange={handleUse}
+                  >
+				  <MenuItem value={0}>None</MenuItem>
+                  <MenuItem value={1}>Food</MenuItem>
+                  <MenuItem value={2}>Transportation</MenuItem>
+                  <MenuItem value={3}>Other</MenuItem>
+                  </Select>
+                </FormControl>
+
                 <div style={{ marginTop: "20px" }} />
                 <Button
                   variant="contained"
