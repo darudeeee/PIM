@@ -26,20 +26,58 @@ const MyPage = () => {
             width: "100%",
           }}
         >
-          <div>
-            <div id="propileBox">
-              <p>
-                <Avatar
-                  sx={{ width: "100px", height: "100px" }}
-                  src="/broken-image.jpg"
-                />
-                이름
-              </p>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              width: "100%",
+            }}
+          >
+            <div
+              id="propileBox"
+              style={{
+                width: "100%",
+                height: "30%",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <Avatar
+                sx={{ width: "100px", height: "100px" }}
+                src="/broken-image.jpg"
+              />
+              <h2>이름</h2>
             </div>
-            <div id="propilInfo">
-              
-
-              
+            <div
+              id="propilInfo"
+              style={{
+                width: "60%",
+                display: "flex",
+                alignItems: "center",
+                border: "1px solid #000",
+              }}
+            >
+              <div
+                style={{
+                  width: "20%",
+                  display: "flex",
+                  justifyContent: "flex-end",
+                }}
+              >
+                글씨
+              </div>
+              <div
+                style={{
+                  width: "80%",
+                  display: "flex",
+                  justifyContent: "flex-start",
+                }}
+              >
+                <input></input>
+              </div>
             </div>
           </div>
         </div>
