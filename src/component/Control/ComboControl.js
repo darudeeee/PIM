@@ -30,16 +30,16 @@ const ComboControl = (props) => {
 				sx={{
 					color: "#000",
 					'.MuiOutlinedInput-notchedOutline': {
-						borderColor: '#9bdcfa',
+						borderColor: '#D3C4E1',
 					},
 					'&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-						borderColor: '#2289C3', // 클릭
+						borderColor: '#A75BB5 ', // 클릭
 					},
 					'&:hover .MuiOutlinedInput-notchedOutline': {
-						borderColor: '#2289C3', // 호버
+						borderColor: '#A75BB5 ', // 호버
 					},
 					'.MuiSvgIcon-root ': {
-						fill: "#9bdcfa !important",
+						fill: "#A75BB5 !important",
 					}
 				}}
 				style={{width: "100%"}}

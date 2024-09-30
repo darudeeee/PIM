@@ -38,7 +38,7 @@ const InputControl = (props) => { // input은 자식(props로 부모 컴포넌�
 				onChange={(event) => InputChange(event, props.name)}
 				// 각 event들의 name과 위 label/placeholder 안의 값들은 조금씩 다르니까 props로 처리해줌	  
 				sx={{ border: 'none', "& fieldset": { border: "none" }, }}
-				style={{ border: "2px solid #9bdcfa", borderRadius: "5px", margin: "5px 0px" }}
+				style={{ border: "2px solid #D3C4E1", borderRadius: "5px", margin: "5px 0px" }}
 				InputProps={{
 					endAdornment: props.endAdornment
 				}}

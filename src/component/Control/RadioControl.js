@@ -40,10 +40,10 @@ const RadioControl = (props) => {
 								control={<Radio sx={{
 									'& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root)':
 									{
-										color: '#B7DDED',
+										color: '#D3C4E1',
 									},
 									'& .MuiSvgIcon-root + .MuiSvgIcon-root': {
-										color: '#B7DDED',
+										color: '#BCBCF7',
 									},
 								}} />}
 								label={<Typography

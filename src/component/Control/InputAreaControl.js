@@ -30,7 +30,7 @@ const InputAreaControl = (props) => {
 				sx={{
 					"& .MuiOutlinedInput-root": {
 						"&.MuiInputBase-root fieldset": {
-							border: "2px solid #9bdcfa",
+							border: "2px solid #D3C4E1",
 							padding: "4px"
 						},
 					},
