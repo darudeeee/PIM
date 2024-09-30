@@ -294,7 +294,7 @@ function SignUp() {
 							<Button
 								style={{
 									width: "100%",
-									backgroundColor: "#2289C3",
+									backgroundColor: "#BCBCF7",
 									border: "1px solid white",
 									color: "white",
 									fontWeight: 600,
@@ -308,7 +308,7 @@ function SignUp() {
 							<Button
 								style={{
 									width: "100%",
-									backgroundColor: "#2289C3",
+									backgroundColor: "#BCBCF7",
 									border: "1px solid white",
 									color: "white",
 									fontWeight: 600,
@@ -329,7 +329,6 @@ function SignUp() {
 					style={{
 						width: "50%",
 						height: "100%",
-						backgroundColor: "lightyellow",
 						backgroundImage: `url(${process.env.PUBLIC_URL}/blue.jpg)`, // 이미지 경로 지정
 						backgroundSize: "cover", // 이미지 크기 조정
 						backgroundRepeat: "no-repeat", // 이미지 반복 없음

@@ -103,6 +103,16 @@ const MyPage = () => {
     }));
   };
 
+  const accountDeletion = () => {
+    const confirm = window.confirm("정말 회원탈퇴 하시겠습니까?");
+    if (confirm) {
+      alert("회원 탈퇴가 완료되었습니다.");
+      // 탈퇴 로직
+    } else {
+      alert("회원 탈퇴가 취소되었습니다.");
+    }
+  };
+
   // 비밀번호 보이기/감추기 아이콘
   const viewPw = () => {
     setUser((prev) => ({
@@ -180,18 +190,17 @@ const MyPage = () => {
               id="propilInfo"
               style={{
                 width: "40%",
-                height: "60%",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
                 border: "3px solid #BCBCF7",
               }}
             >
-              {/* 여기 */}
               <div
                 style={{
                   display: "flex",
                   flexDirection: "column",
+                  margin: "50px 0px",
                 }}
               >
                 <InputControl
@@ -309,18 +318,30 @@ const MyPage = () => {
                       fontWeight: 600,
                     }}
                     onClick={() => {
-                      window.location.href = "/";
+                      window.location.href = "/mypage";
                     }}
                     variant="outlined"
                   >
                     Cancel
                   </Button>
                 </div>
+                <Button
+                  style={{
+                    width: "60%",
+                    border: "none",
+                    color: "#7d7878",
+                  }}
+                  onClick={accountDeletion}
+                  variant="outlined"
+                >
+                  &gt; account deletion
+                </Button>
               </div>
             </div>
           </div>
         </div>
       ) : (
+        // 모바일
         <div
           style={{
             display: "flex",
@@ -328,7 +349,185 @@ const MyPage = () => {
             width: "100%",
           }}
         >
-          모바일임
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              width: "100%",
+            }}
+          >
+            <div
+              id="propileBox"
+              style={{
+                width: "100%",
+                height: "20%",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <Avatar
+                sx={{ width: "50px", height: "50px" }}
+                src="/broken-image.jpg"
+              />
+              <h4>Web Master</h4>
+            </div>
+            <div
+              id="propilInfo"
+              style={{
+                width: "40%",
+                height: "60%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                border: "3px solid #BCBCF7",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  margin: "50px 0px",
+                }}
+              >
+                <InputControl
+                  type={"text"}
+                  label={"ID"}
+                  placeholder={"admin"}
+                  value={user.id}
+                  name={"id"}
+                  Function={(name, value) => InputChange(name, value)}
+                />
+
+                <div style={{ display: "flex" }}>
+                  <InputControl
+                    type={user.showPw ? "text" : "password"}
+                    label={"PW"}
+                    placeholder={"1234"}
+                    value={user.pw}
+                    name={"pw"}
+                    Function={(name, value) => {
+                      InputChange(name, value);
+                    }}
+                    endAdornment={
+                      <IconButton onClick={viewPw} style={{ padding: "0px" }}>
+                        {user.showPw ? (
+                          <VisibilityIcon />
+                        ) : (
+                          <VisibilityOffIcon />
+                        )}
+                        {/* 비밀번호 보이기/감추기 아이콘 */}
+                      </IconButton>
+                    }
+                  />
+                </div>
+
+                <InputControl
+                  type={"text"}
+                  label={"Name"}
+                  placeholder={"Web Master"}
+                  value={user.name}
+                  name={"name"}
+                  Function={(name, value) => InputChange(name, value)}
+                />
+
+                <InputControl
+                  type={"number"}
+                  label={"Age"}
+                  placeholder={"25"}
+                  value={user.age}
+                  name={"age"}
+                  Function={(name, value) => InputChange(name, value)}
+                />
+
+                <RadioControl
+                  label={"Gender"}
+                  name={"gender"}
+                  value={user.gender}
+                  list={RadioArray}
+                  Function={(name, value) => InputChange(name, value)}
+                />
+
+                <ComboControl
+                  label={"Local"}
+                  name={"local"}
+                  value={user.local}
+                  list={localArray}
+                  Function={(name, value) => InputChange(name, value)}
+                />
+
+                <InputAreaControl
+                  label={"Address"}
+                  multiline={true}
+                  rows={3}
+                  name={"address"}
+                  value={user.address}
+                  placeholder={"addres"}
+                  Function={(name, value) => InputChange(name, value)}
+                />
+
+                <InputControl
+                  type={"email"}
+                  label={"Email"}
+                  placeholder={"abcd@naver.com"}
+                  value={user.email}
+                  name={"email"}
+                  Function={(name, value) => InputChange(name, value)}
+                />
+
+                <div // 버튼 정렬 박스
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                    margin: "10px",
+                  }}
+                >
+                  <Button
+                    style={{
+                      width: "100%",
+                      backgroundColor: "#BCBCF7",
+                      border: "1px solid white",
+                      color: "white",
+                      fontWeight: 600,
+                    }}
+                    onClick={sendInfo}
+                    variant="outlined"
+                  >
+                    Save
+                  </Button>
+                  <Button
+                    style={{
+                      width: "100%",
+                      backgroundColor: "#BCBCF7",
+                      border: "1px solid white",
+                      color: "white",
+                      fontWeight: 600,
+                    }}
+                    onClick={() => {
+                      window.location.href = "/mypage";
+                    }}
+                    variant="outlined"
+                  >
+                    Cancel
+                  </Button>
+                </div>
+                <Button
+                  style={{
+                    width: "60%",
+                    border: "none",
+                    color: "#7d7878",
+                  }}
+                  onClick={accountDeletion}
+                  variant="outlined"
+                >
+                  &gt; account deletion
+                </Button>
+              </div>
+            </div>
+          </div>
         </div>
       )}
     </>

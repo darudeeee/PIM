@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import FormControl from "@mui/material/FormControl";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Radio from "@mui/material/Radio";
@@ -5,6 +6,13 @@ import RadioGroup from "@mui/material/RadioGroup";
 import Typography from "@mui/material/Typography";
 
 const RadioControl = (props) => {
+	let deviceWidth = window.innerWidth;
+	const [isMobile, setIsMobile] = useState(deviceWidth <= 1200);
+
+	window.addEventListener("resize", function () {
+		setIsMobile(window.innerWidth <= 1200);
+	  });
+
 	const RadioChange = (event, name) => {
 		props.Function(name, event.target.value)
 	};
@@ -25,7 +33,7 @@ const RadioControl = (props) => {
 			>
 				{props.label} :
 			</Typography>
-			<FormControl style={{ width: "100%" }}>
+			<FormControl style={{ width: isMobile ? "50%" : "100%" }}>
 				<RadioGroup
 					row
 					aria-labelledby="demo-row-radio-buttons-group-label"

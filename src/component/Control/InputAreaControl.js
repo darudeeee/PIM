@@ -1,7 +1,15 @@
+import { useEffect, useState } from "react";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 
 const InputAreaControl = (props) => {
+	let deviceWidth = window.innerWidth;
+	const [isMobile, setIsMobile] = useState(deviceWidth <= 1200);
+
+	window.addEventListener("resize", function () {
+		setIsMobile(window.innerWidth <= 1200);
+	  });
+
 	const InputAreaChange = (event, name) => {
 		props.Function(name, event.target.value)
 	};
@@ -35,7 +43,7 @@ const InputAreaControl = (props) => {
 						},
 					},
 				}}
-				style={{ width: "100%" }}
+				style={{ width: isMobile ? "50%" : "100%" }}
 				value={props.address}
 				onChange={(event) => InputAreaChange(event, props.name)}
 			/>

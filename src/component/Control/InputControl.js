@@ -1,8 +1,16 @@
+import { useEffect, useState } from "react";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 
 // input 이벤트들을 한 번에 묶어서 처리
 const InputControl = (props) => { // input은 자식(props로 부모 컴포넌트에게 정보 전달)
+	let deviceWidth = window.innerWidth;
+	const [isMobile, setIsMobile] = useState(deviceWidth <= 1200);
+
+	window.addEventListener("resize", function () {
+		setIsMobile(window.innerWidth <= 1200);
+	  });
+
 	const InputChange = (event, name) => { // 사용자가 input에 무엇을 입력하면 inputChange(부모)에서 받음
 		props.Function(name, event.target.value)
 	};
@@ -38,7 +46,7 @@ const InputControl = (props) => { // input은 자식(props로 부모 컴포넌�
 				onChange={(event) => InputChange(event, props.name)}
 				// 각 event들의 name과 위 label/placeholder 안의 값들은 조금씩 다르니까 props로 처리해줌	  
 				sx={{ border: 'none', "& fieldset": { border: "none" }, }}
-				style={{ border: "2px solid #D3C4E1", borderRadius: "5px", margin: "5px 0px" }}
+				style={{ border: "2px solid #D3C4E1", borderRadius: "5px", margin: "5px 0px", width: isMobile ? "50%" : "100%" }}
 				InputProps={{
 					endAdornment: props.endAdornment
 				}}

@@ -1,8 +1,16 @@
+import { useEffect, useState } from "react";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import Typography from "@mui/material/Typography";
 
 const ComboControl = (props) => {
+	let deviceWidth = window.innerWidth;
+	const [isMobile, setIsMobile] = useState(deviceWidth <= 1200);
+
+	window.addEventListener("resize", function () {
+		setIsMobile(window.innerWidth <= 1200);
+	  });
+
 	const ComboChange = (event, name) => {
 		props.Function(name, event.target.value)
 	};
@@ -18,7 +26,7 @@ const ComboControl = (props) => {
 					alignItems: "center",
 					justifyContent: "flex-end",
 					marginRight: "5px",
-					fontWeight: 600,
+					fontWeight: 600, // 모바일일 때 더 얇은 폰트
 				}}
 			>
 				{props.label} :
@@ -42,7 +50,7 @@ const ComboControl = (props) => {
 						fill: "#A75BB5 !important",
 					}
 				}}
-				style={{width: "100%"}}
+				style={{width: isMobile ? "50%" : "100%"}}
 			>
 				{props.list !== undefined ? (
 					props.list.map((item) =>
