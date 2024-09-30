@@ -59,4 +59,9 @@ export default [
         amt: 4500,
         use: 3, 
       },
+	  {
+        type: 2, 
+        amt: 4500,
+        use: 2, 
+      },
 ];
