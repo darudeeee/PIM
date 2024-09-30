@@ -159,6 +159,7 @@ const MyPage = () => {
             display: "flex",
             height: `calc(100% - ${heights}px)`,
             width: "100%",
+			padding: "20px 0px"
           }}
         >
           <div
@@ -200,7 +201,7 @@ const MyPage = () => {
                 style={{
                   display: "flex",
                   flexDirection: "column",
-                  margin: "50px 0px",
+                  padding: "50px 0px",
                 }}
               >
                 <InputControl
@@ -293,7 +294,7 @@ const MyPage = () => {
                     display: "flex",
                     flexDirection: "row",
                     alignItems: "center",
-                    margin: "10px",
+                    padding: "10px",
                   }}
                 >
                   <Button
@@ -382,14 +383,14 @@ const MyPage = () => {
                 alignItems: "center",
                 justifyContent: "center",
                 border: "3px solid #BCBCF7",
-                marginBottom: "10px",
+                paddingBottom: "10px",
               }}
             >
               <div
                 style={{
                   display: "flex",
                   flexDirection: "column",
-                  margin: "20px 0px",
+                  padding: "20px 0px",
                 }}
               >
                 <InputControl
@@ -482,7 +483,7 @@ const MyPage = () => {
                     display: "flex",
                     flexDirection: "row",
                     alignItems: "center",
-                    margin: "10px",
+                    padding: "10px",
                   }}
                 >
                   <Button
