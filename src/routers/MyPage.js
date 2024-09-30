@@ -361,7 +361,7 @@ const MyPage = () => {
               id="propileBox"
               style={{
                 width: "100%",
-                height: "20%",
+                height: "30%",
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
@@ -378,18 +378,18 @@ const MyPage = () => {
               id="propilInfo"
               style={{
                 width: "40%",
-                height: "60%",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
                 border: "3px solid #BCBCF7",
+                marginBottom: "10px",
               }}
             >
               <div
                 style={{
                   display: "flex",
                   flexDirection: "column",
-                  margin: "50px 0px",
+                  margin: "20px 0px",
                 }}
               >
                 <InputControl
@@ -487,7 +487,7 @@ const MyPage = () => {
                 >
                   <Button
                     style={{
-                      width: "100%",
+                      width: "50%",
                       backgroundColor: "#BCBCF7",
                       border: "1px solid white",
                       color: "white",
@@ -500,7 +500,7 @@ const MyPage = () => {
                   </Button>
                   <Button
                     style={{
-                      width: "100%",
+                      width: "50%",
                       backgroundColor: "#BCBCF7",
                       border: "1px solid white",
                       color: "white",
@@ -519,6 +519,7 @@ const MyPage = () => {
                     width: "60%",
                     border: "none",
                     color: "#7d7878",
+                    fontSize: "12px",
                   }}
                   onClick={accountDeletion}
                   variant="outlined"
