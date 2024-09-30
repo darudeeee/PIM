@@ -20,6 +20,7 @@ import Input from "@mui/material/Input";
 import Button from "@mui/material/Button";
 import SendIcon from "@mui/icons-material/Send";
 import PaidIcon from "@mui/icons-material/Paid";
+import Marquee from "react-fast-marquee";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -298,26 +299,18 @@ const Budget = () => {
                 <List
                   style={{ height: "80%", overflow: "auto", width: "100%" }}
                 >
-                  <div
-                    style={
-                      {
-                        // 여기에 width랑 margin해도 뒤 card 밀림
-                      }
-                    }
-                  >
+
                     {data.map((item) => (
                       <ListItem
                         style={{
                           border: "1px solid #D4E8FB",
                           padding: "5px",
                         }}
-                        // width 지정 하거나, margin주면 뒤 card들 밀림
-                        // dense 안먹힘
                       >
-                        {/* 여기에 div랑 아이콘 넣으면 밀림 */}
                         &nbsp;
                         <PaidIcon />
                         &nbsp;
+						<Marquee speed={30}>
                         <ListItemText
                           primary={
                             <>
@@ -344,10 +337,10 @@ const Budget = () => {
                               {item.amt}won
                             </>
                           }
-                        />
+                        /></Marquee>
                       </ListItem>
                     ))}
-                  </div>
+
                 </List>
               </Card>
             </Grid>

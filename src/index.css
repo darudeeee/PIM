@@ -19,6 +19,7 @@ body {
 ::-webkit-scrollbar{
     background-color:transparent;
     width: 8px;
+	height: 8px;
 }
 /* 스크롤바 막대 설정*/
 ::-webkit-scrollbar-thumb{
