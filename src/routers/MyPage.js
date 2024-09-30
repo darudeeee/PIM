@@ -1,14 +1,15 @@
-import * as React from "react";
-import { useEffect, useState } from "react";
-import Avatar from "@mui/material/Avatar";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { IconButton } from "@mui/material";
+import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
+import * as React from "react";
+import { useEffect, useState } from "react";
 import ComboControl from "../component/Control/ComboControl";
 import InputAreaControl from "../component/Control/InputAreaControl";
 import InputControl from "../component/Control/InputControl";
 import RadioControl from "../component/Control/RadioControl";
+import UserData from "../data/UserData";
 
 const MyPage = () => {
   // React Avatar
@@ -26,15 +27,16 @@ const MyPage = () => {
   });
 
   const [user, setUser] = React.useState({
-    id: "",
-    pw: "",
+    id: UserData.id,
+    pw: UserData.pw,
     showPw: false,
-    name: "",
-    age: "",
-    gender: "female",
-    local: "",
-    address: "",
-    email: "",
+    name: UserData.name,
+    age: UserData.age,
+    gender: UserData.gender,
+    local: UserData.local,
+    address: UserData.address,
+    email: UserData.email,
+    img: "",
   });
 
   // 지역 배열 선언
@@ -139,6 +141,7 @@ const MyPage = () => {
       local: "",
       address: "",
       email: "",
+      img: "",
     });
   };
 
@@ -151,6 +154,27 @@ const MyPage = () => {
     return true;
   };
 
+  const fileInput = React.useRef(null);
+
+  // 파일 업로드 버튼 클릭 시 파일 입력 요소 클릭 이벤트 발생
+  const handleButtonClick = (e) => {
+    fileInput.current.click();
+  };
+
+  // 파일 입력 요소의 값이 변경되면 호출되는 함수
+  const handleChange = (e) => {
+    // 선택한 파일 정보를 콘솔에 출력
+    if (!e.target.files) return;
+    const file = e.target.files[0];
+    if (file) {
+      let image = window.URL.createObjectURL(file);
+      setUser((prev) => ({
+        ...prev,
+        img: image,
+      }));
+    }
+    console.log(e.target.files[0]);
+  };
   return (
     <>
       {!isMobile ? (
@@ -159,7 +183,7 @@ const MyPage = () => {
             display: "flex",
             height: `calc(100% - ${heights}px)`,
             width: "100%",
-			padding: "20px 0px"
+            padding: "20px 0px",
           }}
         >
           <div
@@ -182,8 +206,16 @@ const MyPage = () => {
               }}
             >
               <Avatar
-                sx={{ width: "100px", height: "100px" }}
-                src="/broken-image.jpg"
+                sx={{ width: "100px", height: "100px", cursor: "pointer" }}
+                src={user.img == "" ? "/broken-image.jpg" : user.img}
+                onClick={handleButtonClick}
+              />
+              <input
+                type="file"
+                accept="image/*"
+                ref={fileInput}
+                onChange={handleChange}
+                style={{ display: "none" }}
               />
               <h2>Web Master</h2>
             </div>
@@ -207,7 +239,6 @@ const MyPage = () => {
                 <InputControl
                   type={"text"}
                   label={"ID"}
-                  placeholder={"admin"}
                   value={user.id}
                   name={"id"}
                   Function={(name, value) => InputChange(name, value)}
@@ -217,7 +248,6 @@ const MyPage = () => {
                   <InputControl
                     type={user.showPw ? "text" : "password"}
                     label={"PW"}
-                    placeholder={"1234"}
                     value={user.pw}
                     name={"pw"}
                     Function={(name, value) => {
@@ -239,7 +269,6 @@ const MyPage = () => {
                 <InputControl
                   type={"text"}
                   label={"Name"}
-                  placeholder={"Web Master"}
                   value={user.name}
                   name={"name"}
                   Function={(name, value) => InputChange(name, value)}
@@ -248,7 +277,6 @@ const MyPage = () => {
                 <InputControl
                   type={"number"}
                   label={"Age"}
-                  placeholder={"25"}
                   value={user.age}
                   name={"age"}
                   Function={(name, value) => InputChange(name, value)}
@@ -265,7 +293,7 @@ const MyPage = () => {
                 <ComboControl
                   label={"Local"}
                   name={"local"}
-                  value={user.local}
+                  local={user.local} // props의 값이 local
                   list={localArray}
                   Function={(name, value) => InputChange(name, value)}
                 />
@@ -275,15 +303,13 @@ const MyPage = () => {
                   multiline={true}
                   rows={3}
                   name={"address"}
-                  value={user.address}
-                  placeholder={"addres"}
+                  address={user.address}
                   Function={(name, value) => InputChange(name, value)}
                 />
 
                 <InputControl
                   type={"email"}
                   label={"Email"}
-                  placeholder={"abcd@naver.com"}
                   value={user.email}
                   name={"email"}
                   Function={(name, value) => InputChange(name, value)}
@@ -396,7 +422,6 @@ const MyPage = () => {
                 <InputControl
                   type={"text"}
                   label={"ID"}
-                  placeholder={"admin"}
                   value={user.id}
                   name={"id"}
                   Function={(name, value) => InputChange(name, value)}
@@ -406,7 +431,6 @@ const MyPage = () => {
                   <InputControl
                     type={user.showPw ? "text" : "password"}
                     label={"PW"}
-                    placeholder={"1234"}
                     value={user.pw}
                     name={"pw"}
                     Function={(name, value) => {
@@ -428,7 +452,6 @@ const MyPage = () => {
                 <InputControl
                   type={"text"}
                   label={"Name"}
-                  placeholder={"Web Master"}
                   value={user.name}
                   name={"name"}
                   Function={(name, value) => InputChange(name, value)}
@@ -437,7 +460,6 @@ const MyPage = () => {
                 <InputControl
                   type={"number"}
                   label={"Age"}
-                  placeholder={"25"}
                   value={user.age}
                   name={"age"}
                   Function={(name, value) => InputChange(name, value)}
@@ -465,14 +487,12 @@ const MyPage = () => {
                   rows={3}
                   name={"address"}
                   value={user.address}
-                  placeholder={"addres"}
                   Function={(name, value) => InputChange(name, value)}
                 />
 
                 <InputControl
                   type={"email"}
                   label={"Email"}
-                  placeholder={"abcd@naver.com"}
                   value={user.email}
                   name={"email"}
                   Function={(name, value) => InputChange(name, value)}

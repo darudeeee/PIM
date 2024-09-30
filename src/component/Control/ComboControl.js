@@ -4,6 +4,8 @@ import Select from "@mui/material/Select";
 import Typography from "@mui/material/Typography";
 
 const ComboControl = (props) => {
+
+	console.log(props);
 	let deviceWidth = window.innerWidth;
 	const [isMobile, setIsMobile] = useState(deviceWidth <= 1200);
 

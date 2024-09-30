@@ -14,7 +14,6 @@ const InputControl = (props) => { // input은 자식(props로 부모 컴포넌�
 	const InputChange = (event, name) => { // 사용자가 input에 무엇을 입력하면 inputChange(부모)에서 받음
 		props.Function(name, event.target.value)
 	};
-
 	// 공통된 css들을 한 번에 묶어서 처리
 	return (
 		<div
