@@ -243,7 +243,7 @@ const Budget = () => {
                   justifyContent: "center",
                 }}
               >
-                <h5>Income :</h5>&nbsp; +{cardData.income} won
+                <h5>Income :</h5>&nbsp; {cardData.income} won
               </Card>
             </Grid>
             <Grid item xs={12} sm={12} md={6} lg={3}>
