@@ -163,8 +163,7 @@ const Home = () => {
                   </Typography>
                 </CardContent>
                 <CardActions sx={{ width: "95%", height: "20%" }}>
-                  <Button size="small">Share</Button>
-                  <Button size="small">Learn More</Button>
+                  <Button size="small">Move to Budget</Button>
                 </CardActions>
               </div>
             </Card>
@@ -235,8 +234,7 @@ const Home = () => {
                   </Typography>
                 </CardContent>
                 <CardActions sx={{ width: "95%", height: "20%" }}>
-                  <Button size="small">Share</Button>
-                  <Button size="small">Learn More</Button>
+                  <Button size="small">Move to Menstruation</Button>
                 </CardActions>
               </div>
             </Card>
@@ -307,8 +305,7 @@ const Home = () => {
                   </Typography>
                 </CardContent>
                 <CardActions sx={{ width: "95%", height: "20%" }}>
-                  <Button size="small">Share</Button>
-                  <Button size="small">Learn More</Button>
+                  <Button size="small">Move To Exercise</Button>
                 </CardActions>
               </div>
             </Card>
@@ -316,264 +313,261 @@ const Home = () => {
         </div>
       ) : (
         <>
-        <div
-          style={{
-            display: "flex",
-            height: `calc(100% - ${heights}px)`,
-            width: "100%",
-          }}
-        >
-          <Swiper
-            scrollbar={{
-              hide: false,
+          <div
+            style={{
+              display: "flex",
+              height: `calc(100% - ${heights}px)`,
+              width: "100%",
             }}
-            modules={[Scrollbar]}
-            className="mySwiper"
           >
-            <SwiperSlide>
-              <div id="homeMiniCalendar">
-                <Calendar
-                  locale="en"
-                  onChange={onChange}
-                  value={value}
-                  next2Label={null}
-                  prev2Label={null}
-                  formatDay={(locale, date) => moment(date).format("D")}
-                  tileContent={addContent}
-                  showNeighboringMonth={false}
-                />
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div
-                style={{
-                  backgroundColor: "white",
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  justifyContent: "space-evenly",
-                  width: "100%",
-                  height: "100%",
-                }}
-              >
-                <Card
-                  sx={{
+            <Swiper
+              scrollbar={{
+                hide: false,
+              }}
+              modules={[Scrollbar]}
+              className="mySwiper"
+            >
+              <SwiperSlide>
+                <div id="homeMiniCalendar">
+                  <Calendar
+                    locale="en"
+                    onChange={onChange}
+                    value={value}
+                    next2Label={null}
+                    prev2Label={null}
+                    formatDay={(locale, date) => moment(date).format("D")}
+                    tileContent={addContent}
+                    showNeighboringMonth={false}
+                  />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div
+                  style={{
+                    backgroundColor: "white",
                     display: "flex",
-                    height: "25%",
-                    width: "90%",
+                    flexDirection: "column",
                     alignItems: "center",
-                    justifyContent: "center",
-                    borderRadius: "10%",
+                    justifyContent: "space-evenly",
+                    width: "100%",
+                    height: "100%",
                   }}
                 >
-                  <CardMedia
-                    sx={{ width: "50%", height: "100%" }}
-                    image="/images/budget.jpg"
-                    title="budget"
-                  />
-                  <div
-                    style={{
-                      width: "50%",
-                      height: "100%",
+                  <Card
+                    sx={{
                       display: "flex",
-                      flexDirection: "column",
+                      height: "25%",
+                      width: "90%",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      borderRadius: "10%",
                     }}
                   >
-                    <CardContent
-                      sx={{
+                    <CardMedia
+                      sx={{ width: "50%", height: "100%" }}
+                      image="/images/budget.jpg"
+                      title="budget"
+                    />
+                    <div
+                      style={{
+                        width: "50%",
+                        height: "100%",
                         display: "flex",
                         flexDirection: "column",
-                        justifyContent: "center",
-                        width: "95%",
-                        height: "80%",
-                        padding: "0% 5%",
-                        overflow: "hidden",
-                        textOverflow: "ellipsis",
                       }}
                     >
-                      <Typography
-                        gutterBottom
-                        variant="h6"
-                        component="div"
+                      <CardContent
                         sx={{
-                          display: "-webkit-box",
-                          WebkitBoxOrient: "vertical",
+                          display: "flex",
+                          flexDirection: "column",
+                          justifyContent: "center",
+                          width: "95%",
+                          height: "80%",
+                          padding: "0% 5%",
                           overflow: "hidden",
-                          WebkitLineClamp: 1,
                           textOverflow: "ellipsis",
-                          width: "90%",
                         }}
                       >
-                        Budget
-                      </Typography>
-                      <Typography
-                        variant="body2"
-                        color="text.secondary"
-                        sx={{
-                          display: "-webkit-box",
-                          WebkitBoxOrient: "vertical",
-                          overflow: "hidden",
-                          WebkitLineClamp: 2,
-                          textOverflow: "ellipsis",
-                          width: "90%",
-                        }}
-                      >
-                        Budget ...
-                      </Typography>
-                    </CardContent>
-                    <CardActions sx={{ width: "95%", height: "20%" }}>
-                      <Button size="small">Share</Button>
-                      <Button size="small">Learn More</Button>
-                    </CardActions>
-                  </div>
-                </Card>
+                        <Typography
+                          gutterBottom
+                          variant="h6"
+                          component="div"
+                          sx={{
+                            display: "-webkit-box",
+                            WebkitBoxOrient: "vertical",
+                            overflow: "hidden",
+                            WebkitLineClamp: 1,
+                            textOverflow: "ellipsis",
+                            width: "90%",
+                          }}
+                        >
+                          Budget
+                        </Typography>
+                        <Typography
+                          variant="body2"
+                          color="text.secondary"
+                          sx={{
+                            display: "-webkit-box",
+                            WebkitBoxOrient: "vertical",
+                            overflow: "hidden",
+                            WebkitLineClamp: 2,
+                            textOverflow: "ellipsis",
+                            width: "90%",
+                          }}
+                        >
+                          Budget ...
+                        </Typography>
+                      </CardContent>
+                      <CardActions sx={{ width: "95%", height: "20%" }}>
+                        <Button size="small">Move to Budget</Button>
+                      </CardActions>
+                    </div>
+                  </Card>
 
-                <Card
-                  sx={{
-                    display: "flex",
-                    height: "25%",
-                    width: "90%",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    borderRadius: "10%",
-                  }}
-                >
-                  <CardMedia
-                    sx={{ width: "50%", height: "100%" }}
-                    image="/images/menstruation.jpg"
-                    title="menstruation"
-                  />
-                  <div
-                    style={{
-                      width: "50%",
-                      height: "100%",
+                  <Card
+                    sx={{
                       display: "flex",
-                      flexDirection: "column",
+                      height: "25%",
+                      width: "90%",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      borderRadius: "10%",
                     }}
                   >
-                    <CardContent
-                      sx={{
+                    <CardMedia
+                      sx={{ width: "50%", height: "100%" }}
+                      image="/images/menstruation.jpg"
+                      title="menstruation"
+                    />
+                    <div
+                      style={{
+                        width: "50%",
+                        height: "100%",
                         display: "flex",
                         flexDirection: "column",
-                        justifyContent: "center",
-                        width: "95%",
-                        height: "80%",
-                        padding: "0% 5%",
-                        overflow: "hidden",
-                        textOverflow: "ellipsis",
                       }}
                     >
-                      <Typography
-                        gutterBottom
-                        variant="h6"
-                        component="div"
+                      <CardContent
                         sx={{
-                          display: "-webkit-box",
-                          WebkitBoxOrient: "vertical",
+                          display: "flex",
+                          flexDirection: "column",
+                          justifyContent: "center",
+                          width: "95%",
+                          height: "80%",
+                          padding: "0% 5%",
                           overflow: "hidden",
-                          WebkitLineClamp: 1,
                           textOverflow: "ellipsis",
-                          width: "90%",
                         }}
                       >
-                        Menstruation
-                      </Typography>
-                      <Typography
-                        variant="body2"
-                        color="text.secondary"
-                        sx={{
-                          display: "-webkit-box",
-                          WebkitBoxOrient: "vertical",
-                          overflow: "hidden",
-                          WebkitLineClamp: 2,
-                          textOverflow: "ellipsis",
-                          width: "90%",
-                        }}
-                      >
-                        Menstruation ...
-                      </Typography>
-                    </CardContent>
-                    <CardActions sx={{ width: "95%", height: "20%" }}>
-                      <Button size="small">Share</Button>
-                      <Button size="small">Learn More</Button>
-                    </CardActions>
-                  </div>
-                </Card>
+                        <Typography
+                          gutterBottom
+                          variant="h6"
+                          component="div"
+                          sx={{
+                            display: "-webkit-box",
+                            WebkitBoxOrient: "vertical",
+                            overflow: "hidden",
+                            WebkitLineClamp: 1,
+                            textOverflow: "ellipsis",
+                            width: "90%",
+                          }}
+                        >
+                          Menstruation
+                        </Typography>
+                        <Typography
+                          variant="body2"
+                          color="text.secondary"
+                          sx={{
+                            display: "-webkit-box",
+                            WebkitBoxOrient: "vertical",
+                            overflow: "hidden",
+                            WebkitLineClamp: 2,
+                            textOverflow: "ellipsis",
+                            width: "90%",
+                          }}
+                        >
+                          Menstruation ...
+                        </Typography>
+                      </CardContent>
+                      <CardActions sx={{ width: "95%", height: "20%" }}>
+                        <Button size="small">Move to Menstruation</Button>
+                      </CardActions>
+                    </div>
+                  </Card>
 
-                <Card
-                  sx={{
-                    display: "flex",
-                    height: "25%",
-                    width: "90%",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    borderRadius: "10%",
-                  }}
-                >
-                  <CardMedia
-                    sx={{ width: "50%", height: "100%" }}
-                    image="/images/exercise.jpg"
-                    title="exercise"
-                  />
-                  <div
-                    style={{
-                      width: "50%",
-                      height: "100%",
+                  <Card
+                    sx={{
                       display: "flex",
-                      flexDirection: "column",
+                      height: "25%",
+                      width: "90%",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      borderRadius: "10%",
                     }}
                   >
-                    <CardContent
-                      sx={{
+                    <CardMedia
+                      sx={{ width: "50%", height: "100%" }}
+                      image="/images/exercise.jpg"
+                      title="exercise"
+                    />
+                    <div
+                      style={{
+                        width: "50%",
+                        height: "100%",
                         display: "flex",
                         flexDirection: "column",
-                        justifyContent: "center",
-                        width: "95%",
-                        height: "80%",
-                        padding: "0% 5%",
-                        overflow: "hidden",
-                        textOverflow: "ellipsis",
                       }}
                     >
-                      <Typography
-                        gutterBottom
-                        variant="h6"
-                        component="div"
+                      <CardContent
                         sx={{
-                          display: "-webkit-box",
-                          WebkitBoxOrient: "vertical",
+                          display: "flex",
+                          flexDirection: "column",
+                          justifyContent: "center",
+                          width: "95%",
+                          height: "80%",
+                          padding: "0% 5%",
                           overflow: "hidden",
-                          WebkitLineClamp: 1,
                           textOverflow: "ellipsis",
-                          width: "90%",
                         }}
                       >
-                        Exercise
-                      </Typography>
-                      <Typography
-                        variant="body2"
-                        color="text.secondary"
-                        sx={{
-                          display: "-webkit-box",
-                          WebkitBoxOrient: "vertical",
-                          overflow: "hidden",
-                          WebkitLineClamp: 2,
-                          textOverflow: "ellipsis",
-                          width: "90%",
-                        }}
-                      >
-                        Exercise ...
-                      </Typography>
-                    </CardContent>
-                    <CardActions sx={{ width: "95%", height: "20%" }}>
-                      <Button size="small">Share</Button>
-                      <Button size="small">Learn More</Button>
-                    </CardActions>
-                  </div>
-                </Card>
-              </div>
-            </SwiperSlide>
-          </Swiper>
+                        <Typography
+                          gutterBottom
+                          variant="h6"
+                          component="div"
+                          sx={{
+                            display: "-webkit-box",
+                            WebkitBoxOrient: "vertical",
+                            overflow: "hidden",
+                            WebkitLineClamp: 1,
+                            textOverflow: "ellipsis",
+                            width: "90%",
+                          }}
+                        >
+                          Exercise
+                        </Typography>
+                        <Typography
+                          variant="body2"
+                          color="text.secondary"
+                          sx={{
+                            display: "-webkit-box",
+                            WebkitBoxOrient: "vertical",
+                            overflow: "hidden",
+                            WebkitLineClamp: 2,
+                            textOverflow: "ellipsis",
+                            width: "90%",
+                          }}
+                        >
+                          Exercise ...
+                        </Typography>
+                      </CardContent>
+                      <CardActions sx={{ width: "95%", height: "20%" }}>
+                        <Button size="small">Move to Exercise</Button>
+                      </CardActions>
+                    </div>
+                  </Card>
+                </div>
+              </SwiperSlide>
+            </Swiper>
           </div>
         </>
       )}

@@ -10,8 +10,9 @@ import { Scrollbar } from "swiper/modules";
 import SwiperCore from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import ReactMarkdown from "react-markdown";
+import Button from "@mui/material/Button";
 
-const mkdStr = `노트 초기 내용`;
+const mkdStr = `Content...`;
 
 const Note = () => {
   const [title, setTitle] = useState("");
@@ -56,14 +57,21 @@ const Note = () => {
               type="text"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              placeholder="제목을 입력하세요."
+              placeholder="Title"
               style={{
-                padding: "8px",
+                padding: "10px",
                 width: "60%",
                 border: "1px solid #ccc",
                 borderRadius: "4px",
+                fontSize: "20px",
               }}
             />
+            <Button
+              variant="contained"
+              style={{ backgroundColor: "lightgreen", marginLeft: "10px" }}
+            >
+              Save
+            </Button>
           </div>
           <div class="live" data-color-mode="light">
             <MDEditor class="markdown" value={value} onChange={setValue} />
@@ -71,51 +79,7 @@ const Note = () => {
         </div>
       ) : (
         // 모바일은 그냥 메뉴를 없애고 search에서만 가능하게?
-        <div
-          style={{
-            display: "flex",
-            height: `calc(100% - ${heights}px)`,
-            width: "100%",
-            flexDirection: "column",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              height: "100%",
-              width: "100%",
-              flexDirection: "column",
-            }}
-          >
-            <Swiper
-              scrollbar={{
-                hide: false,
-              }}
-              modules={[Scrollbar]}
-              className="mySwiper"
-            >
-              {/* <SwiperSlide>
-		  	<MDEditor value={value} onChange={setValue} />
-		  </SwiperSlide> */}
-              <SwiperSlide>
-                <h4 style={{ margin: "20px 5%" }}>
-                  모바일 노트 제목 위치
-                </h4>
-                <div
-                  className="markdown-preview"
-                  style={{
-                    width: "90%",
-                    height: "80%",
-                    margin: "0 5%",
-                    border: "1px solid #000",
-                  }}
-                >
-                  <ReactMarkdown>{value}</ReactMarkdown>
-                </div>
-              </SwiperSlide>
-            </Swiper>
-          </div>
-        </div>
+        <div>모바일</div>
       )}
     </>
   );
