@@ -3,9 +3,9 @@ const now = new Date();
 export default [
   {
     id: 0,
-    title: "All Day Event very long title",
+    title: "All Day Event very long title", 
     allDay: true,
-    start: new Date(2024, 8, 10),
+    start: new Date(2024, 8, 10), //20240314 16:30:00
     end: new Date(2024, 8, 11)
   },
   {
@@ -129,7 +129,7 @@ export default [
   {
     id: 18,
     title: "Itaewon Halloween Meeting",
-    start: new Date(2024, 3, 14, 16, 30, 0),
+    start: new Date(2024, 3, 14, 16, 30, 0), 
     end: new Date(2024, 3, 14, 17, 30, 0)
   },
   {
