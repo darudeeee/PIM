@@ -35,52 +35,48 @@ const Note = () => {
     <>
       {/* https://uiwjs.github.io/react-md-editor/ */}
       {/* 웹 버전 디자인 + 저장버튼, 취소버튼 등등 */}
-      {!isMobile ? (
+
+      <div
+        id="note"
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          height: `calc(100% - ${heights}px)`,
+          width: "100%",
+        }}
+      >
         <div
-          id="note"
           style={{
             display: "flex",
-            flexDirection: "column",
-            height: `calc(100% - ${heights}px)`,
-            width: "100%",
+            alignItems: "center",
+            width: "90%",
+            height: "70px",
           }}
         >
-          <div
+          <input
+            type="text"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            placeholder="Title"
             style={{
-              display: "flex",
-              alignItems: "center",
-              width: "90%",
-              height: "70px",
+              padding: "10px",
+              width: "60%",
+              border: "1px solid #ccc",
+              borderRadius: "4px",
+              fontSize: "20px",
             }}
+          />
+          <Button
+            variant="contained"
+            style={{ backgroundColor: "lightgreen", marginLeft: "10px" }}
           >
-            <input
-              type="text"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              placeholder="Title"
-              style={{
-                padding: "10px",
-                width: "60%",
-                border: "1px solid #ccc",
-                borderRadius: "4px",
-                fontSize: "20px",
-              }}
-            />
-            <Button
-              variant="contained"
-              style={{ backgroundColor: "lightgreen", marginLeft: "10px" }}
-            >
-              Save
-            </Button>
-          </div>
-          <div class="live" data-color-mode="light">
-            <MDEditor class="markdown" value={value} onChange={setValue} />
-          </div>
+            Save
+          </Button>
         </div>
-      ) : (
-        // 모바일은 그냥 메뉴를 없애고 search에서만 가능하게?
-        <div>모바일</div>
-      )}
+        <div class="live" data-color-mode="light">
+          <MDEditor class="markdown" value={value} onChange={setValue} />
+        </div>
+      </div>
     </>
   );
 };
