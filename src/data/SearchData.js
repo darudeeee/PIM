@@ -1,62 +1,56 @@
 export default [
-	  {
-        title: "Note_1",
-        date: new Date(2024, 8, 10),
-        content: "content_1"
-      },
-	  {
-        title: "Note_1",
-        date: new Date(2024, 8, 10),
-        content: "content_2"
-      },
-	  {
-        title: "Note_1",
-        date: new Date(2024, 8, 10),
-        content: "content_3"
-      },
-	  {
-        title: "Note_1",
-        date: new Date(2024, 8, 10),
-        content: "content_4"
-      },
-	  {
-        title: "Note_1",
-        date: new Date(2024, 8, 10),
-        content: "content_5"
-      },
-	  {
-        title: "Note_1",
-        date: new Date(2024, 8, 10),
-        content: "content_6"
-      },
-	  {
-        title: "Note_1",
-        date: new Date(2024, 8, 10),
-        content: "content_7"
-      },
-	  {
-        title: "Note_1",
-        date: new Date(2024, 8, 10),
-        content: "content_8"
-      },
-	  {
-        title: "Note_1",
-        date: new Date(2024, 8, 10),
-        content: "content_9"
-      },
-	  {
-        title: "Note_1",
-        date: new Date(2024, 8, 10),
-        content: "content_10"
-      },
-	  {
-        title: "Note_1",
-        date: new Date(2024, 8, 10),
-        content: "content_11"
-      },
-	  {
-        title: "Note_1",
-        date: new Date(2024, 8, 10),
-        content: "content_12"
-      },
+	{
+		title: "제목 설정 중입니다",
+		date: new Date(2024, 8, 10),
+		content:
+		  "내용내용내용내용내용내용",
+	  },
+  {
+    title: "자바스크립트는 무슨 언어인가요?",
+    date: new Date(2024, 8, 10),
+    content:
+      "자바스크립트는 웹 브라우저에서 실행되는 스크립트 언어로, 웹 페이지를 동적으로 제어하고 상호 작용할 수 있게 해주는 언어입니다.",
+  },
+  {
+    title: "변수 선언, 초기화, 할당의 차이점에 대해 설명해주세요.",
+    date: new Date(2024, 8, 11),
+    content:
+      "변수 선언: 변수를 정의하고 이름을 부여하는 단계입니다. 초기화: 변수에 값을 처음으로 할당하는 단계입니다. 할당: 변수에 값을 다시 대입하는 것입니다.",
+  },
+  {
+    title: "데이터 타입에 대해 설명해주세요.",
+    date: new Date(2024, 8, 12),
+    content:
+      "자바스크립트의 주요 데이터 타입은 원시 타입(숫자, 문자열, 불리언, null, undefined, Symbol)과 참조 타입(객체, 배열, 함수 등)입니다.",
+  },
+  {
+    title: "Promise에 대해 설명해주세요.",
+    date: new Date(2024, 8, 13),
+    content:
+      "Promise는 비동기 작업을 처리하기 위한 객체로, 작업이 완료되었을 때 성공 또는 실패 여부를 처리할 수 있도록 합니다.",
+  },
+  {
+    title: "Async, Await이 뭔지 그리고 사용 방법을 설명해주세요.",
+    date: new Date(2024, 8, 14),
+    content:
+      "async와 await는 Promise를 더 쉽게 다루기 위한 자바스크립트의 키워드입니다. async 함수 내에서 await를 사용하여 Promise가 이행될 때까지 기다립니다.",
+  },
+  {
+    title: "콜백 함수에 대해 설명해주세요.",
+    date: new Date(2024, 8, 15),
+    content:
+      "콜백 함수는 다른 함수의 인자로 전달되는 함수로, 나중에 실행되어 비동기 작업을 처리하는 데 사용됩니다.",
+  },
+  {
+    title: "클로져(Closure)에 대해 설명해주세요.",
+    date: new Date(2024, 8, 16),
+    content:
+      "클로져는 함수와 그 함수가 선언된 스코프의 조합으로, 함수가 외부 스코프의 변수를 참조할 수 있게 해줍니다.",
+  },
+  {
+    title: "ES6에서 새로 생긴 기능을 아는대로 말씀해주세요.",
+    date: new Date(2024, 8, 17),
+    content:
+      "ES6에서 도입된 주요 기능에는 let, const, 화살표 함수, 클래스, 템플릿 리터럴, 비구조화 할당 등이 있습니다.",
+  },
 ];

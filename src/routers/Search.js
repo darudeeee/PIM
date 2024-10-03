@@ -119,23 +119,53 @@ const Search = () => {
                     <div
                       style={{
                         width: "90%",
-                        height: "20%",
+                        height: "60%",
                         display: "flex",
-                        justifyContent: "space-between",
-                        alignItems: "center",
+                        flexDirection: "column",
+                        justifyContent: "center",
+						alignItems: "flexend",
                       }}
                     >
-                      <div style={{ fontSize: "18px", fontWeight: 600 }}>
+                      <div
+                        style={{
+                          display: "flex",
+						  alignItems: "flex-end",
+                          width: "100%",
+                          height: "50%",
+                          fontSize: "18px",
+                          fontWeight: 600,
+						  whiteSpace: "noWrap",
+                          overflow: "hidden",
+                          textOverflow: "ellipsis",
+                        }}
+                      >
                         {item.title}
                       </div>
-                      <div style={{ fontSize: "18px", fontWeight: 600 }}>
+                      <div
+                        style={{
+                          display: "flex",
+                          width: "100%",
+                          height: "50%",
+                          fontSize: "18px",
+                          fontWeight: 400,
+                        }}
+                      >
                         {convertDateToStr(item.date)}
                       </div>
                     </div>
-                    <div style={{ width: "90%", height: "80%" }}>
+                    <div
+                      style={{
+                        dispaly: "flex",
+                        alignItems: "center",
+                        width: "90%",
+                        height: "40%",
+                        whiteSpace: "noWrap",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                      }}
+                    >
                       {item.content}
                     </div>
-                    {/* 첫 줄만 뽑기 */}
                   </Card>
                 </Grid>
               );
