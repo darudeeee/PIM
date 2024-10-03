@@ -64,7 +64,7 @@ const Search = () => {
             justifyContent: "center",
             alignItems: "center",
             width: "100%",
-            height: "10%",
+            height: "20%",
           }}
         >
           <Card
@@ -74,6 +74,7 @@ const Search = () => {
               alignItems: "center",
               justifyContent: "center",
               boxShadow: "none",
+              background: "none",
             }}
           >
             {/* 호버시 검색창 색상 + 아이콘 변경 등 */}
@@ -96,7 +97,7 @@ const Search = () => {
         <div
           style={{
             display: "flex",
-            width: "90%",
+            width: "80%",
             marginBottom: "50px",
           }}
         >
@@ -114,6 +115,8 @@ const Search = () => {
                       height: "120px",
                       alignItems: "center",
                       justifyContent: "center",
+                      backgroundColor: "#fbfffb",
+                      borderRadius: "20px",
                     }}
                   >
                     <div
@@ -123,20 +126,20 @@ const Search = () => {
                         display: "flex",
                         flexDirection: "column",
                         justifyContent: "center",
-						alignItems: "flexend",
+                        alignItems: "flexend",
                       }}
                     >
                       <div
                         style={{
                           display: "flex",
-						  alignItems: "flex-end",
+                          alignItems: "flex-end",
                           width: "100%",
                           height: "50%",
                           fontSize: "18px",
                           fontWeight: 600,
-						  whiteSpace: "noWrap",
+                          whiteSpace: "noWrap",
                           overflow: "hidden",
-                          textOverflow: "ellipsis",
+                          //   textOverflow: "ellipsis", 이거 왜 안됨?
                         }}
                       >
                         {item.title}
