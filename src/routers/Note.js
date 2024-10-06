@@ -1,6 +1,5 @@
-import moment from "moment";
 import { useEffect, useState } from "react";
-import MDEditor, { selectWord } from "@uiw/react-md-editor";
+import MDEditor from "@uiw/react-md-editor";
 import "@uiw/react-md-editor/markdown-editor.css";
 import "@uiw/react-markdown-preview/markdown.css";
 import React from "react";
@@ -8,8 +7,6 @@ import "swiper/css";
 import "swiper/css/scrollbar";
 import { Scrollbar } from "swiper/modules";
 import SwiperCore from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
-import ReactMarkdown from "react-markdown";
 import Button from "@mui/material/Button";
 
 const mkdStr = `Content...`;
