@@ -15,22 +15,20 @@ const Search = () => {
   const [Searchdata, setSearchData] = useState([]); // 검색 데이터
 
   function searchTitleChange(event) {
-    setSearchInput(event.target.value);
-  }
+    setSearchInput(event.target.value); // 여기 searchInput을 써도 함수가 끝날 때까지 xx
+    // 함수 전체가 끝나야 변경된 값으로 사용이 가능
 
-  const [searchInput, setSearchInput] = useState("");
-
-  const search = () => {
     let array = []; // 가변수
     data.map((item) => {
-      if (item.title.includes(searchInput)) {
+      if (item.title.includes(event.target.value)) {
         // 원본 데이터와 searchInput을 비교
         array.push(item); // 원본 데이터 복사
       }
     });
-
     setSearchData(array); // 원본 데이터 중 동일한 것만 저장
-  };
+  }
+
+  const [searchInput, setSearchInput] = useState("");
 
   const [heights, setHeight] = useState(0); // return값 안에 초기값 지정
   useEffect(() => {
@@ -89,7 +87,6 @@ const Search = () => {
                 width: "50px",
                 height: "30px",
               }}
-              onClick={search}
             />
           </Card>
         </div>

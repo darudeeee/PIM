@@ -30,10 +30,7 @@ const Budget = () => {
   const [heights, setHeight] = useState(0);
   useEffect(() => {
     setHeight(document.getElementById("header").offsetHeight);
-
-    // 데이터 가져온거 계산 때리고 cardData에 넣어주기
-    // map 돌려서 sum
-
+    
     var income = 0;
     var expenditure = 0;
     var total = 0;
@@ -135,7 +132,6 @@ const Budget = () => {
     ],
   };
 
-  console.log(calAmt);
   const Pies2 = {
     labels: calAmt
       .filter((item) => item.type == 2)
