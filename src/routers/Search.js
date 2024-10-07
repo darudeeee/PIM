@@ -7,6 +7,11 @@ import { useEffect, useState } from "react";
 import { convertDateToStr } from "../component/CommonFuntion"; // 페이지 안에 뭔가를 리턴
 import SearchData from "../data/SearchData"; // 페이지 자체를 리턴
 
+// 1. 날짜순 정렬
+// 2. Title 글자 수 제한 ... 처리
+// 3. Card 색상 변경
+// 4. 검색 시, 공백 제외, 대소문자 구분 X처리
+
 const Search = () => {
   let deviceWidth = window.innerWidth;
   const [isMobile, setIsMobile] = useState(deviceWidth <= 1200);
@@ -79,13 +84,18 @@ const Search = () => {
             <TextField
               variant="standard"
               value={searchInput}
+              placeholder="Enter Title Here"
               sx={{ width: "80%", height: "100%" }}
               onChange={(event) => searchTitleChange(event)}
-            />
-            <SearchIcon
-              sx={{
-                width: "50px",
-                height: "30px",
+              InputProps={{
+                startAdornment: (
+                  <SearchIcon
+                    sx={{
+                      width: "50px",
+                      height: "30px",
+                    }}
+                  />
+                ),
               }}
             />
           </Card>
