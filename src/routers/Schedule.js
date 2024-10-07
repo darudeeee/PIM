@@ -2,9 +2,10 @@ import moment from "moment";
 import { useEffect, useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
-// 
 import { convertDateToStr } from "../component/CommonFuntion";
 import ScheduleData from "../data/ScheduleData";
+
+// 1. 데이터 RCUD 로직 만들기
 
 const Schedule = () => {
   let deviceWidth = window.innerWidth;

@@ -22,7 +22,10 @@ import SendIcon from "@mui/icons-material/Send";
 import PaidIcon from "@mui/icons-material/Paid";
 import Marquee from "react-fast-marquee";
 
-ChartJS.register(ArcElement, Tooltip, Legend);
+// 1. datepicker로 날짜별 조회 가능하도록
+// 2. form 창 데이터 연결
+
+ChartJS.register(ArcElement, Tooltip, Legend); // 이게 머임
 
 const Budget = () => {
   const [value, setValue] = useState(dayjs());

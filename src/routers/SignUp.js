@@ -11,6 +11,8 @@ import InputAreaControl from "../component/Control/InputAreaControl";
 import InputControl from "../component/Control/InputControl";
 import RadioControl from "../component/Control/RadioControl";
 
+// 1. sign으로 통합
+
 function SignUp() {
 	// const [id, setId] = React.useState(""); 등을 한번에 압축해 정리할 수 있음
 	// 여기서 id : 선언, setId : 값 설정, useState : 초기값 설정

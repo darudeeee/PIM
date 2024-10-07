@@ -9,6 +9,9 @@ import { Scrollbar } from "swiper/modules";
 import SwiperCore from "swiper";
 import Button from "@mui/material/Button";
 
+// 1. save 시 데이터 저장 로직
+// 2. 모바일에서 App Bar에 Note 안뜨도록 처리
+
 const mkdStr = `Content...`;
 
 const Note = () => {
