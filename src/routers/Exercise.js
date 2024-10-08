@@ -1,7 +1,7 @@
 const Exercise = () => {
   return (
     <>
-      <p>Exercise</p>
+     G
     </>
   );
 };
