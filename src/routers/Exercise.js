@@ -92,8 +92,8 @@ const Exercise = () => {
                     Calculate
                   </button>
                   <div style={{display: "flex", flexDirection: "column", width: "90%", height: "40%"}}>
-                    bmi: {bmi} <br/>
-                    result: {result}
+                    {bmi} <br/>
+                    {result}
                   </div>
                   
                 </div>
