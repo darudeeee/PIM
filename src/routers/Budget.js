@@ -420,7 +420,7 @@ const Budget = () => {
                       endAdornment={
                         <InputAdornment position="start">won</InputAdornment>
                       }
-                    />{" "}
+                    />
                   </FormControl>
 
                   <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
