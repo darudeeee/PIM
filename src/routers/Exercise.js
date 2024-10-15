@@ -55,142 +55,145 @@ const Exercise = () => {
         width: "100%",
       }}
     >
-      <Grid container spacing={2}>
-        <Grid item xs={12} sm={12} md={4} lg={4}>
-          <Card
-            sx={{
-              display: "flex",
-              height: "500px",
-              alignItems: "center",
-              justifyContent: "center",
-              borderRadius: "40px",
-            }}
-          >
-            <div style={{ display: "flex", width: "50%", height: "100%" }}>
-              <AccessibilityIcon
-                sx={{ display: "flex", width: "100%", height: "100%" }}
-              />
-            </div>
-            <div
-              style={{
+      <div style={{ display: "flex", alignItems: "center", width: "100%" }}>
+        <Grid container spacing={2}>
+          <Grid item xs={12} sm={12} md={4} lg={4}>
+            <Card
+              sx={{
                 display: "flex",
-                flexDirection: "column",
+                height: "500px",
+                alignItems: "center",
                 justifyContent: "center",
-                width: "40%",
-                height: "100%",
+                borderRadius: "40px",
               }}
             >
-              <TextField
-                label="Height"
-                variant="standard"
-                type="number"
-                onChange={(e) => setHeight(e.target.value)}
-              />
-              <TextField
-                label="Weight"
-                variant="standard"
-                type="number"
-                onChange={(e) => setWeight(e.target.value)}
-              />
-              <br />
-              <button
+              <div style={{ display: "flex", width: "50%", height: "100%" }}>
+                <AccessibilityIcon
+                  sx={{ display: "flex", width: "100%", height: "100%" }}
+                />
+              </div>
+              <div
                 style={{
-                  backgroundColor: "#eb8e8e",
-                  color: "#fff",
-                  borderRadius: "10px",
-                  padding: "3px",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  width: "40%",
+                  height: "100%",
                 }}
-                onClick={calBMI}
               >
-                Calculate
-              </button>
-              {bmi} <br />
-              {result}
-            </div>
-          </Card>
-        </Grid>
+                <TextField
+                  label="Height"
+                  variant="standard"
+                  type="number"
+                  onChange={(e) => setHeight(e.target.value)}
+                />
+                <TextField
+                  label="Weight"
+                  variant="standard"
+                  type="number"
+                  onChange={(e) => setWeight(e.target.value)}
+                />
+                <br />
+                <button
+                  style={{
+                    backgroundColor: "#eb8e8e",
+                    color: "#fff",
+                    borderRadius: "10px",
+                    padding: "3px",
+                  }}
+                  onClick={calBMI}
+                >
+                  Calculate
+                </button>
+                {bmi} <br />
+                {result}
+              </div>
+            </Card>
+          </Grid>
 
-        <Grid item xs={12} sm={12} md={4} lg={4}>
-          <Card
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              height: "500px",
-              alignItems: "center",
-              justifyContent: "center",
-              borderRadius: "40px",
-            }}
-          >
-            <div
-              id="top"
-              style={{ display: "flex", width: "100%", height: "50%" }}
+          <Grid item xs={12} sm={12} md={4} lg={4}>
+            <Card
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                height: "500px",
+                alignItems: "center",
+                justifyContent: "center",
+                borderRadius: "40px",
+              }}
             >
               <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  width: "50%",
-                  height: "100%",
-                }}
+                id="top"
+                style={{ display: "flex", width: "100%", height: "50%" }}
               >
-                아침
+                {/* 식단 목록 외부에서 가져와서 연동해서 하고싶음 */}
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    width: "50%",
+                    height: "100%",
+                  }}
+                >
+                  Breakfast
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    width: "50%",
+                    height: "100%",
+                  }}
+                >
+                  Lunch
+                </div>
               </div>
               <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  width: "50%",
-                  height: "100%",
-                }}
+                id="bottom"
+                style={{ display: "flex", width: "100%", height: "50%" }}
               >
-                점심
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    width: "50%",
+                    height: "100%",
+                  }}
+                >
+                  Dinner
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    width: "50%",
+                    height: "100%",
+                  }}
+                >
+                  Snack
+                </div>
               </div>
-            </div>
-            <div
-              id="bottom"
-              style={{ display: "flex", width: "100%", height: "50%" }}
+            </Card>
+          </Grid>
+          <Grid item xs={12} sm={12} md={4} lg={4}>
+            <Card
+              sx={{
+                display: "flex",
+                height: "500px",
+                alignItems: "center",
+                justifyContent: "center",
+                borderRadius: "40px",
+              }}
             >
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  width: "50%",
-                  height: "100%",
-                }}
-              >
-                저녁
-              </div>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  width: "50%",
-                  height: "100%",
-                }}
-              >
-                간식
-              </div>
-            </div>
-          </Card>
+              {/* 운동 목록 외부에서 가져와서 연동해서 하고싶음 */}
+            </Card>
+          </Grid>
         </Grid>
-        <Grid item xs={12} sm={12} md={4} lg={4}>
-          <Card
-            sx={{
-              display: "flex",
-              height: "500px",
-              alignItems: "center",
-              justifyContent: "center",
-              borderRadius: "40px",
-            }}
-          >
-            운동
-          </Card>
-        </Grid>
-      </Grid>
+      </div>
     </div>
   );
 };
