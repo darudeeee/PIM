@@ -196,7 +196,7 @@ const Menstruation = () => {
                     borderRadius: "10%",
                   }}
                 >
-                  예정일
+                  Expected Date
                 </Card>
 
                 <Card
@@ -209,7 +209,7 @@ const Menstruation = () => {
                     borderRadius: "10%",
                   }}
                 >
-                  평균 주기
+                  Average Cycle
                 </Card>
 
                 <Card
@@ -222,7 +222,7 @@ const Menstruation = () => {
                     borderRadius: "10%",
                   }}
                 >
-                  배란기
+                  Ovulation Period
                 </Card>
 
                 <Card
@@ -235,7 +235,7 @@ const Menstruation = () => {
                     borderRadius: "10%",
                   }}
                 >
-                  가임기
+                  Fertile Window
                 </Card>
               </div>
             </SwiperSlide>

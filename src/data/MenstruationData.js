@@ -1,6 +1,16 @@
 const now = new Date();
 
 export default [
+  /*
+  {
+    start: null, // 생리 시작일
+    averageCycle: 28, // 평균 생리 주기
+    expected: null, // 예정일
+    ovulation: null, // 배란
+    fertileStart: null, // 가임기 시작
+    fertileEnd: null, // 가임기 끝
+  },
+  */
   {
     id: 0,
     title: "All Day Event very long title", 
