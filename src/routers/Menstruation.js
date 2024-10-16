@@ -9,7 +9,7 @@ import "swiper/css";
 import "swiper/css/scrollbar";
 import { Scrollbar } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { convertDateToStr } from "../component/CommonFuntion";
+import { convertDateToStr, getDatesStartToLast, getDateDiff } from "../component/CommonFuntion";
 import MenstruationData from "../data/MenstruationData";
 import { avatarGroupClasses } from "@mui/material";
 
@@ -32,19 +32,7 @@ const Menstruation = () => {
   const [start, setStart] = useState(null);
   const [end, setEnd] = useState(null);
 
-  function getDatesStartToLast(startDate, lastDate) {
-    // 두 날짜 사이 모든 날짜
-    var regex = RegExp(/^\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/);
-    if (!(regex.test(startDate) && regex.test(lastDate)))
-      return "Not Date Format";
-    var result = [];
-    var curDate = new Date(startDate);
-    while (curDate <= new Date(lastDate)) {
-      result.push(curDate.toISOString().split("T")[0]);
-      curDate.setDate(curDate.getDate() + 1);
-    }
-    return result;
-  }
+
 
   const getContent = ({ date }) => {
     // 모든? 각 타일의 날짜
@@ -104,7 +92,7 @@ const Menstruation = () => {
       // start가 event(end)보다 과거가 아닐 시
       if (start <= e == false) {
         // useState로 셋팅한 것은 함수가 끝나야 사용 가능해서 e로 해야됨
-        alert("test");
+        alert("The end date of your period is earlier than the start date. Please reset it.");
       } else {
         setEnd(e);
         const newData = data.map((item, index) => {
@@ -115,14 +103,11 @@ const Menstruation = () => {
               start: item.start,
               //데이터 변환
               end: e,
-              period: getDatesStartToLast(
-                convertDateToStr(item.start),
-                convertDateToStr(e)
-              ).includes(moment(date).format("YYYY-MM-DD")).length, // 의 일 수 ex) 5 = length??
+              period: getDateDiff(item.start, e),
               avgCycle: data
-                .filter((item) => item.avgCycle !== 0)
-                .map((item) => {
-                  // avgCycle += item / item.length;
+                .filter((item) => item.avgCycle !== 0) // 평균 주기가 0이 아닐 때
+                .map((item, index) => {
+                  avgCycle += item / item.length; 
                 }),
               expectedDate: e + avgCycle,
               fertileStart: expectedDate - 17,
