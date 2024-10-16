@@ -1,18 +1,17 @@
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import Card from "@mui/material/Card";
 import moment from "moment";
 import { useEffect, useState } from "react";
 import Calendar from "react-calendar";
-import { convertDateToStr } from "../component/CommonFuntion";
 import "react-calendar/dist/Calendar.css";
+import SwiperCore from "swiper";
 import "swiper/css";
 import "swiper/css/scrollbar";
 import { Scrollbar } from "swiper/modules";
-import SwiperCore from "swiper";
-import Card from "@mui/material/Card";
-import "swiper/css";
-import "swiper/css/scrollbar";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { convertDateToStr } from "../component/CommonFuntion";
 import MenstruationData from "../data/MenstruationData";
-import FavoriteIcon from "@mui/icons-material/Favorite";
+import { avatarGroupClasses } from "@mui/material";
 
 const Menstruation = () => {
   SwiperCore.use([Scrollbar]);
@@ -28,13 +27,10 @@ const Menstruation = () => {
     setIsMobile(window.innerWidth <= 1200);
   });
 
-  //   const curDate = new Date(); // 현재 날짜
-  //   const [value, onChange] = useState(curDate); // 클릭한 날짜 (초기값으로 현재 날짜 넣어줌)
-
   const [data, setData] = useState(MenstruationData);
 
-  const [start, setStart] = useState();
-  const [end, setEnd] = useState();
+  const [start, setStart] = useState(null);
+  const [end, setEnd] = useState(null);
 
   function getDatesStartToLast(startDate, lastDate) {
     // 두 날짜 사이 모든 날짜
@@ -50,15 +46,17 @@ const Menstruation = () => {
     return result;
   }
 
-  const getContent = ({ date }) => { // 모든? 각 타일의 날짜
+  const getContent = ({ date }) => {
+    // 모든? 각 타일의 날짜
     const contents = [];
 
     if (
-      data.find((item) =>
-        getDatesStartToLast(
-          convertDateToStr(item.start), // 랑
-          convertDateToStr(item.end) // 사이의
-        ).includes(moment(date).format("YYYY-MM-DD")) // 날짜를 포함
+      data.find(
+        (item) =>
+          getDatesStartToLast(
+            convertDateToStr(item.start), // 랑
+            convertDateToStr(item.end) // 사이의
+          ).includes(moment(date).format("YYYY-MM-DD")) // 날짜를 포함
       )
     ) {
       contents.push(
@@ -81,6 +79,66 @@ const Menstruation = () => {
     return <div>{contents}</div>; // 각 날짜마다 해당 요소가 들어감
   };
 
+  const onChange = (e) => {
+    if (start == null) {
+      setStart(e);
+      var date = new Date(e.getFullYear(), e.getMonth(), e.getDate() + 4);
+
+      let arrData = {
+        id: data.length, // 기존 0부터 시작하는 배열 뒤에 붙일 거라서
+        start: e,
+        end: date,
+        period: 5,
+        avgCycle: 0,
+        expectedDate: null,
+        fertileStart: null,
+        fertileEnd: null,
+      };
+
+      setData((prev) => [
+        // setData
+        ...prev, // 기존에 있던 내용
+        arrData, // 뒤에 새로운 내용
+      ]);
+    } else {
+      // start가 event(end)보다 과거가 아닐 시
+      if (start <= e == false) {
+        // useState로 셋팅한 것은 함수가 끝나야 사용 가능해서 e로 해야됨
+        alert("test");
+      } else {
+        setEnd(e);
+        const newData = data.map((item, index) => {
+          if (index == data.length - 1) {
+            // 이미 데이터 1개 null값과 같이 추가됨 -1(기존 하던 데이터)
+            let arrData = {
+              id: item.id, // 기존 0부터 시작하는 배열 뒤에 붙일 거라서
+              start: item.start,
+              //데이터 변환
+              end: e,
+              period: getDatesStartToLast(
+                convertDateToStr(item.start),
+                convertDateToStr(e)
+              ).includes(moment(date).format("YYYY-MM-DD")).length, // 의 일 수 ex) 5 = length??
+              avgCycle: data
+                .filter((item) => item.avgCycle !== 0)
+                .map((item) => {
+                  // avgCycle += item / item.length;
+                }),
+              expectedDate: e + avgCycle,
+              fertileStart: expectedDate - 17,
+              fertileEnd: expectedDate - 11,
+            };
+            return arrData;
+          } else {
+            return item;
+          }
+        });
+        setData(newData);
+      }
+    }
+  };
+
+  console.log(data);
   return (
     <>
       {!isMobile ? (
@@ -94,8 +152,7 @@ const Menstruation = () => {
           <div id="menstruationCalendar">
             <Calendar
               locale="en"
-              // onChange={onChange}
-              // value={value}
+              onChange={onChange}
               next2Label={null}
               prev2Label={null}
               formatDay={(locale, date) => moment(date).format("D")}
@@ -182,8 +239,7 @@ const Menstruation = () => {
               <div id="homeMiniCalendar">
                 <Calendar
                   locale="en"
-                  // onChange={onChange}
-                  // value={value}
+                  onChange={onChange}
                   next2Label={null}
                   prev2Label={null}
                   formatDay={(locale, date) => moment(date).format("D")}
