@@ -112,7 +112,7 @@ function SignUp() {
 		console.log(user); // 입력한 정보 콘솔창에 뜨도록
 
 		alert("회원가입 성공!");
-		window.location.href = "/LogIn";
+		window.location.href = "/";
 
 		// 상태 변수 초기화
 		setUser({

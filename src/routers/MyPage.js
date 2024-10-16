@@ -347,7 +347,7 @@ const MyPage = () => {
                       fontWeight: 600,
                     }}
                     onClick={() => {
-                      window.location.href = "/mypage";
+                      window.location.href = "/MyPage";
                     }}
                     variant="outlined"
                   >
@@ -530,7 +530,7 @@ const MyPage = () => {
                       fontWeight: 600,
                     }}
                     onClick={() => {
-                      window.location.href = "/mypage";
+                      window.location.href = "/MyPage";
                     }}
                     variant="outlined"
                   >

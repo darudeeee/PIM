@@ -1,11 +1,11 @@
-import HomeIcon from "@mui/icons-material/Home";
-import PersonIcon from "@mui/icons-material/Person";
-import BorderColorIcon from "@mui/icons-material/BorderColor";
-import ContentPasteSearchIcon from "@mui/icons-material/ContentPasteSearch";
-import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
+import BorderColorIcon from "@mui/icons-material/BorderColor";
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+import ContentPasteSearchIcon from "@mui/icons-material/ContentPasteSearch";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
+import HomeIcon from "@mui/icons-material/Home";
+import PersonIcon from "@mui/icons-material/Person";
 // Todo 아이콘임 // import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 // import PermIdentityIcon from "@mui/icons-material/PermIdentity";
 import LogoutIcon from "@mui/icons-material/Logout";
@@ -27,16 +27,35 @@ import * as React from "react";
 import { useLocation } from "react-router-dom";
 
 const AppBarContainer = ({ children }) => {
-
   const location = useLocation();
   const path = location.pathname.split("/")[1];
   let appBarrColor =
-  path === "Home" || path === "MyPage" ? "#ccccff" :
-  path === "Note" || path === "Search" ? "lightgreen" :
-  path === "Schedule" || path === "Budget" ? "lightblue" :
-  path === "Menstruation" || path === "Exercise" ? "lightcoral" :
-  "defaultColor"; // 기본 색상
-  
+    path === "Home" || path === "MyPage"
+      ? "#ccccff"
+      : path === "Note" || path === "Search"
+      ? "lightgreen"
+      : path === "Schedule" || path === "Budget"
+      ? "lightblue"
+      : path === "Menstruation" || path === "Exercise"
+      ? "lightcoral"
+      : "defaultColor"; // 기본 색상
+
+  React.useEffect(() => {
+    if (
+      !(
+        path === "Home" ||
+        path === "MyPage" ||
+        path === "Note" ||
+        path === "Search" ||
+        path === "Schedule" ||
+        path === "Budget" ||
+        path === "Menstruation" ||
+        path === "Exercise"
+      )
+    ) {
+      window.location.href = "/"; // 원래는 404 + return home 버튼
+    }
+  }, []);
   const [open, setOpen] = React.useState(false);
 
   const toggleDrawer = (newOpen) => () => {
