@@ -50,16 +50,15 @@ const Menstruation = () => {
     return result;
   }
 
-  const addStart = ({ date }) => {
-    // tilecontents
+  const getContent = ({ date }) => { // 모든? 각 타일의 날짜
     const contents = [];
 
     if (
       data.find((item) =>
         getDatesStartToLast(
-          convertDateToStr(item.start),
-          convertDateToStr(item.end)
-        ).includes(moment(date).format("YYYY-MM-DD"))
+          convertDateToStr(item.start), // 랑
+          convertDateToStr(item.end) // 사이의
+        ).includes(moment(date).format("YYYY-MM-DD")) // 날짜를 포함
       )
     ) {
       contents.push(
@@ -100,7 +99,7 @@ const Menstruation = () => {
               next2Label={null}
               prev2Label={null}
               formatDay={(locale, date) => moment(date).format("D")}
-              tileContent={addStart}
+              tileContent={getContent}
               showNeighboringMonth={false}
             />
           </div>
@@ -188,7 +187,7 @@ const Menstruation = () => {
                   next2Label={null}
                   prev2Label={null}
                   formatDay={(locale, date) => moment(date).format("D")}
-                  tileContent={addStart}
+                  tileContent={getContent}
                   showNeighboringMonth={false}
                 />
               </div>

@@ -68,7 +68,7 @@ const Schedule = () => {
     });
   };
 
-  const addContent = ({ date }) => {
+  const getContent = ({ date }) => {
     const dateStr = moment(date).format("YYYY-MM-DD");
     if (schedules[dateStr] && schedules[dateStr].length > 0) {
       return (
@@ -118,7 +118,7 @@ const Schedule = () => {
               next2Label={null}
               prev2Label={null}
               formatDay={(locale, date) => moment(date).format("D")}
-              tileContent={addContent}
+              tileContent={getContent}
               showNeighboringMonth={false}
             />
           </div>
@@ -327,7 +327,7 @@ const Schedule = () => {
               next2Label={null}
               prev2Label={null}
               formatDay={(locale, date) => moment(date).format("D")}
-              tileContent={addContent}
+              tileContent={getContent}
               showNeighboringMonth={false}
             />
           </div>

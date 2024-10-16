@@ -38,7 +38,7 @@ const Home = () => {
   const [value, onChange] = useState(curDate); // 클릭한 날짜 (초기값으로 현재 날짜 넣어줌)
 
   // 각 날짜 타일에 컨텐츠 추가
-  const addContent = ({ date }) => {
+  const getContent = ({ date }) => {
     // 해당 날짜(하루)에 추가할 컨텐츠의 배열
     const contents = [];
     // date(각 날짜)가  리스트의 날짜와 일치하면 해당 컨텐츠(이모티콘) 추가
@@ -84,7 +84,7 @@ const Home = () => {
               next2Label={null}
               prev2Label={null}
               formatDay={(locale, date) => moment(date).format("D")}
-              tileContent={addContent}
+              tileContent={getContent}
               showNeighboringMonth={false}
             />
           </div>
@@ -336,7 +336,7 @@ const Home = () => {
                     next2Label={null}
                     prev2Label={null}
                     formatDay={(locale, date) => moment(date).format("D")}
-                    tileContent={addContent}
+                    tileContent={getContent}
                     showNeighboringMonth={false}
                   />
                 </div>
