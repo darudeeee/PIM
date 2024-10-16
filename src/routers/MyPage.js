@@ -11,9 +11,7 @@ import InputControl from "../component/Control/InputControl";
 import RadioControl from "../component/Control/RadioControl";
 import UserData from "../data/UserData";
 
-// 1. 모바일에 useRef 사용한 첨부파일 추가 기능
-// 2. 모바일 디자인
-// 3. 데이터 수정, 탈퇴 로직
+// 모바일에 useRef 사용한 첨부파일 추가 기능
 
 const MyPage = () => {
   // React Avatar

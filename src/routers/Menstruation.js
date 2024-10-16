@@ -14,8 +14,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import MenstruationData from "../data/MenstruationData";
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
-// 1. 생리 시작일 입력 가능하도록(웹, 모바일)
-// 2. 데이터 RCUD 로직 만들기
+// 클릭 시 생리 4일 기록, 이미 클릭 된 타일 누르면 그 이후 날짜 지워지게?
 
 const Menstruation = () => {
   SwiperCore.use([Scrollbar]);
@@ -34,7 +33,7 @@ const Menstruation = () => {
   const curDate = new Date(); // 현재 날짜
   const [value, onChange] = useState(curDate); // 클릭한 날짜 (초기값으로 현재 날짜 넣어줌)
 
-  const addStart = ({ date }) => {
+  const addStart = ({ date }) => { // tilecontents
     const contents = [];
 
     if (

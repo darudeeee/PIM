@@ -5,8 +5,6 @@ import Button from "@mui/material/Button";
 import * as React from "react";
 import InputControl from "../component/Control/InputControl";
 
-// 1. sign으로 통합
-
 const LogIn = () => {
 	const [user, setUser] = React.useState({
 		id: "",

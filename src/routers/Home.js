@@ -16,8 +16,6 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
-// 1. Card 링크 이동
-
 const Home = () => {
   SwiperCore.use([Scrollbar]);
   let deviceWidth = window.innerWidth;

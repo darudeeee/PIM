@@ -5,8 +5,6 @@ import "react-calendar/dist/Calendar.css";
 import { convertDateToStr } from "../component/CommonFuntion";
 import ScheduleData from "../data/ScheduleData";
 
-// 1. 데이터 RCUD 로직 만들기
-
 const Schedule = () => {
   let deviceWidth = window.innerWidth;
   const [isMobile, setIsMobile] = useState(deviceWidth <= 1200);
