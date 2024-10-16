@@ -12,9 +12,7 @@ import "swiper/css";
 import "swiper/css/scrollbar";
 import { Swiper, SwiperSlide } from "swiper/react";
 import MenstruationData from "../data/MenstruationData";
-import FavoriteIcon from '@mui/icons-material/Favorite';
-
-// 클릭 시 생리 4일 기록, 이미 클릭 된 타일 누르면 그 이후 날짜 지워지게?
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 const Menstruation = () => {
   SwiperCore.use([Scrollbar]);
@@ -30,16 +28,38 @@ const Menstruation = () => {
     setIsMobile(window.innerWidth <= 1200);
   });
 
-  const curDate = new Date(); // 현재 날짜
-  const [value, onChange] = useState(curDate); // 클릭한 날짜 (초기값으로 현재 날짜 넣어줌)
+  //   const curDate = new Date(); // 현재 날짜
+  //   const [value, onChange] = useState(curDate); // 클릭한 날짜 (초기값으로 현재 날짜 넣어줌)
 
-  const addStart = ({ date }) => { // tilecontents
+  const [data, setData] = useState(MenstruationData);
+
+  const [start, setStart] = useState();
+  const [end, setEnd] = useState();
+
+  function getDatesStartToLast(startDate, lastDate) {
+    // 두 날짜 사이 모든 날짜
+    var regex = RegExp(/^\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/);
+    if (!(regex.test(startDate) && regex.test(lastDate)))
+      return "Not Date Format";
+    var result = [];
+    var curDate = new Date(startDate);
+    while (curDate <= new Date(lastDate)) {
+      result.push(curDate.toISOString().split("T")[0]);
+      curDate.setDate(curDate.getDate() + 1);
+    }
+    return result;
+  }
+
+  const addStart = ({ date }) => {
+    // tilecontents
     const contents = [];
 
     if (
-      MenstruationData.find(
-        (day) =>
-          convertDateToStr(day.start) === moment(date).format("YYYY-MM-DD")
+      data.find((item) =>
+        getDatesStartToLast(
+          convertDateToStr(item.start),
+          convertDateToStr(item.end)
+        ).includes(moment(date).format("YYYY-MM-DD"))
       )
     ) {
       contents.push(
@@ -75,8 +95,8 @@ const Menstruation = () => {
           <div id="menstruationCalendar">
             <Calendar
               locale="en"
-              onChange={onChange}
-              value={value}
+              // onChange={onChange}
+              // value={value}
               next2Label={null}
               prev2Label={null}
               formatDay={(locale, date) => moment(date).format("D")}
@@ -163,8 +183,8 @@ const Menstruation = () => {
               <div id="homeMiniCalendar">
                 <Calendar
                   locale="en"
-                  onChange={onChange}
-                  value={value}
+                  // onChange={onChange}
+                  // value={value}
                   next2Label={null}
                   prev2Label={null}
                   formatDay={(locale, date) => moment(date).format("D")}

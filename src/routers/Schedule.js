@@ -4,6 +4,7 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import { convertDateToStr } from "../component/CommonFuntion";
 import ScheduleData from "../data/ScheduleData";
+// 홈에서 스케줄 데이터 썻음 여기서는 그냥 페이지만 등록되게 했음
 
 const Schedule = () => {
   let deviceWidth = window.innerWidth;
