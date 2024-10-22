@@ -15,6 +15,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   SwiperCore.use([Scrollbar]);
@@ -64,6 +65,15 @@ const Home = () => {
       );
     }
     return <div>{contents}</div>; // 각 날짜마다 해당 요소가 들어감
+  };
+
+  const navigate = useNavigate();
+
+  const movePage = (path) => {
+    navigate(path);
+    if(path == "/budget") {
+      alert("ㅋㅋ")
+    }
   };
 
   return (
@@ -163,7 +173,16 @@ const Home = () => {
                   </Typography>
                 </CardContent>
                 <CardActions sx={{ width: "95%", height: "20%" }}>
-                  <Button size="small">Move to Budget</Button>
+                  <Button
+                    size="small"
+                    onClick={(event) => {
+                      event.preventDefault();
+                      event.stopPropagation();
+                      movePage("/budget");
+                    }}
+                  >
+                    Move to Budget
+                  </Button>
                 </CardActions>
               </div>
             </Card>
@@ -234,7 +253,11 @@ const Home = () => {
                   </Typography>
                 </CardContent>
                 <CardActions sx={{ width: "95%", height: "20%" }}>
-                  <Button size="small">Move to Menstruation</Button>
+                  <Button size="small" onClick={(event) => {
+                      event.preventDefault();
+                      event.stopPropagation();
+                      movePage("/menstruation");
+                    }}>Move to Menstruation</Button>
                 </CardActions>
               </div>
             </Card>
@@ -305,7 +328,11 @@ const Home = () => {
                   </Typography>
                 </CardContent>
                 <CardActions sx={{ width: "95%", height: "20%" }}>
-                  <Button size="small">Move To Exercise</Button>
+                  <Button size="small" onClick={(event) => {
+                      event.preventDefault();
+                      event.stopPropagation();
+                      movePage("/exercise");
+                    }}>Move To Exercise</Button>
                 </CardActions>
               </div>
             </Card>

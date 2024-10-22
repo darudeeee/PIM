@@ -76,11 +76,11 @@ const Menstruation = () => {
         .includes(convertDateToStr(e)) // 현재 클릭 event 날짜와 같으면
     ) {
       alert(e + "del?");
-      setData(data.filter((item) => convertDateToStr(item.start) !== e));
-      // filter map 배열만 초기값 null일땐 오류 날 수도
-      console.log("Data:", data); // 기존 배열 + 현재 입력 중인 부분
-      console.log("Start:", start); // 현재 start
-      console.log("Event:", e); // 현재 클릭
+      setData(
+        data.filter(
+          (item) => convertDateToStr(item.start) !== convertDateToStr(e)
+        )
+      );
     } else {
       if (start == null) {
         setStart(e);
