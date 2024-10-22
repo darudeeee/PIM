@@ -11,8 +11,6 @@ import InputAreaControl from "../component/Control/InputAreaControl";
 import InputControl from "../component/Control/InputControl";
 import RadioControl from "../component/Control/RadioControl";
 
-// 1. sign으로 통합
-
 function SignUp() {
 	// const [id, setId] = React.useState(""); 등을 한번에 압축해 정리할 수 있음
 	// 여기서 id : 선언, setId : 값 설정, useState : 초기값 설정
@@ -112,7 +110,7 @@ function SignUp() {
 		console.log(user); // 입력한 정보 콘솔창에 뜨도록
 
 		alert("회원가입 성공!");
-		window.location.href = "/";
+		window.location.href = "/LogIn";
 
 		// 상태 변수 초기화
 		setUser({

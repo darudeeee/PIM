@@ -13,6 +13,7 @@ import {
   convertDateToStr,
   getDateDiff,
   getDatesStartToLast,
+  calculateDDay,
 } from "../component/CommonFuntion";
 import MenstruationData from "../data/MenstruationData";
 
@@ -71,11 +72,15 @@ const Menstruation = () => {
   const onChange = (e) => {
     if (
       data
-        .map((item) => convertDateToStr(item.start))
-        .includes(convertDateToStr(e))
+        .map((item) => convertDateToStr(item.start)) // 모든 start 중
+        .includes(convertDateToStr(e)) // 현재 클릭 event 날짜와 같으면
     ) {
-      //삭제
-      alert("dd");
+      alert(e + "del?");
+      setData(data.filter((item) => convertDateToStr(item.start) !== e));
+      // filter map 배열만 초기값 null일땐 오류 날 수도
+      console.log("Data:", data); // 기존 배열 + 현재 입력 중인 부분
+      console.log("Start:", start); // 현재 start
+      console.log("Event:", e); // 현재 클릭
     } else {
       if (start == null) {
         setStart(e);
@@ -124,12 +129,13 @@ const Menstruation = () => {
 
               // 평균 주기 계산
               let cycle = (Math.round(avgCycle) + diff) / data.length;
-              /* let cycle = (Math.round(avgCycle) + diff) / data.length;
-					  1. avgCycle = 0; 예상일 = 28;
-					  2. avgCycle = 0 + 현재start - 이전 end/ 1 = 22; 예상일 = 22일더했어
-					  3. avgCycle = 22 * 1 + 24 / 2 = 23;
-					  4. avgCycle = 23 * 2 + 현재 주기 / 3
-				  */
+              /* 알고리즘
+                let cycle = (Math.round(avgCycle) + diff) / data.length;
+                1. avgCycle = 0; 예상일 = 28;
+                2. avgCycle = 0 + 현재start - 이전 end/ 1 = 22; 예상일 = 22일더했어
+                3. avgCycle = 22 * 1 + 24 / 2 = 23;
+                4. avgCycle = 23 * 2 + 현재 주기 / 3
+              */
               let arrData = {
                 id: item.id, // 기존 0부터 시작하는 배열 뒤에 붙일 거라서
                 start: item.start,
@@ -159,6 +165,8 @@ const Menstruation = () => {
             }
           });
           setData(newData);
+          setStart(null);
+          setEnd(null);
         }
       }
     }
@@ -195,11 +203,10 @@ const Menstruation = () => {
             }}
           >
             {/* 
-				카드 1 : 평균주기(data의 맨마지막 데이터의 avgCycle)
-				카드 2 : 다음 생리 예정일(data의 맨마지막 데이터의 expectedDate)
-				카드 3 : 다음 가임기 시작일(data의 맨마지막 데이터의 fertileStart)
-				카드 4 : 다음 가임기 종료일(data의 맨마지막 데이터의 fertileEnd)
-				*/}
+            카드 => 다음 생리 찍으면 이상해져 ~~
+            2024-10-15 이런 것보단,, D-3 이런게 낫지 않았을까? 
+            => 해봤는데 현재 날짜 이후 데이터의 d-day로 나와서 98 이런식으로 나옴
+            */}
             <Card
               sx={{
                 display: "flex",
@@ -210,7 +217,14 @@ const Menstruation = () => {
                 borderRadius: "10%",
               }}
             >
-              Expectd Date
+              {data.length > 0 && ( // 조건부 렌더링 : data.length가 > 0 이면
+                <div>
+                  Expected Date:{" "}
+                  {moment(data[data.length - 1].expectedDate).format(
+                    "YYYY-MM-DD"
+                  )}
+                </div>
+              )}
             </Card>
             <Card
               sx={{
@@ -222,7 +236,7 @@ const Menstruation = () => {
                 borderRadius: "10%",
               }}
             >
-              Average Cycle
+              Average Cycle : {Math.round(data[data.length - 1].avgCycle)}
             </Card>
             <Card
               sx={{
@@ -234,7 +248,8 @@ const Menstruation = () => {
                 borderRadius: "10%",
               }}
             >
-              Ovulation Period
+              Fertile Start :{" "}
+              {moment(data[data.length - 1].fertileStart).format("YYYY-MM-DD")}
             </Card>
             <Card
               sx={{
@@ -246,7 +261,8 @@ const Menstruation = () => {
                 borderRadius: "10%",
               }}
             >
-              Fertile Window
+              Fertile End : Fertile Start :{" "}
+              {moment(data[data.length - 1].fertileEnd).format("YYYY-MM-DD")}
             </Card>
           </div>
         </div>
@@ -301,7 +317,10 @@ const Menstruation = () => {
                     borderRadius: "10%",
                   }}
                 >
-                  Expected Date
+                  Expected Date:{" "}
+                  {moment(data[data.length - 1].expectedDate).format(
+                    "YYYY-MM-DD"
+                  )}
                 </Card>
 
                 <Card
@@ -314,7 +333,7 @@ const Menstruation = () => {
                     borderRadius: "10%",
                   }}
                 >
-                  Average Cycle
+                  Average Cycle : {Math.round(data[data.length - 1].avgCycle)}
                 </Card>
 
                 <Card
@@ -327,7 +346,10 @@ const Menstruation = () => {
                     borderRadius: "10%",
                   }}
                 >
-                  Ovulation Period
+                  Fertile Start :{" "}
+                  {moment(data[data.length - 1].fertileStart).format(
+                    "YYYY-MM-DD"
+                  )}
                 </Card>
 
                 <Card
@@ -340,7 +362,10 @@ const Menstruation = () => {
                     borderRadius: "10%",
                   }}
                 >
-                  Fertile Window
+                  Fertile End : Fertile Start :{" "}
+                  {moment(data[data.length - 1].fertileEnd).format(
+                    "YYYY-MM-DD"
+                  )}
                 </Card>
               </div>
             </SwiperSlide>

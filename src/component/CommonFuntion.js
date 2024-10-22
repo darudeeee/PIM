@@ -30,3 +30,17 @@ export const getDateDiff = (d1, d2) => {
   const diffDate = date1.getTime() - date2.getTime();
   return Math.abs(diffDate / (1000 * 60 * 60 * 24)); // 밀리세컨 * 초 * 분 * 시 = 일
 }
+
+// D-day로 변환
+export function calculateDDay(targetDateStr) {
+  const today = new Date();
+  const targetDate = new Date(targetDateStr);
+
+  const diffTime = targetDate - today; // 밀리초 단위 차이 계산
+  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); // 밀리초를 일수로 변환
+
+  return diffDays;
+}
+
+const targetDateStr = '2024-12-25';
+const dDay = calculateDDay(targetDateStr);
