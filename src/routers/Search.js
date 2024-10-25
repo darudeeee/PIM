@@ -4,13 +4,11 @@ import Card from "@mui/material/Card";
 import TextField from "@mui/material/TextField";
 import * as React from "react";
 import { useEffect, useState } from "react";
-import { convertDateToStr } from "../component/CommonFuntion"; // 페이지 안에 뭔가를 리턴
-import SearchData from "../data/SearchData"; // 페이지 자체를 리턴
+import { convertDateToStr } from "../component/CommonFuntion";
+import SearchData from "../data/SearchData";
 
 // 1. 날짜순 정렬
-// 2. Title 글자 수 제한 ... 처리
-// 3. Card 색상 변경
-// 4. 검색 시, 공백 제외, 대소문자 구분 X처리
+// 2. Card 색상 변경
 
 const Search = () => {
   let deviceWidth = window.innerWidth;
@@ -25,7 +23,7 @@ const Search = () => {
 
     let array = []; // 가변수
     data.map((item) => {
-      if (item.title.includes(event.target.value)) {
+      if (item.title.toLowerCase().includes(event.target.value.toLowerCase())) {
         // 원본 데이터와 searchInput을 비교
         array.push(item); // 원본 데이터 복사
       }
@@ -144,12 +142,15 @@ const Search = () => {
                           height: "50%",
                           fontSize: "18px",
                           fontWeight: 600,
-                          whiteSpace: "noWrap",
+                          whiteSpace: "nowrap",
                           overflow: "hidden",
-                          //   textOverflow: "ellipsis", 이거 왜 안됨?
+                          textOverflow: "ellipsis",
                         }}
                       >
-                        {item.title}
+                        {/* title 22글자 제한 */}
+                        {item.title.length > 8
+                          ? `${item.title.slice(0, 22)}...`
+                          : item.title}
                       </div>
                       <div
                         style={{
