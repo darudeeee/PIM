@@ -71,8 +71,8 @@ const Home = () => {
 
   const movePage = (path) => {
     navigate(path);
-    if(path == "/budget") {
-      alert("app bar 색상 변경 필요")
+    if (path == "/budget") {
+      alert("app bar 색상 변경 필요");
     }
   };
 
@@ -175,6 +175,12 @@ const Home = () => {
                 <CardActions sx={{ width: "95%", height: "20%" }}>
                   <Button
                     size="small"
+                    sx={{
+                      transition: "0.3s",
+                      "&:hover": {
+                        transform: "scale(1.02)",
+                      },
+                    }}
                     onClick={(event) => {
                       event.preventDefault();
                       event.stopPropagation();
@@ -253,11 +259,22 @@ const Home = () => {
                   </Typography>
                 </CardContent>
                 <CardActions sx={{ width: "95%", height: "20%" }}>
-                  <Button size="small" onClick={(event) => {
+                  <Button
+                    size="small"
+                    sx={{
+                      transition: "0.3s",
+                      "&:hover": {
+                        transform: "scale(1.02)",
+                      },
+                    }}
+                    onClick={(event) => {
                       event.preventDefault();
                       event.stopPropagation();
                       movePage("/menstruation");
-                    }}>Move to Menstruation</Button>
+                    }}
+                  >
+                    Move to Menstruation
+                  </Button>
                 </CardActions>
               </div>
             </Card>
@@ -328,11 +345,22 @@ const Home = () => {
                   </Typography>
                 </CardContent>
                 <CardActions sx={{ width: "95%", height: "20%" }}>
-                  <Button size="small" onClick={(event) => {
+                  <Button
+                    size="small"
+                    sx={{
+                      transition: "0.3s",
+                      "&:hover": {
+                        transform: "scale(1.02)",
+                      },
+                    }}
+                    onClick={(event) => {
                       event.preventDefault();
                       event.stopPropagation();
                       movePage("/exercise");
-                    }}>Move To Exercise</Button>
+                    }}
+                  >
+                    Move To Exercise
+                  </Button>
                 </CardActions>
               </div>
             </Card>
@@ -446,7 +474,22 @@ const Home = () => {
                         </Typography>
                       </CardContent>
                       <CardActions sx={{ width: "95%", height: "20%" }}>
-                        <Button size="small">Move to Budget</Button>
+                        <Button
+                          size="small"
+                          sx={{
+                            transition: "0.3s",
+                            "&:hover": {
+                              transform: "scale(1.02)",
+                            },
+                          }}
+                          onClick={(event) => {
+                            event.preventDefault();
+                            event.stopPropagation();
+                            movePage("/budget");
+                          }}
+                        >
+                          Move to Budget
+                        </Button>
                       </CardActions>
                     </div>
                   </Card>
@@ -517,7 +560,22 @@ const Home = () => {
                         </Typography>
                       </CardContent>
                       <CardActions sx={{ width: "95%", height: "20%" }}>
-                        <Button size="small">Move to Menstruation</Button>
+                        <Button
+                          size="small"
+                          sx={{
+                            transition: "0.3s",
+                            "&:hover": {
+                              transform: "scale(1.02)",
+                            },
+                          }}
+                          onClick={(event) => {
+                            event.preventDefault();
+                            event.stopPropagation();
+                            movePage("/menstruation");
+                          }}
+                        >
+                          Move to Menstruation
+                        </Button>
                       </CardActions>
                     </div>
                   </Card>
@@ -588,7 +646,22 @@ const Home = () => {
                         </Typography>
                       </CardContent>
                       <CardActions sx={{ width: "95%", height: "20%" }}>
-                        <Button size="small">Move to Exercise</Button>
+                        <Button
+                          size="small"
+                          sx={{
+                            transition: "0.3s",
+                            "&:hover": {
+                              transform: "scale(1.02)",
+                            },
+                          }}
+                          onClick={(event) => {
+                            event.preventDefault();
+                            event.stopPropagation();
+                            movePage("/exercise");
+                          }}
+                        >
+                          Move to Exercise
+                        </Button>
                       </CardActions>
                     </div>
                   </Card>

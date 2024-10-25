@@ -9,13 +9,10 @@ import "swiper/css";
 import "swiper/css/scrollbar";
 import { Scrollbar } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import {
-  convertDateToStr,
-  getDateDiff,
-  getDatesStartToLast,
-  calculateDDay,
-} from "../component/CommonFuntion";
+import {convertDateToStr, getDateDiff, getDatesStartToLast, calculateDDay} from "../component/CommonFuntion";
 import MenstruationData from "../data/MenstruationData";
+
+// 1. card 새 정보 입력 시 데이터 수정 필요
 
 const Menstruation = () => {
   SwiperCore.use([Scrollbar]);
