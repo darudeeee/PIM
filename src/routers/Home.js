@@ -72,7 +72,7 @@ const Home = () => {
   const movePage = (path) => {
     navigate(path);
     if(path == "/budget") {
-      alert("ㅋㅋ")
+      alert("app bar 색상 변경 필요")
     }
   };
 

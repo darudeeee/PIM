@@ -11,21 +11,17 @@ import InputControl from "../component/Control/InputControl";
 import RadioControl from "../component/Control/RadioControl";
 import UserData from "../data/UserData";
 
-// 모바일에 useRef 사용한 첨부파일 추가 기능
-
 const MyPage = () => {
-  // React Avatar
-  // https://mui.com/material-ui/react-avatar/
   let deviceWidth = window.innerWidth;
   const [isMobile, setIsMobile] = useState(deviceWidth <= 1200);
 
-  const [heights, setHeight] = useState(0); // return값 안에 초기값 지정
+  const [heights, setHeight] = useState(0);
   useEffect(() => {
     setHeight(document.getElementById("header").offsetHeight);
   }, []);
 
   window.addEventListener("resize", function () {
-    setIsMobile(window.innerWidth <= 1200); // 크기 감지만 해줌
+    setIsMobile(window.innerWidth <= 1200);
   });
 
   const [user, setUser] = React.useState({
@@ -117,7 +113,6 @@ const MyPage = () => {
     }
   };
 
-  // 비밀번호 보이기/감추기 아이콘
   const viewPw = () => {
     setUser((prev) => ({
       ...prev,
@@ -200,7 +195,7 @@ const MyPage = () => {
               id="propileBox"
               style={{
                 width: "100%",
-                height: "30%",
+                height: "20%",
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
@@ -262,7 +257,6 @@ const MyPage = () => {
                         ) : (
                           <VisibilityOffIcon />
                         )}
-                        {/* 비밀번호 보이기/감추기 아이콘 */}
                       </IconButton>
                     }
                   />
@@ -317,8 +311,9 @@ const MyPage = () => {
                   Function={(name, value) => InputChange(name, value)}
                 />
 
-                <div // 버튼 정렬 박스
+                <div
                   style={{
+                    width: "100%",
                     display: "flex",
                     flexDirection: "row",
                     alignItems: "center",
@@ -390,35 +385,49 @@ const MyPage = () => {
               id="propileBox"
               style={{
                 width: "100%",
-                height: "30%",
+                height: "20%",
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
                 justifyContent: "center",
+                marginBottom: "20px",
+                paddingTop: "40px",
               }}
             >
               <Avatar
-                sx={{ width: "50px", height: "50px" }}
-                src="/broken-image.jpg"
+                sx={{ width: "70px", height: "70px", cursor: "pointer" }}
+                src={user.img || "/broken-image.jpg"}
+                onClick={handleButtonClick}
               />
-              <h4>Web Master</h4>
+              <input
+                type="file"
+                accept="image/*"
+                ref={fileInput}
+                onChange={handleChange}
+                style={{ display: "none" }}
+              />
+              <h4 style={{ fontSize: "1.2rem", marginTop: "10px" }}>
+                Web Master
+              </h4>
             </div>
+
             <div
               id="propilInfo"
               style={{
-                width: "40%",
+                width: "90%",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
                 border: "3px solid #BCBCF7",
-                paddingBottom: "10px",
+                padding: "10px",
               }}
             >
               <div
                 style={{
                   display: "flex",
                   flexDirection: "column",
-                  padding: "20px 0px",
+                  padding: "20px",
+                  width: "100%",
                 }}
               >
                 <InputControl
@@ -445,7 +454,6 @@ const MyPage = () => {
                         ) : (
                           <VisibilityOffIcon />
                         )}
-                        {/* 비밀번호 보이기/감추기 아이콘 */}
                       </IconButton>
                     }
                   />
@@ -500,17 +508,19 @@ const MyPage = () => {
                   Function={(name, value) => InputChange(name, value)}
                 />
 
-                <div // 버튼 정렬 박스
+                <div
                   style={{
+                    width: "100%",
                     display: "flex",
                     flexDirection: "row",
                     alignItems: "center",
                     padding: "10px",
+                    justifyContent: "space-between",
                   }}
                 >
                   <Button
                     style={{
-                      width: "50%",
+                      width: "48%",
                       backgroundColor: "#BCBCF7",
                       border: "1px solid white",
                       color: "white",
@@ -523,7 +533,7 @@ const MyPage = () => {
                   </Button>
                   <Button
                     style={{
-                      width: "50%",
+                      width: "48%",
                       backgroundColor: "#BCBCF7",
                       border: "1px solid white",
                       color: "white",
@@ -543,6 +553,7 @@ const MyPage = () => {
                     border: "none",
                     color: "#7d7878",
                     fontSize: "12px",
+                    marginTop: "10px",
                   }}
                   onClick={accountDeletion}
                   variant="outlined"
