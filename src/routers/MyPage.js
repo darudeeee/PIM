@@ -11,6 +11,7 @@ import InputControl from "../component/Control/InputControl";
 import RadioControl from "../component/Control/RadioControl";
 import UserData from "../data/UserData";
 
+// 모바일 pw 길이 수정
 const MyPage = () => {
   let deviceWidth = window.innerWidth;
   const [isMobile, setIsMobile] = useState(deviceWidth <= 1200);
@@ -438,7 +439,7 @@ const MyPage = () => {
                   Function={(name, value) => InputChange(name, value)}
                 />
 
-                <div style={{ display: "flex" }}>
+                <div style={{ display: "flex"}}>
                   <InputControl
                     type={user.showPw ? "text" : "password"}
                     label={"PW"}
