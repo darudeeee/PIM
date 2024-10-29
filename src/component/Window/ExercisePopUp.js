@@ -28,8 +28,8 @@ const customModalStyles = {
     zIndex: 10,
   },
   content: {
-    width: "360px",
-    height: "300px",
+    width: "500px",
+    height: "450px",
     zIndex: 150,
     position: "absolute",
     top: "50%",
@@ -39,6 +39,7 @@ const customModalStyles = {
     boxShadow: "2px 2px 2px rgba(0, 0, 0, 0.25)",
     backgroundColor: "white",
     padding: "20px",
+    overflow: "hidden",
   },
 };
 
@@ -59,9 +60,7 @@ const ExercisePopUp = ({ onClose }) => {
           height: "20%",
         }}
       >
-        {/* 한번에 */}
         <h4>Today's Workout Log</h4>
-
         <Button
           variant="contained"
           onClick={onClose}
@@ -71,8 +70,20 @@ const ExercisePopUp = ({ onClose }) => {
         </Button>
       </div>
       <div style={{ width: "100%", height: "70%", border: "1px solid #000" }}>
-        <ul>
-          {/* 스크롤 형식 list 참고 */}
+        {/* 스크롤 형식 list 참고 */}
+        <ul style={{ overflowX: "hidden", overflowY: "auto", whiteSpace: "nowrap" }}>
+          <li>Push-ups</li>
+          <li>Squats</li>
+          <li>Plank</li>
+          <li>Push-ups</li>
+          <li>Squats</li>
+          <li>Plank</li>
+          <li>Push-ups</li>
+          <li>Squats</li>
+          <li>Plank</li>
+          <li>Push-ups</li>
+          <li>Squats</li>
+          <li>Plank</li>
           <li>Push-ups</li>
           <li>Squats</li>
           <li>Plank</li>
