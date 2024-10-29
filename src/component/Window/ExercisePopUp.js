@@ -1,6 +1,6 @@
 import React from "react";
-import ReactModal from "react-modal"; // React Modal 라이브러리
-import { Button } from "@mui/material"; // Material UI 버튼
+import ReactModal from "react-modal"; 
+import { Button } from "@mui/material"; 
 
 /*
 isOpen	모달 창이 표시되어야 하는지 여부를 설명하는 boolean 값이다.
@@ -28,7 +28,7 @@ const customModalStyles = {
     zIndex: 10,
   },
   content: {
-    width: "500px",
+    width: "500px", // 모바일 크기 조정
     height: "450px",
     zIndex: 150,
     position: "absolute",
@@ -64,7 +64,7 @@ const ExercisePopUp = ({ onClose }) => {
         <Button
           variant="contained"
           onClick={onClose}
-          style={{ width: "20px", height: "20px" }}
+          style={{ width: "30px", height: "30px", backgroundColor: "#eb8e8e", color: "#fff"}}
         >
           Close
         </Button>

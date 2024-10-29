@@ -4,6 +4,7 @@ import Card from "@mui/material/Card";
 import TextField from "@mui/material/TextField";
 import { useEffect, useState } from "react";
 import ExercisePopUp from "../component/Window/ExercisePopUp";
+import { Button } from "@mui/material"; 
 
 const Exercise = () => {
   const [heights, setHeights] = useState(0);
@@ -97,7 +98,7 @@ const Exercise = () => {
                     onChange={(e) => setWeight(e.target.value)}
                   />
                   <br />
-                  <button
+                  <Button
                     style={{
                       backgroundColor: "#eb8e8e",
                       color: "#fff",
@@ -107,7 +108,7 @@ const Exercise = () => {
                     onClick={calBMI}
                   >
                     Calculate
-                  </button>
+                  </Button>
                   {bmi} <br />
                   {result}
                 </div>
