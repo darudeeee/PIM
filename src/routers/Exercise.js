@@ -16,38 +16,36 @@ const Exercise = () => {
   const [weight, setWeight] = useState("");
   const [bmi, setBmi] = useState("");
   const [result, setResult] = useState("");
-
-  //팝업 보이는 여부
   const [ExercisePopUpVisible, setExerCisePopUpVisible] = useState(false);
 
   function calBMI() {
     const meter = height / 100;
-    const bmi = weight / (meter * meter);
+    const bmiValue = weight / (meter * meter);
 
-    if (bmi < 16) {
+    if (bmiValue < 16) {
       setResult("Severe Thinness");
-      setBmi("Your BMI is " + bmi.toFixed(2));
-    } else if (bmi >= 16 && bmi < 17) {
+      setBmi("Your BMI is " + bmiValue.toFixed(2));
+    } else if (bmiValue >= 16 && bmiValue < 17) {
       setResult("Moderate Thinness");
-      setBmi("Your BMI is " + bmi.toFixed(2));
-    } else if (bmi >= 17 && bmi < 18.5) {
+      setBmi("Your BMI is " + bmiValue.toFixed(2));
+    } else if (bmiValue >= 17 && bmiValue < 18.5) {
       setResult("Mild Thinness");
-      setBmi("Your BMI is " + bmi.toFixed(2));
-    } else if (bmi >= 18.5 && bmi < 25) {
+      setBmi("Your BMI is " + bmiValue.toFixed(2));
+    } else if (bmiValue >= 18.5 && bmiValue < 25) {
       setResult("Healthy weight");
-      setBmi("Your BMI is " + bmi.toFixed(2));
-    } else if (bmi >= 25 && bmi < 30) {
+      setBmi("Your BMI is " + bmiValue.toFixed(2));
+    } else if (bmiValue >= 25 && bmiValue < 30) {
       setResult("Overweight");
-      setBmi("Your BMI is " + bmi.toFixed(2));
-    } else if (bmi >= 30 && bmi < 35) {
+      setBmi("Your BMI is " + bmiValue.toFixed(2));
+    } else if (bmiValue >= 30 && bmiValue < 35) {
       setResult("Obese Class I");
-      setBmi("Your BMI is " + bmi.toFixed(2));
-    } else if (bmi >= 35 && bmi < 40) {
+      setBmi("Your BMI is " + bmiValue.toFixed(2));
+    } else if (bmiValue >= 35 && bmiValue < 40) {
       setResult("Obese Class II");
-      setBmi("Your BMI is " + bmi.toFixed(2));
-    } else if (bmi >= 40) {
+      setBmi("Your BMI is " + bmiValue.toFixed(2));
+    } else if (bmiValue >= 40) {
       setResult("Obese Class III");
-      setBmi("Your BMI is " + bmi.toFixed(2));
+      setBmi("Your BMI is " + bmiValue.toFixed(2));
     }
   }
 
@@ -131,7 +129,6 @@ const Exercise = () => {
                   id="top"
                   style={{ display: "flex", width: "100%", height: "50%" }}
                 >
-                  {/* 식단 목록 외부에서 가져와서 연동해서 하고싶음 */}
                   <div
                     style={{
                       display: "flex",
@@ -195,13 +192,15 @@ const Exercise = () => {
                 }}
                 onClick={() => setExerCisePopUpVisible(true)}
               >
-                {/* 운동 목록 외부에서 가져와서 연동해서 하고싶음 */}+
+                {/* 운동 목록 외부에서 가져와서 연동해서 하고싶음 */}+  
               </Card>
             </Grid>
           </Grid>
         </div>
       </div>
-      {ExercisePopUpVisible && <ExercisePopUp />}
+      {ExercisePopUpVisible && (
+        <ExercisePopUp onClose={() => setExerCisePopUpVisible(false)} />
+      )}
     </>
   );
 };
